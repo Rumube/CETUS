@@ -95,6 +95,9 @@ public class Whale : MonoBehaviour
         if (other.tag == "SpaceObject")
         {
             LightUp();
+        }else if (other.tag == "Nexo" && _compass._currentMemories > 0 && !_compass._traspassingToNexoLocked)
+        {
+            StartCoroutine(_compass.LeaveMemoriesIntoNexo());
         }
     }
 

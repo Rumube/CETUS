@@ -26,12 +26,18 @@ public class Memory : MonoBehaviour
         _whale = GameObject.FindGameObjectWithTag("Player");
         _collider = GetComponent<SphereCollider>();
         _collider.enabled = true;
+        _memoryState = MemoryState.followWhave;
     }
 
     // Update is called once per frame
     void Update()
     {
         FollowMovement();
+
+        if (_memoryState == MemoryState.followNexo && transform.position == _target)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     /// <summary>
@@ -56,22 +62,22 @@ public class Memory : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(_memoryState != MemoryState.followTail)
-        {
-            _memoryState = MemoryState.followNexo;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(_memoryState != MemoryState.followTail)
+    //    {
+    //        _memoryState = MemoryState.followNexo;
+    //    }
+    //}
 
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (_memoryState != MemoryState.followTail)
-        {
-            _memoryState = MemoryState.followWhave;
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (_memoryState != MemoryState.followTail)
+    //    {
+    //        _memoryState = MemoryState.followWhave;
+    //    }
+    //}
 
     /// <summary>
     /// Set the base's position
@@ -105,5 +111,6 @@ public class Memory : MonoBehaviour
         _collider.enabled = false;
         _collider.enabled = true;
     }
+
 
 }

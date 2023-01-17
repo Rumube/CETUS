@@ -6,13 +6,12 @@ public class CollectedMemory : SpaceObject
 {
     [Header("Mesh")]
     [SerializeField]
-    private List<Mesh> _meshList;
     private MeshFilter _meshFilter;
     // Start is called before the first frame update
     void Start()
     {
         _meshFilter = GetComponent<MeshFilter>();
-        SetMesh();
+
     }
 
     // Update is called once per frame
@@ -20,16 +19,6 @@ public class CollectedMemory : SpaceObject
     {
 
     }
-
-    /// <summary>
-    /// Sets the memory mesh
-    /// </summary>
-    private void SetMesh()
-    {
-        int randomMesh = Random.Range(0, _meshList.Count);
-        _meshFilter.sharedMesh = _meshList[randomMesh];
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {

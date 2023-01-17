@@ -5,8 +5,7 @@ using UnityEngine;
 public class Compass : MonoBehaviour
 {
     [Header("Configuration")]
-    public Vector3 _base;
-
+    public bool _traspassingToNexoLocked;
     [Header("Stats")]
     public int _currentMemories;
     public bool _compasActive;
@@ -14,19 +13,8 @@ public class Compass : MonoBehaviour
     [Header("References")]
     public List<GameObject> _memoryParticle = new List<GameObject>();
     private List<GameObject> _memoriesList = new List<GameObject>();
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    [SerializeField]
+    private GameObject _nexo;
     /// <summary>
     /// Creates a new memory
     /// </summary>
@@ -36,7 +24,7 @@ public class Compass : MonoBehaviour
 
         int randomParticle = Random.Range(0, _memoryParticle.Count);
         GameObject newMemory = Instantiate(_memoryParticle[randomParticle], transform);
-        newMemory.GetComponent<Memory>().SetTarge(_base);
+        newMemory.GetComponent<Memory>().SetTarge(_nexo.transform.position);
         _memoriesList.Add(newMemory);
     }
 
@@ -65,5 +53,24 @@ public class Compass : MonoBehaviour
                 memory.GetComponent<Memory>().SetMemoryState(Memory.MemoryState.followTail);
             }
         }
+    }
+
+    /// <summary>
+    /// It is called when the whale touches the nexo
+    /// </summary>
+    public IEnumerator LeaveMemoriesIntoNexo()
+    {
+        _traspassingToNexoLocked = true;
+        List<GameObject> _memoriesListAux = new List<GameObject>(_memoriesList);
+        foreach (GameObject memory in _memoriesList)
+        {
+            memory.transform.SetParent(_nexo.transform);
+            MemoriesDown();
+            yield return new WaitForSeconds(0.5f);
+            memory.GetComponent<Memory>()._memoryState = Memory.MemoryState.followNexo;
+        }
+        _memoriesList.Clear();
+        _memoriesListAux.Clear();
+        _traspassingToNexoLocked = false;
     }
 }
