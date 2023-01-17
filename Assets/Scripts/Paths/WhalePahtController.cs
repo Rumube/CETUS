@@ -13,7 +13,7 @@ public class WhalePahtController : MonoBehaviour
     [Header("Travel values")]
     public float _speed = 0;
     float _distanceTravelled = 0;
-    private const float MINSPEED = 5f;
+    private const float MINSPEED = 10;
 
     private PathCreator _pathcreator;
 
@@ -55,7 +55,7 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void ExitConfiguration()
     {
-        if (_horAxis >= 0.5f || _horAxis <= -0.5f)
+        if (_horAxis >= 0.9f || _horAxis <= -0.9f)
         {
             if (!_isExit)
             {
@@ -81,10 +81,17 @@ public class WhalePahtController : MonoBehaviour
     {
         if (_isPath)
         {
-            float playerVel = _verAxis;
-            SetDirection(playerVel);
-            playerVel = CorrectVelocity(playerVel);
-            _distanceTravelled += (playerVel * _speed) + (MINSPEED * Time.deltaTime);
+            float playerDirection = _verAxis;
+            SetDirection(playerDirection);
+            playerDirection = CorrectVelocity(playerDirection);
+            if (_direction)
+            {
+                _distanceTravelled += (playerDirection * _speed * Time.deltaTime) + MINSPEED;
+            }
+            else
+            {
+                _distanceTravelled += (playerDirection * _speed * Time.deltaTime) - MINSPEED;
+            }
             transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
             transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
         }
