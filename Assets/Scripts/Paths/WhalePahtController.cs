@@ -95,7 +95,6 @@ public class WhalePahtController : MonoBehaviour
             transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
             transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
         }
-
     }
 
     /// <summary>
