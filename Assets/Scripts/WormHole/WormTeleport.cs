@@ -33,16 +33,13 @@ public class WormTeleport : MonoBehaviour
             collision.gameObject.transform.position = _holeLocation.position;
             StartCoroutine("Enable");
             
-            if (_wormManager._outside==true)//entra eb el aagujero
+            if (_wormManager._outside==true)//enters in the wormhole
             {
-
-                Debug.Log("false");
                 _cinemachine.m_Lens.FieldOfView = 179;
                 _wormManager._outside = false;
             }
             else
             {
-                Debug.Log("hola");
                 _cinemachine.m_Lens.FieldOfView = 40;
                 _wormManager._outside = true;
             }
