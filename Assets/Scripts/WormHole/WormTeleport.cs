@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class WormManager : MonoBehaviour
+public class WormTeleport : MonoBehaviour
 {
     // Start is called before the first frame update
     [HideInInspector]
     public Transform _holeLocation;
 
-    WormManager _wormHole;
+    WormTeleport _wormHole;
     public GameObject _destiny;
 
     
-    bool _whole = true;
     CinemachineFreeLook _cinemachine;
+    WormManager _wormManager;
     
     
     void Start()
     {
-       _wormHole= GameObject.FindGameObjectWithTag("WormHole").GetComponentInChildren<WormManager>();
+        _wormManager= GameObject.FindGameObjectWithTag("WormManager").GetComponentInChildren<WormManager>();
+        _wormHole = GameObject.FindGameObjectWithTag("WormHole").GetComponentInChildren<WormTeleport>();
        _holeLocation = GameObject.FindGameObjectWithTag("WormHole").transform.GetChild(0).gameObject.transform;
        _cinemachine = GameObject.FindGameObjectWithTag("FreeLook").GetComponent<CinemachineFreeLook>();
 
@@ -31,15 +32,19 @@ public class WormManager : MonoBehaviour
             //_whole=!_whole;
             collision.gameObject.transform.position = _holeLocation.position;
             StartCoroutine("Enable");
-            if (_whole==true)
+            
+            if (_wormManager._outside==true)//entra eb el aagujero
             {
+
+                Debug.Log("false");
                 _cinemachine.m_Lens.FieldOfView = 179;
-                _whole = false;
+                _wormManager._outside = false;
             }
             else
             {
                 Debug.Log("hola");
                 _cinemachine.m_Lens.FieldOfView = 40;
+                _wormManager._outside = true;
             }
             _wormHole._holeLocation= _destiny.transform;
         }
