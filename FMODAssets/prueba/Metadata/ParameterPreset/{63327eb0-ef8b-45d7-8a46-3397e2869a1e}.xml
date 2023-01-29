@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{63327eb0-ef8b-45d7-8a46-3397e2869a1e}">
+		<property name="name">
+			<value>TrailFinished</value>
+		</property>
+		<relationship name="folder">
+			<destination>{febfab65-dae4-41b8-a6d3-12594d610474}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d2e716a8-971b-48f6-acb6-4bb86df2b5d6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d2e716a8-971b-48f6-acb6-4bb86df2b5d6}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

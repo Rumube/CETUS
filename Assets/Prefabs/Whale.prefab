@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beddb98be31f98c43baf0af898d95d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {x: 0, y: 0, z: 0}
+  _traspassingToNexoLocked: 0
   _currentMemories: 0
   _compasActive: 0
   _memoryParticle:
@@ -687,6 +687,7 @@ MonoBehaviour:
   - {fileID: 7969124837247139119, guid: cde57fb9a3139364db67a0bb7f3a31a0, type: 3}
   - {fileID: 5277710173623222851, guid: f18322c224fa0a447a0d5b7067cb75bc, type: 3}
   - {fileID: 8613029390718879351, guid: b48405af19bb8a04894a738489ac139a, type: 3}
+  _nexo: {fileID: 0}
 --- !u!1 &3408610660709166971
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,8 +833,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7074681543918190720}
   - component: {fileID: 5216904895365602059}
-  - component: {fileID: 4320836997279866917}
   - component: {fileID: 5403916948982730882}
+  - component: {fileID: 7218763612592044803}
+  - component: {fileID: 2063225764}
   m_Layer: 3
   m_Name: CameraDelete
   m_TagString: Untagged
@@ -899,14 +901,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4320836997279866917
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3742474267497697140}
-  m_Enabled: 1
 --- !u!114 &5403916948982730882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,6 +934,32 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &7218763612592044803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742474267497697140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+--- !u!114 &2063225764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742474267497697140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &3782981009252320942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,11 +1122,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 92629509
-      Data2: 1115090324
-      Data3: 666285759
-      Data4: -1810519828
-    Path: event:/background
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   Event: 
   PlayEvent: 0
   StopEvent: 0
