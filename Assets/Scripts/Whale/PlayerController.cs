@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Animator _animator;
+    private Rigidbody _rb;
+
     [Header("Speed")]
     [SerializeField]
     private float _speed = 60;
@@ -20,15 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _impulseCooldown;
 
-    [Header("References")]
+    [Header("Cameras")]
     [SerializeField]
     private GameObject _dashCamera;
-    [SerializeField]
-    private Compass _compass;
-    [SerializeField]
-    private Transform rightPoint;
-    [SerializeField]
-    private Transform leftPoint;
 
     [Header("MaxValues")]
     [SerializeField]
@@ -38,6 +35,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _maxRollSpeed = 70;
 
+    [Header("RotationPoints")]
+    [SerializeField]
+    private Transform rightPoint;
+    [SerializeField]
+    private Transform leftPoint;
+
     //Controls
     private float _horizontalValue;
     private float _verticalValue;
@@ -46,30 +49,21 @@ public class PlayerController : MonoBehaviour
     private float _stopImpulse;
     private float _nextImpulse;
 
-    //Components
-    private Animator _animator;
-    private Rigidbody _rb;
-
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();       
     }
-    private void Start()
-    {
-        _rb.velocity = Vector3.zero;
-    }
+
     private void Update()
     {
         InputUpdate();
         Turn();
+        MoveUpdate();
         Animation();
     }
 
-    private void FixedUpdate()
-    {
-        MoveUpdate();        
-    }
+
     private void InputUpdate()
     {
         _horizontalValue = Input.GetAxis("Horizontal");
@@ -81,11 +75,35 @@ public class PlayerController : MonoBehaviour
             _stopImpulse = Time.realtimeSinceStartup + _impulseTime;
             _dashCamera.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {//Active Compass
-            _compass.ChangeMemoryStates();
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            ActiveSonar();
         }
     }
+
+    private void Turn()
+    {
+        float yaw = _turnYawSpeed * Time.deltaTime * _horizontalValue;
+        float pitch = _turnPitchSpeed * Time.deltaTime * -_verticalValue;
+        float roll = _turnRollSpeed * Time.deltaTime * _rotateValue;
+
+        transform.RotateAround(yaw > 0 ? rightPoint.position:leftPoint.position, Vector3.up, yaw);
+        transform.Rotate(pitch, 0,roll);
+    }
+
+    private void Animation()
+    {
+        _animator.SetBool("Space", Input.GetKey("space"));
+        _animator.SetBool("Left", _horizontalValue < 0 ? true: false);
+        _animator.SetBool("Right", _horizontalValue > 0 ? true : false);
+        _animator.SetBool("Up", _verticalValue > 0 ? true : false);
+        _animator.SetBool("Down", _verticalValue < 0 ? true : false);
+    }
+
+    private void ActiveSonar()
+    {
+        GetComponent<SonarController>().StartSonar();
+    }
+   
     private void MoveUpdate()
     {
         float newBoost = _boostSpeed;
@@ -100,35 +118,19 @@ public class PlayerController : MonoBehaviour
             _nextImpulse = Time.realtimeSinceStartup + _impulseCooldown;
             _dashCamera.SetActive(false);
         }
+        transform.position += transform.forward * newBoost * Time.deltaTime;
+    }   
 
-        _rb.velocity = transform.forward *newBoost  * _speed * Time.fixedDeltaTime;
-    }
-
-    private void Turn()
+    //GETTERS
+    //public float GetTurnSpeed()
+    //{
+    //    return _turnSpeed;
+    //}
+    public float GetBoostSpeed()
     {
-        float yaw = _turnYawSpeed * Time.deltaTime * _horizontalValue;
-        float pitch = _turnPitchSpeed * Time.deltaTime * -_verticalValue;
-        float roll = _turnRollSpeed * Time.deltaTime * _rotateValue;
-
-        transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
-        transform.Rotate(pitch, 0, 0);
-        //transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
-        //Vector3 whaleEulerAngles = transform.rotation.eulerAngles;
-        //whaleEulerAngles.x = (whaleEulerAngles.x > 180) ? whaleEulerAngles.x - 360 : whaleEulerAngles.x;
-        //whaleEulerAngles.x = Mathf.Clamp(whaleEulerAngles.x, -90, 90);
-        //transform.rotation = Quaternion.Euler(whaleEulerAngles);
+        return _boostSpeed;
     }
 
-    private void Animation()
-    {
-        _animator.SetBool("Space", Input.GetKey("space"));
-        _animator.SetBool("Left", _horizontalValue < 0 ? true : false);
-        _animator.SetBool("Right", _horizontalValue > 0 ? true : false);
-        _animator.SetBool("Up", _verticalValue > 0 ? true : false);
-        _animator.SetBool("Down", _verticalValue < 0 ? true : false);
-    }
-
-  
     //SETTERS
     public void SetTurnSpeed(float newValue)
     {
