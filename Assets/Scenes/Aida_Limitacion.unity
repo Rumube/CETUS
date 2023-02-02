@@ -1368,8 +1368,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxDistance:
-  - {x: 50, y: 50, z: 50}
-  - {x: 100, y: 100, z: 100}
+  - {x: 200, y: 200, z: 200}
+  - {x: 300, y: 300, z: 300}
+  - {x: 500, y: 500, z: 500}
 --- !u!1 &1580234264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1797,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969525009}
-  m_LocalRotation: {x: 0.07852907, y: -0.0000181736, z: 0.0000014315768, w: 0.9969118}
+  m_LocalRotation: {x: 0.07852909, y: -0.000018208963, z: 0.0000014343628, w: 0.9969118}
   m_LocalPosition: {x: 0.0010474678, y: 26.909998, z: -28.701471}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
