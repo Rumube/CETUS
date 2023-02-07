@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private bool _impulse;
     private float _stopImpulse;
     private float _nextImpulse;
+    private float _yaw;
 
     //Components
     private Animator _animator;
@@ -101,17 +102,36 @@ public class PlayerController : MonoBehaviour
             _dashCamera.SetActive(false);
         }
 
-        _rb.velocity = transform.forward *newBoost  * _speed * Time.fixedDeltaTime;
+        if (_yaw == 0)
+            _rb.velocity = transform.forward * newBoost * _speed * Time.fixedDeltaTime;
     }
 
     private void Turn()
     {
-        float yaw = _turnYawSpeed * Time.deltaTime * _horizontalValue;
-        float pitch = _turnPitchSpeed * Time.deltaTime * -_verticalValue;
+        _yaw = _turnYawSpeed * Time.deltaTime * _horizontalValue;
+        print("X: " + transform.rotation.eulerAngles);
+        if(transform.rotation.eulerAngles.x <= 45 && transform.rotation.eulerAngles.x > -45)
+        {
+            float pitch = _turnPitchSpeed * Time.deltaTime * -_verticalValue;
+            transform.Rotate(pitch, 0, 0);
+        }else if (transform.rotation.eulerAngles.x > 45)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, new Vector3(40, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z), Time.deltaTime);
+        }
+        else if(transform.rotation.eulerAngles.x < -45)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, new Vector3(-40, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z), Time.deltaTime);
+        }
         float roll = _turnRollSpeed * Time.deltaTime * _rotateValue;
 
-        transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
-        //transform.Rotate(pitch, 0, roll);
+        transform.RotateAround(_yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, _yaw);
+
+
+        //transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
+        //Vector3 whaleEulerAngles = transform.rotation.eulerAngles;
+        //whaleEulerAngles.x = (whaleEulerAngles.x > 180) ? whaleEulerAngles.x - 360 : whaleEulerAngles.x;
+        //whaleEulerAngles.x = Mathf.Clamp(whaleEulerAngles.x, -90, 90);
+        //transform.rotation = Quaternion.Euler(whaleEulerAngles);
     }
 
     private void Animation()
