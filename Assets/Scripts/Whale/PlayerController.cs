@@ -124,14 +124,8 @@ public class PlayerController : MonoBehaviour
         }
         float roll = _turnRollSpeed * Time.deltaTime * _rotateValue;
 
-        transform.RotateAround(_yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, _yaw);
-
-
-        //transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
-        //Vector3 whaleEulerAngles = transform.rotation.eulerAngles;
-        //whaleEulerAngles.x = (whaleEulerAngles.x > 180) ? whaleEulerAngles.x - 360 : whaleEulerAngles.x;
-        //whaleEulerAngles.x = Mathf.Clamp(whaleEulerAngles.x, -90, 90);
-        //transform.rotation = Quaternion.Euler(whaleEulerAngles);
+        transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
+        //transform.Rotate(pitch, 0, roll);
     }
 
     private void Animation()
