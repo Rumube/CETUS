@@ -9,22 +9,22 @@ public class BankBehaviour : MonoBehaviour
     Vector3 newposition;
     Vector3 direccion;
     public Vector3 targetVec;
-    
+
     public float velocidad;
     bool moviendose = true;
- 
-    
+
+
     public Rigidbody luciernaga;
 
 
     private IEnumerator coroutine;
     // Start is called before the first frame update
     public Wander wander;
-   
 
- 
-   
-    
+
+
+
+
     void Start()
     {
         luciernaga = GetComponent<Rigidbody>();
@@ -40,7 +40,7 @@ public class BankBehaviour : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, target.position);
             transform.position = Vector3.Lerp(transform.position, target.position, velocidad);
-           
+
 
         }
         else
@@ -68,7 +68,7 @@ public class BankBehaviour : MonoBehaviour
             }
         }
     }
-   
+
     private IEnumerator Movimiento(float waitTime)
     {
         moviendose = false;
@@ -88,7 +88,7 @@ public class BankBehaviour : MonoBehaviour
 
     }
 
-   
+
 
     // Update is called once per frame
     void Update()
