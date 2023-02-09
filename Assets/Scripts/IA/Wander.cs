@@ -7,8 +7,8 @@ public class Wander : MonoBehaviour
     public float _speedMove;
     public float _speedRotation;
     Vector3 _randomVector;
-    bool _spin=true;
-    public bool _wander=true;
+    bool _spin = true;
+    public bool _wander = true;
 
 
     public int _rotationX;
@@ -25,7 +25,7 @@ public class Wander : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_wander==true)
+        if (_wander == true)
         {
             transform.Rotate(_randomVector * _speedRotation * Time.deltaTime);
             transform.position += (transform.forward * _speedMove * Time.deltaTime);
@@ -44,19 +44,19 @@ public class Wander : MonoBehaviour
         else
         {
             transform.position += (transform.forward * _speedMove * Time.deltaTime);
-            if (_randomVector==Vector3.zero)
+            if (_randomVector == Vector3.zero)
             {
-                transform.Rotate  (new Vector3 (_rotationX,_rotationY,_rotationZ) * _speedMove * Time.deltaTime);
+                transform.Rotate(new Vector3(_rotationX, _rotationY, _rotationZ) * _speedMove * Time.deltaTime);
             }
             else
             {
-                transform.Rotate(-_randomVector * (_speedRotation +_speedMove) * Time.deltaTime);
-                
+                transform.Rotate(-_randomVector * (_speedRotation + _speedMove) * Time.deltaTime);
+
             }
-            
+
         }
-        
-      
+
+
     }
     void FixedUpdate()
     {
@@ -72,15 +72,15 @@ public class Wander : MonoBehaviour
         //{
         //    _wander = true;
         //}
-           
-       
+
+
     }
     void Spin()
     {
 
     }
     IEnumerator SpinTime()
-    { 
+    {
         yield return new WaitForSeconds(_spinTime);
         _spin = true;
 
@@ -107,11 +107,11 @@ public class Wander : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-       _wander = false;
+        _wander = false;
     }
     private void OnTriggerExit(Collider other)
     {
-       _wander = true;
+        _wander = true;
     }
 
 }

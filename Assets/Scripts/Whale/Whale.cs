@@ -18,14 +18,12 @@ public class Whale : MonoBehaviour
     public Material _highStar;
     public Material _lowStar;
     public List<GameObject> _lightsList = new List<GameObject>();
-    private PlayerController _controller;
     #endregion
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _controller = GetComponent<PlayerController>();
         RestartLife();
     }
 
@@ -85,9 +83,6 @@ public class Whale : MonoBehaviour
             newTurnSpeed += 20f;
             newBoostSpeed += 4f;
         }
-
-        _controller.SetTurnSpeed(newTurnSpeed);
-        _controller.SetboostSpeed(newBoostSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -95,7 +90,8 @@ public class Whale : MonoBehaviour
         if (other.tag == "SpaceObject")
         {
             LightUp();
-        }else if (other.tag == "Nexo" && _compass._currentMemories > 0 && !_compass._traspassingToNexoLocked)
+        }
+        else if (other.tag == "Nexo" && _compass._currentMemories > 0 && !_compass._traspassingToNexoLocked)
         {
             StartCoroutine(_compass.LeaveMemoriesIntoNexo());
         }

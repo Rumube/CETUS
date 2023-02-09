@@ -4,121 +4,51 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Speed")]
+    private Rigidbody _rb;
     [SerializeField]
-    private float _speed = 60;
+    private float _turnSpeed = 60f;
     [SerializeField]
-    private float _turnYawSpeed = 10;
-    [SerializeField]
-    private float _turnPitchSpeed = 60;
-    [SerializeField]
-    private float _turnRollSpeed = 20;
-    [SerializeField]
-    private float _boostSpeed = 5f;
-    [SerializeField]
-    private float _impulseTime;
-    [SerializeField]
-    private float _impulseCooldown;
-
-    [Header("References")]
-    [SerializeField]
-    private GameObject _dashCamera;
-    [SerializeField]
-    private Compass _compass;
-    [SerializeField]
-    private Transform rightPoint;
-    [SerializeField]
-    private Transform leftPoint;
-
-    [Header("MaxValues")]
-    [SerializeField]
-    private float _maxYawSpeed = 60;
-    [SerializeField]
-    private float _maxPitchSpeed = 100;
-    [SerializeField]
-    private float _maxRollSpeed = 70;
-
-    //Controls
+    private float _boostSpeed = 45f;
+    private Animator _animator;
     private float _horizontalValue;
     private float _verticalValue;
     private float _rotateValue;
-    private bool _impulse;
-    private float _stopImpulse;
-    private float _nextImpulse;
-
-    //Components
-    private Animator _animator;
-    private Rigidbody _rb;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
+
     private void Start()
     {
-        _rb.velocity = Vector3.zero;
-    }
-    private void Update()
-    {
-        InputUpdate();
-        Turn();
-        Animation();
+        _rb.useGravity = false;
     }
 
     private void FixedUpdate()
     {
-        MoveUpdate();        
+        Inputs();
+        Turn();
+        Thrust();
+        Animation();
     }
-    private void InputUpdate()
+    private void Inputs()
     {
         _horizontalValue = Input.GetAxis("Horizontal");
         _verticalValue = Input.GetAxis("Vertical");
         _rotateValue = Input.GetAxis("Rotate");
-        if (Input.GetKey(KeyCode.Space) && !_impulse && Time.realtimeSinceStartup > _nextImpulse)
-        {
-            _impulse = true;
-            _stopImpulse = Time.realtimeSinceStartup + _impulseTime;
-            _dashCamera.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {//Active Compass
-            _compass.ChangeMemoryStates();
-        }
     }
-    private void MoveUpdate()
-    {
-        float newBoost = _boostSpeed;
-        if (_impulse)
-        {
-            newBoost *= 10;
-        }
-
-        if (Time.realtimeSinceStartup >= _stopImpulse && _impulse)
-        {
-            _impulse = false;
-            _nextImpulse = Time.realtimeSinceStartup + _impulseCooldown;
-            _dashCamera.SetActive(false);
-        }
-
-        _rb.velocity = transform.forward *newBoost  * _speed * Time.fixedDeltaTime;
-    }
-
     private void Turn()
     {
-        float yaw = _turnYawSpeed * Time.deltaTime * _horizontalValue;
-        float pitch = _turnPitchSpeed * Time.deltaTime * -_verticalValue;
-        float roll = _turnRollSpeed * Time.deltaTime * _rotateValue;
-
-        transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
-        transform.Rotate(pitch, 0, 0);
-        //transform.RotateAround(yaw < 0 ? rightPoint.position : leftPoint.position, Vector3.up, yaw);
-        //Vector3 whaleEulerAngles = transform.rotation.eulerAngles;
-        //whaleEulerAngles.x = (whaleEulerAngles.x > 180) ? whaleEulerAngles.x - 360 : whaleEulerAngles.x;
-        //whaleEulerAngles.x = Mathf.Clamp(whaleEulerAngles.x, -90, 90);
-        //transform.rotation = Quaternion.Euler(whaleEulerAngles);
+        float yaw = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Horizontal");
+        float pitch = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Vertical");
+        float roll = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Rotate");
+        transform.Rotate(pitch, yaw, roll);
     }
-
+    private void Thrust()
+    {
+        transform.position += transform.forward * _boostSpeed * Time.fixedDeltaTime;
+    }
     private void Animation()
     {
         _animator.SetBool("Space", Input.GetKey("space"));
@@ -126,18 +56,5 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("Right", _horizontalValue > 0 ? true : false);
         _animator.SetBool("Up", _verticalValue > 0 ? true : false);
         _animator.SetBool("Down", _verticalValue < 0 ? true : false);
-    }
-
-  
-    //SETTERS
-    public void SetTurnSpeed(float newValue)
-    {
-        _maxYawSpeed = Mathf.Min(newValue, _maxYawSpeed);
-        _maxPitchSpeed = Mathf.Min(newValue, _maxPitchSpeed);
-        _maxRollSpeed = Mathf.Min(newValue, _maxRollSpeed);
-    }
-    public void SetboostSpeed(float newValue)
-    {
-        _boostSpeed = newValue;
     }
 }
