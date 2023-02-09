@@ -5,53 +5,45 @@ using UnityEngine;
 public class Limitation : MonoBehaviour
 {
     private Transform nexo;
-    [Tooltip("La primera posicion es la del nexo")]
-    public Vector3[] _maxDistance;
-    int _level;
+   
+    public float[] _maxDistance;
+    public int _level;
    
 
     private Animator _animator;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         nexo = GameObject.FindGameObjectWithTag("Nexo").GetComponent<Transform>();
+    }
+    void Start()
+    {
+      
         //_maxDistance[0] = nexo.transform.position;
         _animator = GetComponent<Animator>();
       
     }
+    
 
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.2f);
+
+        for (int i = 0; i < _maxDistance.Length; i++)
+        {
+            
+            Gizmos.DrawSphere(nexo.position, _maxDistance[i]);
+        }
+
+    }
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < _maxDistance.Length; i++)
-        {
-            if (i==0)
-            {
-                setBounderies(transform.position.x, nexo.position.x, _maxDistance[i].x, i + 1);
-                setBounderies(transform.position.y, nexo.position.y, _maxDistance[i].y, i + 1);
-                setBounderies(transform.position.z, nexo.position.z, _maxDistance[i].z, i + 1);
-            }
-            else
-            {
-                setBounderies(transform.position.x, _maxDistance[i -1].x, _maxDistance[i].x, i + 1);
-                setBounderies(transform.position.y, _maxDistance[i - 1].y, _maxDistance[i].y, i + 1);
-                setBounderies(transform.position.z, _maxDistance[i - 1].z, _maxDistance[i].z, i + 1);
-            }
-           
-
-          
-        }
-       
-
-
         
-    }
-    public void setBounderies(float ballenaPos, float nexoPos, float maxDistance, int level)
-    {
-        if (Mathf.Abs(ballenaPos - nexoPos) <= maxDistance)
+        if (Vector3.Distance(nexo.transform.position, transform.position)>=_maxDistance[_level-1])
         {
-            _level = level;
-            Debug.Log("Nivel  " + level+ (ballenaPos - nexoPos));
+            print("return");
         }
     }
+    
 }
