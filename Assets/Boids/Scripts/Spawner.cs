@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour {
             Boid boid = Instantiate (prefab);
             boid.transform.position = pos;
             boid.transform.forward = Random.insideUnitSphere;
+            boid.InitValues(gameObject, spawnRadius);
 
             boid.SetColour (colour);
         }

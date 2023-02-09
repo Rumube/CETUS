@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
         float yaw = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Horizontal");
         float pitch = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Vertical");
         float roll = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Rotate");
-        print("Roll -> " + roll);
         transform.Rotate(pitch, yaw, roll);
     }
     private void Thrust()
