@@ -1368,9 +1368,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxDistance:
-  - {x: 200, y: 200, z: 200}
-  - {x: 300, y: 300, z: 300}
-  - {x: 500, y: 500, z: 500}
+  - 200
+  - 500
+  - 600
+  _level: 1
 --- !u!1 &1580234264
 GameObject:
   m_ObjectHideFlags: 0
