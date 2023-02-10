@@ -45,8 +45,8 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void UpdateInputs()
     {
-        _verAxis = Input.GetAxis("Vertical");
-        _horAxis = Input.GetAxis("Horizontal");
+        //_verAxis = Input.GetAxis("Vertical");
+        //_horAxis = Input.GetAxis("Horizontal");
     }
 
     /// <summary>

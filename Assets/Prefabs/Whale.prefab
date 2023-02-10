@@ -1017,20 +1017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c01fef111bddbe4782c34c4b4ecac4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 120
-  _turnYawSpeed: 60
-  _turnPitchSpeed: 120
-  _turnRollSpeed: 40
+  _inputController: {fileID: 0}
+  _turnSpeed: 60
   _boostSpeed: 5
-  _impulseTime: 1.5
-  _impulseCooldown: 1
-  _dashCamera: {fileID: 0}
-  _compass: {fileID: 8964683422998474878}
-  rightPoint: {fileID: 2069933263}
-  leftPoint: {fileID: 777568941}
-  _maxYawSpeed: 140
-  _maxPitchSpeed: 100
-  _maxRollSpeed: 70
 --- !u!114 &1062980296059658620
 MonoBehaviour:
   m_ObjectHideFlags: 0

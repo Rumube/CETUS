@@ -1,9 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Referenes")]
+    private PlayerInputActions _playerInputActions;
+    private Vector2 _inputMovement;
+
     private Rigidbody _rb;
     [SerializeField]
     private float _turnSpeed = 60f;
@@ -18,6 +24,9 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+
+        _playerInputActions = new PlayerInputActions();
+        _playerInputActions.Gameplay.Enable();
     }
 
     private void Start()
@@ -34,15 +43,16 @@ public class PlayerController : MonoBehaviour
     }
     private void Inputs()
     {
-        _horizontalValue = Input.GetAxis("Horizontal");
-        _verticalValue = Input.GetAxis("Vertical");
-        _rotateValue = Input.GetAxis("Rotate");
+        _inputMovement = _playerInputActions.Gameplay.Movement.ReadValue<Vector2>();
+        _horizontalValue = _inputMovement.x;
+        _verticalValue = _inputMovement.y;
+        _rotateValue = _playerInputActions.Gameplay.Rotate.ReadValue<float>();
     }
     private void Turn()
     {
-        float yaw = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Horizontal");
-        float pitch = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Vertical");
-        float roll = _turnSpeed * Time.fixedDeltaTime * Input.GetAxis("Rotate");
+        float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue;
+        float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue;
+        float roll = _turnSpeed * Time.fixedDeltaTime * _rotateValue;
         transform.Rotate(pitch, yaw, roll);
     }
     private void Thrust()
@@ -51,7 +61,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Animation()
     {
-        _animator.SetBool("Space", Input.GetKey("space"));
+        //_animator.SetBool("Space", Input.GetKey("space"));
         _animator.SetBool("Left", _horizontalValue < 0 ? true : false);
         _animator.SetBool("Right", _horizontalValue > 0 ? true : false);
         _animator.SetBool("Up", _verticalValue > 0 ? true : false);
