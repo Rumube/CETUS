@@ -6,15 +6,6 @@
             "id": "a4319fb5-5b40-4360-8f26-bd941f1acc98",
             "actions": [
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "f3429d96-dcc5-4352-9e20-e1bbd465183e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Movement",
                     "type": "Value",
                     "id": "9ce55d5c-c2cc-4703-9bbe-8124d5e1cd09",
@@ -43,28 +34,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "85937c12-0615-4ee3-9bc8-ffd68abd9c55",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0a908ba1-262d-4538-bb90-68daad97c1a6",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "2431000f-332c-4e4f-8d73-49eef83eaaf1",
@@ -125,7 +94,7 @@
                     "id": "6177acef-d0ef-41c9-8cac-8d14b790cb35",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "InvertVector2(invertX=false)",
+                    "processors": "InvertVector2(invertX=false,invertY=false)",
                     "groups": "Gamepad",
                     "action": "Movement",
                     "isComposite": false,

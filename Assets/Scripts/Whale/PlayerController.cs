@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
         Thrust();
         Animation();
     }
+    /// <summary>
+    /// Manage the inputs in Gameplay ActionMap
+    /// </summary>
     private void Inputs()
     {
         _inputMovement = _playerInputActions.Gameplay.Movement.ReadValue<Vector2>();
@@ -48,17 +51,28 @@ public class PlayerController : MonoBehaviour
         _verticalValue = _inputMovement.y;
         _rotateValue = _playerInputActions.Gameplay.Rotate.ReadValue<float>();
     }
+    /// <summary>
+    /// Manage the rotations
+    /// </summary>
     private void Turn()
     {
         float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue;
         float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue;
         float roll = _turnSpeed * Time.fixedDeltaTime * _rotateValue;
-        transform.Rotate(pitch, yaw, roll);
+        transform.Rotate(-1*pitch, yaw, roll);
     }
+    /// <summary>
+    /// Manage the movement
+    /// </summary>
     private void Thrust()
     {
         transform.position += transform.forward * _boostSpeed * Time.fixedDeltaTime;
     }
+    /// <summary>
+    /// Manage Animations using:
+    /// <see cref="_horizontalValue"/>
+    /// <see cref="_verticalValue"/>
+    /// </summary>
     private void Animation()
     {
         //_animator.SetBool("Space", Input.GetKey("space"));
@@ -67,22 +81,26 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("Up", _verticalValue > 0 ? true : false);
         _animator.SetBool("Down", _verticalValue < 0 ? true : false);
     }
-
+    /// <summary>
+    /// Return's <see cref="_playerInputActions"/>
+    /// </summary>
+    /// <returns></returns>
     public PlayerInputActions GetPlayerInputActions()
     {
         return _playerInputActions;
     }
-
     /// <summary>
-    /// Set's 
+    /// Set's <see cref="_playerInputActions"/> to Gameplay Action Map
     /// </summary>
     public void SetInputActionGameplay()
     {
-        switch (_playerInputActions)
-        {
-
-            default:
-                break;
-        }
+        _playerInputActions.Gameplay.Enable();
+    }
+    /// <summary>
+    /// Set's <see cref="_playerInputActions"/> to Paths Action Map
+    /// </summary>
+    public void SetInputActionPaths()
+    {
+        _playerInputActions.Paths.Enable();
     }
 }
