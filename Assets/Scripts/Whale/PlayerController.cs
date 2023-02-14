@@ -67,4 +67,22 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("Up", _verticalValue > 0 ? true : false);
         _animator.SetBool("Down", _verticalValue < 0 ? true : false);
     }
+
+    public PlayerInputActions GetPlayerInputActions()
+    {
+        return _playerInputActions;
+    }
+
+    /// <summary>
+    /// Set's 
+    /// </summary>
+    public void SetInputActionGameplay()
+    {
+        switch (_playerInputActions)
+        {
+
+            default:
+                break;
+        }
+    }
 }

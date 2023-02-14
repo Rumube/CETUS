@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using UnityEngine.InputSystem;
+
 
 public class WhalePahtController : MonoBehaviour
 {
+    [Header("PlayerController")]
+    private PlayerController _playerController;
+    private PlayerInputActions _inputActions;
     [Header("Status")]
     private bool _isPath = false;
     [SerializeField]
@@ -26,6 +31,12 @@ public class WhalePahtController : MonoBehaviour
     private float _nextExit = 0;
     private float _nextTravel = 0;
     private bool _isExit = false;
+
+    private void Awake()
+    {
+        _playerController = GetComponent<PlayerController>();
+        _inputActions = _playerController.GetPlayerInputActions();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +76,8 @@ public class WhalePahtController : MonoBehaviour
             {
                 _isExit = false;
                 _isPath = false;
-                _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
+                //_inputActions.
+                //_nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
             }
         }
         else
@@ -140,6 +152,7 @@ public class WhalePahtController : MonoBehaviour
             if(Time.realtimeSinceStartup >= _nextTravel)
             {
                 _isPath = true;
+                _inputActions.Paths.Enable();
                 _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
                 _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
             }

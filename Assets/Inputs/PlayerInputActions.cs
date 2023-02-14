@@ -211,6 +211,34 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Paths"",
+            ""id"": ""579009c5-ccd0-442b-bc92-91800cea054a"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""f49ba32d-7930-48e8-ba68-d2804646cb21"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""714087f1-c044-4e1f-b577-a5e913344779"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -243,6 +271,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
+        // Paths
+        m_Paths = asset.FindActionMap("Paths", throwIfNotFound: true);
+        m_Paths_Newaction = m_Paths.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -347,6 +378,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Paths
+    private readonly InputActionMap m_Paths;
+    private IPathsActions m_PathsActionsCallbackInterface;
+    private readonly InputAction m_Paths_Newaction;
+    public struct PathsActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public PathsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Paths_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_Paths; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PathsActions set) { return set.Get(); }
+        public void SetCallbacks(IPathsActions instance)
+        {
+            if (m_Wrapper.m_PathsActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_PathsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public PathsActions @Paths => new PathsActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -370,5 +434,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+    }
+    public interface IPathsActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
