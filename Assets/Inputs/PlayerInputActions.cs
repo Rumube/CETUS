@@ -217,7 +217,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""id"": ""579009c5-ccd0-442b-bc92-91800cea054a"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Test"",
                     ""type"": ""Button"",
                     ""id"": ""f49ba32d-7930-48e8-ba68-d2804646cb21"",
                     ""expectedControlType"": ""Button"",
@@ -230,11 +230,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""714087f1-c044-4e1f-b577-a5e913344779"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Test"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -273,7 +273,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Gameplay_LookAt = m_Gameplay.FindAction("LookAt", throwIfNotFound: true);
         // Paths
         m_Paths = asset.FindActionMap("Paths", throwIfNotFound: true);
-        m_Paths_Newaction = m_Paths.FindAction("New action", throwIfNotFound: true);
+        m_Paths_Test = m_Paths.FindAction("Test", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -382,12 +382,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     // Paths
     private readonly InputActionMap m_Paths;
     private IPathsActions m_PathsActionsCallbackInterface;
-    private readonly InputAction m_Paths_Newaction;
+    private readonly InputAction m_Paths_Test;
     public struct PathsActions
     {
         private @PlayerInputActions m_Wrapper;
         public PathsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Paths_Newaction;
+        public InputAction @Test => m_Wrapper.m_Paths_Test;
         public InputActionMap Get() { return m_Wrapper.m_Paths; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -397,16 +397,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PathsActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnNewaction;
+                @Test.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
+                @Test.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
+                @Test.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
             }
             m_Wrapper.m_PathsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Test.started += instance.OnTest;
+                @Test.performed += instance.OnTest;
+                @Test.canceled += instance.OnTest;
             }
         }
     }
@@ -437,6 +437,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     }
     public interface IPathsActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnTest(InputAction.CallbackContext context);
     }
 }

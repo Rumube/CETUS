@@ -56,6 +56,14 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void UpdateInputs()
     {
+        if (_inputActions.Paths.enabled)
+        {
+            if (_inputActions.Paths.Test.IsPressed())
+            {
+                Debug.Log("TEST");
+            }
+        }
+
         //_verAxis = Input.GetAxis("Vertical");
         //_horAxis = Input.GetAxis("Horizontal");
     }
@@ -76,8 +84,8 @@ public class WhalePahtController : MonoBehaviour
             {
                 _isExit = false;
                 _isPath = false;
-                //_inputActions.
-                //_nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
+                _playerController.SetInputActionGameplay();
+                _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
             }
         }
         else
@@ -152,7 +160,7 @@ public class WhalePahtController : MonoBehaviour
             if(Time.realtimeSinceStartup >= _nextTravel)
             {
                 _isPath = true;
-                _inputActions.Paths.Enable();
+                _playerController.SetInputActionPaths();
                 _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
                 _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
             }
