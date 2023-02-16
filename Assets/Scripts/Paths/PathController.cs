@@ -13,9 +13,7 @@ public class PathController : MonoBehaviour
     private GameObject _player;
     private PathCreator _pathcreator;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _pathcreator = GetComponent<PathCreator>();
