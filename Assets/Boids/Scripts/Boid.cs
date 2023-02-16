@@ -33,6 +33,11 @@ public class Boid : MonoBehaviour
     Transform target;
     private Vector3 _lastDirect;
 
+    enum behaviour { Scared, Follower };
+    behaviour action;
+
+    bool oneTime;
+
     void Awake()
     {
         material = transform.GetComponentInChildren<MeshRenderer>().material;
@@ -64,6 +69,10 @@ public class Boid : MonoBehaviour
             material.color = col;
         }
     }
+    public void SetBehaviour(Spawner._behaviour behaviour)
+    {
+        action = (behaviour)behaviour;
+    }
 
     public void UpdateBoid(Transform Spawner)
     {
@@ -76,7 +85,38 @@ public class Boid : MonoBehaviour
                 Vector3 offsetToTarget = (target.position - position);
                 acceleration = SteerTowards(offsetToTarget) * settings.targetWeight;
             }
+            if (action == behaviour.Follower)
+            {
+             
+                Vector3 offset = _player.transform.position - position;
+                float sqrDst = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
+               
+                if (sqrDst < settings.perceptionRadius * 100)
+                {
+                    print("seguir");
+                    if (oneTime == true)
+                    {
+                        numPerceivedFlockmates += 1;
+                        oneTime = false;
+                    }
+                    
+                    avgFlockHeading += _player.transform.position.normalized;
+                    centreOfFlockmates += _player.transform.position;
 
+                    if (sqrDst < settings.avoidanceRadius * settings.avoidanceRadius)
+                    {
+                        avgAvoidanceHeading -= offset / sqrDst;
+                    }
+                }
+                else
+                {
+                    oneTime = true;
+                }
+                var playerAlignmentForce = SteerTowards(_player.transform.position.normalized) * settings.alignWeight;
+                acceleration += playerAlignmentForce;
+                Vector3 _playerCentre = (_player.transform.position - position);
+                var cohesionForce = SteerTowards(_playerCentre) * settings.cohesionWeight;
+            }
             if (numPerceivedFlockmates != 0)
             {
                 centreOfFlockmates /= numPerceivedFlockmates;
@@ -111,6 +151,7 @@ public class Boid : MonoBehaviour
                 Vector3 collisionAvoidForce = SteerTowards(direction) * settings.avoidCollisionWeight;
                 acceleration += collisionAvoidForce;
             }
+
             if (_scared)
             {
                 velocity += acceleration * Time.deltaTime;
@@ -216,7 +257,7 @@ public class Boid : MonoBehaviour
     }
     private bool ScaredController()
     {
-        if (Vector3.Distance(_player.transform.position, position) <= _maxRadius/2)
+        if (Vector3.Distance(_player.transform.position, position) <= _maxRadius/2 && action==behaviour.Scared)
         {
             _timeRunaway = Time.realtimeSinceStartup + 1f;
             return true;

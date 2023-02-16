@@ -5,12 +5,15 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 
     public enum GizmoType { Never, SelectedOnly, Always }
+    public enum _behaviour { Scared, Follower };
 
     public Boid prefab;
     public float spawnRadius = 10;
     public int spawnCount = 10;
     public Color colour;
     public GizmoType showSpawnRegion;
+    public _behaviour behaviour;
+   
 
     void Awake () {
         for (int i = 0; i < spawnCount; i++) {
@@ -19,7 +22,7 @@ public class Spawner : MonoBehaviour {
             boid.transform.position = pos;
             boid.transform.forward = Random.insideUnitSphere;
             boid.InitValues(gameObject, spawnRadius);
-
+            boid.SetBehaviour(behaviour);
             boid.SetColour (colour);
         }
     }
