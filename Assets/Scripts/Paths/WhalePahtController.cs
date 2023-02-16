@@ -56,13 +56,13 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void UpdateInputs()
     {
-        if (_inputActions.Paths.enabled)
-        {
-            if (_inputActions.Paths.Test.IsPressed())
-            {
-                Debug.Log("TEST");
-            }
-        }
+        //if (_inputActions.Paths.enabled)
+        //{
+        //    if (_inputActions.Paths.Test.IsPressed())
+        //    {
+        //        Debug.Log("TEST");
+        //    }
+        //}
 
         //_verAxis = Input.GetAxis("Vertical");
         //_horAxis = Input.GetAxis("Horizontal");
