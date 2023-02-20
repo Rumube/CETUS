@@ -66,7 +66,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Thrust()
     {
-        transform.position += transform.forward * _boostSpeed * Time.fixedDeltaTime;
+        _rb.velocity = transform.forward * _boostSpeed * Time.fixedDeltaTime;
+        //transform.position += transform.forward * _boostSpeed * Time.fixedDeltaTime;
     }
     /// <summary>
     /// Manage Animations using:
