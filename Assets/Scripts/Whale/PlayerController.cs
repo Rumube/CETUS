@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Gameplay.Enable();
     }
@@ -82,8 +81,6 @@ public class PlayerController : MonoBehaviour
                 InputsMove();
                 break;
             case WHALE_STATE.paht:
-                break;
-            case WHALE_STATE.dash:
                 break;
             default:
                 break;
