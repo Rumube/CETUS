@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
 
     // CONFIGURATION
-    [Header("Configuration")]
+    [Header("Movement Configuration")]
+    [SerializeField] private float _movementDelay = 1f;
     [SerializeField] private float _turnSpeed = 60f;
     [SerializeField] private float _moveSpeed = 45f;
     [SerializeField] private float _dashBoost = 2f;
+    [Header("Dash Configuration")]
     [SerializeField] private float _dashDuration;
     [SerializeField] private float _dashCooldown;
 
@@ -49,6 +51,15 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb.useGravity = false;
+
+        // Releases the cursor
+        Cursor.lockState = CursorLockMode.None;
+        // Locks the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        // Confines the cursor
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+
     }
 
     private void FixedUpdate()
@@ -94,8 +105,8 @@ public class PlayerController : MonoBehaviour
     {
         //INPUTS VALUES
         _inputMovement = _playerInputActions.Gameplay.Movement.ReadValue<Vector2>();
-        _horizontalValue = _inputMovement.x;
-        _verticalValue = _inputMovement.y;
+        _horizontalValue = Mathf.Lerp(_horizontalValue, _inputMovement.x, _movementDelay * 1000 * Time.fixedDeltaTime);
+        _verticalValue = Mathf.Lerp(_verticalValue, _inputMovement.y, _movementDelay * 1000 * Time.fixedDeltaTime);
         _rotateValue = _playerInputActions.Gameplay.Rotate.ReadValue<float>();
         _dashBtn = _playerInputActions.Gameplay.Dash.ReadValue<float>();
 
@@ -166,5 +177,28 @@ public class PlayerController : MonoBehaviour
     public void SetInputActionPaths()
     {
         _playerInputActions.Paths.Enable();
+    }
+
+    //GETTER
+
+    /// <summary>
+    /// Returns the state of the whale
+    /// </summary>
+    /// <returns><see cref="_whaleState"/></returns>
+    public WHALE_STATE GetWhaleState()
+    {
+        return _whaleState;
+    }
+
+    //SETTER
+
+    /// <summary>
+    /// Sets the value of <see cref="_whaleState"/>.
+    /// The whale state
+    /// </summary>
+    /// <param name="whaleState">new whale state</param>
+    public void SetWhaleState(WHALE_STATE whaleState)
+    {
+        _whaleState = whaleState;
     }
 }
