@@ -9,16 +9,26 @@ public class PlayerController : MonoBehaviour
     [Header("Referenes")]
     private PlayerInputActions _playerInputActions;
     private Vector2 _inputMovement;
-
     private Rigidbody _rb;
+    [Header("Configuration")]
     [SerializeField]
     private float _turnSpeed = 60f;
     [SerializeField]
     private float _boostSpeed = 45f;
     private Animator _animator;
+    // INPUTS VALUES
     private float _horizontalValue;
     private float _verticalValue;
     private float _rotateValue;
+    private float _dashBtn;
+
+    public enum WHALE_STATE
+    {
+        move = 0,
+        paht = 1,
+        dash = 2
+    }
+    private WHALE_STATE _whaleState = WHALE_STATE.move;
 
     private void Awake()
     {
@@ -46,10 +56,30 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Inputs()
     {
+        switch (_whaleState)
+        {
+            case WHALE_STATE.move:
+                InputsMove();
+                break;
+            case WHALE_STATE.paht:
+                break;
+            case WHALE_STATE.dash:
+                break;
+            default:
+                break;
+        }
+
+    }
+    /// <summary>
+    /// Manage the inputs when the whale is move
+    /// </summary>
+    private void InputsMove()
+    {
         _inputMovement = _playerInputActions.Gameplay.Movement.ReadValue<Vector2>();
         _horizontalValue = _inputMovement.x;
         _verticalValue = _inputMovement.y;
         _rotateValue = _playerInputActions.Gameplay.Rotate.ReadValue<float>();
+        _dashBtn = _playerInputActions.Gameplay.Dash.ReadValue<float>();
     }
     /// <summary>
     /// Manage the rotations
@@ -67,6 +97,10 @@ public class PlayerController : MonoBehaviour
     private void Thrust()
     {
         transform.position += transform.forward * _boostSpeed * Time.fixedDeltaTime;
+        if (_dashBtn != 0)
+        {
+            print("Dash");
+        }
     }
     /// <summary>
     /// Manage Animations using:
