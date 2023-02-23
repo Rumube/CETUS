@@ -6,29 +6,37 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    //REFERENCES
     [Header("Referenes")]
     private PlayerInputActions _playerInputActions;
     private Vector2 _inputMovement;
     private Rigidbody _rb;
-    [Header("Configuration")]
-    [SerializeField]
-    private float _turnSpeed = 60f;
-    [SerializeField]
-    private float _boostSpeed = 45f;
     private Animator _animator;
+
+    // CONFIGURATION
+    [Header("Configuration")]
+    [SerializeField] private float _turnSpeed = 60f;
+    [SerializeField] private float _moveSpeed = 45f;
+    [SerializeField] private float _dashBoost = 2f;
+    [SerializeField] private float _dashDuration;
+    [SerializeField] private float _dashCooldown;
+
     // INPUTS VALUES
     private float _horizontalValue;
     private float _verticalValue;
     private float _rotateValue;
     private float _dashBtn;
 
+    // PLAYER STATES
+    private float _finishDash;
+    private float _nextDash = 0;
     public enum WHALE_STATE
     {
         move = 0,
         paht = 1,
         dash = 2
     }
-    private WHALE_STATE _whaleState = WHALE_STATE.move;
+    [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
 
     private void Awake()
     {
@@ -46,10 +54,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckCooldowns();
         Inputs();
         Turn();
         Thrust();
         Animation();
+    }
+    /// <summary>
+    /// Manage the cooldowns
+    /// </summary>
+    private void CheckCooldowns()
+    {
+        if (_whaleState == WHALE_STATE.dash && Time.realtimeSinceStartup >= _finishDash)
+        {
+            _whaleState = WHALE_STATE.move;
+            _nextDash = Time.realtimeSinceStartup + _dashCooldown;
+        }
     }
     /// <summary>
     /// Manage the inputs in Gameplay ActionMap
@@ -75,11 +95,19 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void InputsMove()
     {
+        //INPUTS VALUES
         _inputMovement = _playerInputActions.Gameplay.Movement.ReadValue<Vector2>();
         _horizontalValue = _inputMovement.x;
         _verticalValue = _inputMovement.y;
         _rotateValue = _playerInputActions.Gameplay.Rotate.ReadValue<float>();
         _dashBtn = _playerInputActions.Gameplay.Dash.ReadValue<float>();
+
+        //INPUT ACTIONS
+        if (_dashBtn != 0 && Time.realtimeSinceStartup >= _nextDash)
+        {
+            _whaleState = WHALE_STATE.dash;
+            _finishDash = Time.realtimeSinceStartup + _dashDuration;
+        }
     }
     /// <summary>
     /// Manage the rotations
@@ -89,18 +117,23 @@ public class PlayerController : MonoBehaviour
         float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue;
         float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue;
         float roll = _turnSpeed * Time.fixedDeltaTime * _rotateValue;
-        transform.Rotate(-1*pitch, yaw, roll);
+        transform.Rotate(-1 * pitch, yaw, roll);
     }
     /// <summary>
     /// Manage the movement
     /// </summary>
     private void Thrust()
     {
-        transform.position += transform.forward * _boostSpeed * Time.fixedDeltaTime;
-        if (_dashBtn != 0)
+        float boost;
+        if (_whaleState == WHALE_STATE.dash)
         {
-            print("Dash");
+            boost = _moveSpeed * _dashBoost;
         }
+        else
+        {
+            boost = _moveSpeed;
+        }
+        transform.position += transform.forward * boost * Time.fixedDeltaTime;
     }
     /// <summary>
     /// Manage Animations using:
@@ -109,7 +142,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Animation()
     {
-        //_animator.SetBool("Space", Input.GetKey("space"));
+        _animator.SetBool("Space", _dashBtn != 0 ? true : false);
         _animator.SetBool("Left", _horizontalValue < 0 ? true : false);
         _animator.SetBool("Right", _horizontalValue > 0 ? true : false);
         _animator.SetBool("Up", _verticalValue > 0 ? true : false);
