@@ -12,14 +12,15 @@ public class PlayerController : MonoBehaviour
     private Vector2 _inputMovement;
     private Rigidbody _rb;
     private Animator _animator;
+    private WhalePahtController _pathController;
 
     // CONFIGURATION
     [Header("Movement Configuration")]
     [SerializeField] private float _movementDelay = 1f;
     [SerializeField] private float _turnSpeed = 60f;
     [SerializeField] private float _moveSpeed = 45f;
-    [SerializeField] private float _dashBoost = 2f;
     [Header("Dash Configuration")]
+    [SerializeField] private float _dashBoost = 2f;
     [SerializeField] private float _dashDuration;
     [SerializeField] private float _dashCooldown;
 
@@ -45,7 +46,9 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Gameplay.Enable();
+        _pathController = GetComponent<WhalePahtController>();
+
+        SwitchActionMap(WHALE_STATE.move);
     }
 
     private void Start()
@@ -77,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_whaleState == WHALE_STATE.dash && Time.realtimeSinceStartup >= _finishDash)
         {
-            _whaleState = WHALE_STATE.move;
+            SwitchActionMap(WHALE_STATE.move);
             _nextDash = Time.realtimeSinceStartup + _dashCooldown;
         }
     }
@@ -92,6 +95,7 @@ public class PlayerController : MonoBehaviour
                 InputsMove();
                 break;
             case WHALE_STATE.paht:
+                InputsPath();
                 break;
             default:
                 break;
@@ -105,17 +109,24 @@ public class PlayerController : MonoBehaviour
     {
         //INPUTS VALUES
         _inputMovement = _playerInputActions.Gameplay.Movement.ReadValue<Vector2>();
-        _horizontalValue = Mathf.Lerp(_horizontalValue, _inputMovement.x, _movementDelay * 1000 * Time.fixedDeltaTime);
-        _verticalValue = Mathf.Lerp(_verticalValue, _inputMovement.y, _movementDelay * 1000 * Time.fixedDeltaTime);
+        _horizontalValue = _inputMovement.x;
+        _verticalValue = _inputMovement.y;
         _rotateValue = _playerInputActions.Gameplay.Rotate.ReadValue<float>();
         _dashBtn = _playerInputActions.Gameplay.Dash.ReadValue<float>();
 
         //INPUT ACTIONS
         if (_dashBtn != 0 && Time.realtimeSinceStartup >= _nextDash)
         {
-            _whaleState = WHALE_STATE.dash;
+            SwitchActionMap(WHALE_STATE.dash);
             _finishDash = Time.realtimeSinceStartup + _dashDuration;
         }
+    }
+    /// <summary>
+    /// Manage the inputs when the whale is in path
+    /// </summary>
+    private void InputsPath()
+    {
+        _pathController.UpdatePath();
     }
     /// <summary>
     /// Manage the rotations
@@ -200,5 +211,22 @@ public class PlayerController : MonoBehaviour
     public void SetWhaleState(WHALE_STATE whaleState)
     {
         _whaleState = whaleState;
+    }
+
+    public void SwitchActionMap(WHALE_STATE whaleState)
+    {
+        _whaleState = whaleState;
+        switch (whaleState)
+        {
+            case WHALE_STATE.move:
+            case WHALE_STATE.dash:
+                _playerInputActions.Gameplay.Enable();
+                break;
+            case WHALE_STATE.paht:
+                _playerInputActions.Paths.Enable();
+                break;
+            default:
+                break;
+        }
     }
 }

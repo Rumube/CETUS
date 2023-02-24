@@ -249,8 +249,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Test"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""f49ba32d-7930-48e8-ba68-d2804646cb21"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Direction"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb9fefb2-874f-417e-ba99-a482d9b33791"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -266,6 +275,72 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""f7565625-94ca-489a-9f2d-61248440d38a"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7edf16f8-488d-4345-bfb4-0edc5df1794f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f8034c31-a623-4726-9691-50d33c9c430b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""faa0509f-f8b2-49a5-bf53-7e698aaa06cf"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""630595f5-034c-4b9f-a9af-ce423323369f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f395cfa7-9098-4ac8-951f-66bb26f3e713"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false,invertY=false)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Direction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -306,6 +381,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Paths
         m_Paths = asset.FindActionMap("Paths", throwIfNotFound: true);
         m_Paths_Test = m_Paths.FindAction("Test", throwIfNotFound: true);
+        m_Paths_Direction = m_Paths.FindAction("Direction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -423,11 +499,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Paths;
     private IPathsActions m_PathsActionsCallbackInterface;
     private readonly InputAction m_Paths_Test;
+    private readonly InputAction m_Paths_Direction;
     public struct PathsActions
     {
         private @PlayerInputActions m_Wrapper;
         public PathsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Test => m_Wrapper.m_Paths_Test;
+        public InputAction @Direction => m_Wrapper.m_Paths_Direction;
         public InputActionMap Get() { return m_Wrapper.m_Paths; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,6 +518,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Test.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
                 @Test.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
                 @Test.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
+                @Direction.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
+                @Direction.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
+                @Direction.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
             }
             m_Wrapper.m_PathsActionsCallbackInterface = instance;
             if (instance != null)
@@ -447,6 +528,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Test.started += instance.OnTest;
                 @Test.performed += instance.OnTest;
                 @Test.canceled += instance.OnTest;
+                @Direction.started += instance.OnDirection;
+                @Direction.performed += instance.OnDirection;
+                @Direction.canceled += instance.OnDirection;
             }
         }
     }
@@ -479,5 +563,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IPathsActions
     {
         void OnTest(InputAction.CallbackContext context);
+        void OnDirection(InputAction.CallbackContext context);
     }
 }
