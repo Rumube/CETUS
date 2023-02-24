@@ -212,10 +212,13 @@ public class PlayerController : MonoBehaviour
     {
         _whaleState = whaleState;
     }
-
+    /// <summary>
+    /// Change the <see cref="_whaleState"/> and the InputAction
+    /// </summary>
+    /// <param name="whaleState">New State</param>
     public void SwitchActionMap(WHALE_STATE whaleState)
     {
-        _whaleState = whaleState;
+        SetWhaleState(whaleState);
         switch (whaleState)
         {
             case WHALE_STATE.move:
