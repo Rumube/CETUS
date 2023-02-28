@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     // CONFIGURATION
     [Header("Movement Configuration")]
+    [Range(0.1f, 3f)]
     [SerializeField] private float _movementDelay = 1f;
     [SerializeField] private float _turnSpeed = 60f;
     [SerializeField] private float _moveSpeed = 45f;
@@ -133,8 +134,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Turn()
     {
-        float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue;
-        float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue;
+        float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue / _movementDelay;
+        float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue / _movementDelay;
         float roll = _turnSpeed * Time.fixedDeltaTime * _rotateValue;
         transform.Rotate(-1 * pitch, yaw, roll);
     }
