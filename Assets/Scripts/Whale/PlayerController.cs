@@ -168,7 +168,8 @@ public class PlayerController : MonoBehaviour
         {
             boost = _moveSpeed;
         }
-        transform.position += transform.forward * boost * Time.fixedDeltaTime;
+        _rb.velocity = transform.forward * boost * Time.fixedDeltaTime;
+        //transform.position += transform.forward * boost * Time.fixedDeltaTime;
     }
     /// <summary>
     /// Manage Animations using:
