@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 558897359949079118}
   - component: {fileID: 7671114540042308120}
   - component: {fileID: 6147760825461196223}
+  - component: {fileID: 1956035122452212691}
   m_Layer: 0
   m_Name: CollectedFragmentMemory
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c6f46b96d211945943f3da41024bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshFilter: {fileID: 0}
+  _cristalFound: {fileID: 0}
 --- !u!23 &7671114540042308120
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -111,3 +112,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3814220354512377900}
   m_Mesh: {fileID: 2227263870525394426, guid: ec4c2c54f4cfd144ca5a298ecb294f02, type: 3}
+--- !u!114 &1956035122452212691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3814220354512377900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: -1538208062
+      Data2: 1247862418
+      Data3: -1632786024
+      Data4: 1320514408
+    Path: event:/FindCristal
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
