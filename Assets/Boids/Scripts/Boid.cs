@@ -87,38 +87,38 @@ public class Boid : MonoBehaviour
                 Vector3 offsetToTarget = (target.position - position);
                 acceleration = SteerTowards(offsetToTarget) * settings.targetWeight;
             }
-            //if (action == behaviour.Follower)
-            //{
-             
-            //    Vector3 offset = _player.transform.position - position;
-            //    float sqrDst = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
-               
-            //    if (sqrDst < settings.perceptionRadius * 100)
-            //    {
-            //        print("seguir");
-            //        if (oneTime == true)
-            //        {
-            //            numPerceivedFlockmates += 1;
-            //            oneTime = false;
-            //        }
-                    
-            //        avgFlockHeading += _player.transform.position.normalized;
-            //        centreOfFlockmates += _player.transform.position;
+            if (action == behaviour.Follower)
+            {
 
-            //        if (sqrDst < settings.avoidanceRadius * settings.avoidanceRadius)
-            //        {
-            //            avgAvoidanceHeading -= offset / sqrDst;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        oneTime = true;
-            //    }
-            //    var playerAlignmentForce = SteerTowards(_player.transform.position.normalized) * settings.alignWeight;
-            //    acceleration += playerAlignmentForce;
-            //    Vector3 _playerCentre = (_player.transform.position - position);
-            //    var cohesionForce = SteerTowards(_playerCentre) * settings.cohesionWeight;
-            //}
+                Vector3 offset = _player.transform.position - position;
+                float sqrDst = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
+
+                if (sqrDst < settings.perceptionRadius * 100)
+                {
+                    print("seguir");
+                    if (oneTime == true)
+                    {
+                        numPerceivedFlockmates += 1;
+                        oneTime = false;
+                    }
+
+                    avgFlockHeading += _player.transform.position.normalized;
+                    centreOfFlockmates += _player.transform.position;
+
+                    if (sqrDst < settings.avoidanceRadius * settings.avoidanceRadius)
+                    {
+                        avgAvoidanceHeading -= offset / sqrDst;
+                    }
+                }
+                else
+                {
+                    oneTime = true;
+                }
+                //    var playerAlignmentForce = SteerTowards(_player.transform.position.normalized) * settings.alignWeight;
+                //    acceleration += playerAlignmentForce;
+                //    Vector3 _playerCentre = (_player.transform.position - position);
+                //    var cohesionForce = SteerTowards(_playerCentre) * settings.cohesionWeight;
+            }
             if (numPerceivedFlockmates != 0)
             {
                 centreOfFlockmates /= numPerceivedFlockmates;
@@ -127,7 +127,7 @@ public class Boid : MonoBehaviour
 
                 var alignmentForce = SteerTowards(avgFlockHeading) * settings.alignWeight;
                 var cohesionForce = SteerTowards(offsetToFlockmatesCentre) * settings.cohesionWeight;
-                var seperationForce = SteerTowards(avgAvoidanceHeading) * settings.seperateWeight;
+                var seperationForce = SteerTowards(avgAvoidanceHeading) * settings.seperateWeight*10;
 
                 acceleration += alignmentForce;
                 acceleration += cohesionForce;
@@ -135,11 +135,11 @@ public class Boid : MonoBehaviour
             }
             if (action == behaviour.Follower)
             {
-                Debug.Log(action);
+                
                 Vector3 direction = (_player.transform.position - position).normalized;
 
-                Vector3 collisionAvoidForce = SteerTowards(direction) * settings.cohesionWeight;
-                acceleration += collisionAvoidForce;
+                Vector3 cohesionWeight = SteerTowards(direction) * settings.cohesionWeight;
+                acceleration += cohesionWeight*10;
 
                
             }
@@ -162,12 +162,12 @@ public class Boid : MonoBehaviour
                 //}
                 
             }
-            else if (IsHeadingForCollision())
-            {
-                Vector3 collisionAvoidDir = ObstacleRays();
-                Vector3 collisionAvoidForce = SteerTowards(collisionAvoidDir) * settings.avoidCollisionWeight;
-                acceleration += collisionAvoidForce;
-            }
+            //else if (IsHeadingForCollision())
+            //{
+            //    Vector3 collisionAvoidDir = ObstacleRays();
+            //    Vector3 collisionAvoidForce = SteerTowards(collisionAvoidDir) * settings.avoidCollisionWeight;
+            //    acceleration += collisionAvoidForce;
+            //}
             else if (OutofRadious())
             {
                 Vector3 direction = (_spawner.transform.position - position).normalized;
@@ -199,14 +199,16 @@ public class Boid : MonoBehaviour
                 Vector3 dir = velocity / speed;
 
                 //Debug.Log("actionfollower"+_player.transform.position);
-                if (Vector3.Distance(position, _player.transform.position) <= 10)
+                if (Vector3.Distance(position, _player.transform.position) <= 20)
                 {
-                    speed = 1;
-                    velocity = dir * speed;
+                    Debug.Log("close");
+                    speed = Mathf.Clamp(speed, 50, 60);
+                    velocity = dir*speed;
+                  
                 }
                 else
                 {
-                    speed = Mathf.Clamp(speed, settings.minSpeed, settings.maxSpeed);
+                    speed = Mathf.Clamp(speed, settings.minSpeed, 100);
                     velocity = dir * speed;
                 }
                 
@@ -278,7 +280,10 @@ public class Boid : MonoBehaviour
         }
         return result;
     }
-
+    /// <summary>
+    /// Detects a collision
+    /// </summary>
+    /// <returns>true detects a collision an false if not</returns>
     bool IsHeadingForCollision()
     {
         RaycastHit hit;
@@ -290,7 +295,7 @@ public class Boid : MonoBehaviour
         return false;
     }
     /// <summary>
-    /// Detects if there is a obstacle
+    /// Search a direction to avoid the obstacle
     /// </summary>
     /// <returns>If  detects an obstacle returns an alternative direction if not keep moving forward</returns>
     Vector3 ObstacleRays()
