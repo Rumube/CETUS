@@ -32,6 +32,7 @@ public class Boid : MonoBehaviour
     Transform cachedTransform;
     Transform target;
     private Vector3 _lastDirect;
+    [SerializeField] private FishMaterial _fishMaterial;
 
     enum behaviour { Scared, Follower };
     behaviour action;
@@ -44,6 +45,7 @@ public class Boid : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         cachedTransform = transform;
     }
+
     /// <summary>
     /// Gets initial position of the boid
     /// </summary>
@@ -76,7 +78,7 @@ public class Boid : MonoBehaviour
 
     public void UpdateBoid(Transform Spawner)
     {
-        if(Time.realtimeSinceStartup >= _timeRunaway)
+        if (Time.realtimeSinceStartup >= _timeRunaway)
         {
             Vector3 acceleration = Vector3.zero;
             _playerDetected = PlayerDetection();
@@ -263,7 +265,7 @@ public class Boid : MonoBehaviour
             Debug.Log("forward");
             transform.position += transform.forward * 0.5f;
         }
-        
+
     }
 
     private bool OutofRadious()
@@ -328,10 +330,12 @@ public class Boid : MonoBehaviour
         if (Vector3.Distance(_player.transform.position, position) <= _maxRadius/2 && action==behaviour.Scared)
         {
             _timeRunaway = Time.realtimeSinceStartup + 1f;
+            _fishMaterial.SetFuerza(1f);
             return true;
         }
         else
         {
+            _fishMaterial.SetFuerza(0.4f);
             return false;
         }
     }

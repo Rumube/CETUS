@@ -53,6 +53,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdbb0408-d398-44f9-80e9-e5889e72de46"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -169,7 +178,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""3bca6a0b-b285-4f3c-9f8c-2510985320e2"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -180,7 +189,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""bfeaa58e-8790-466b-ae51-b454fa94af8d"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -209,6 +218,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""LookAt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac80225c-4dd3-464d-940e-9f42073e7099"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""069883f0-d65d-4de7-ba15-b32855a42fad"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -218,8 +249,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Test"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""f49ba32d-7930-48e8-ba68-d2804646cb21"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Direction"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb9fefb2-874f-417e-ba99-a482d9b33791"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -235,6 +275,72 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""f7565625-94ca-489a-9f2d-61248440d38a"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7edf16f8-488d-4345-bfb4-0edc5df1794f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f8034c31-a623-4726-9691-50d33c9c430b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""faa0509f-f8b2-49a5-bf53-7e698aaa06cf"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""630595f5-034c-4b9f-a9af-ce423323369f"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f395cfa7-9098-4ac8-951f-66bb26f3e713"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false,invertY=false)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Direction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -271,9 +377,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Gameplay_Movement = m_Gameplay.FindAction("Movement", throwIfNotFound: true);
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
         m_Gameplay_LookAt = m_Gameplay.FindAction("LookAt", throwIfNotFound: true);
+        m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         // Paths
         m_Paths = asset.FindActionMap("Paths", throwIfNotFound: true);
         m_Paths_Test = m_Paths.FindAction("Test", throwIfNotFound: true);
+        m_Paths_Direction = m_Paths.FindAction("Direction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -336,6 +444,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Movement;
     private readonly InputAction m_Gameplay_Rotate;
     private readonly InputAction m_Gameplay_LookAt;
+    private readonly InputAction m_Gameplay_Dash;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -343,6 +452,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Gameplay_Movement;
         public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
         public InputAction @LookAt => m_Wrapper.m_Gameplay_LookAt;
+        public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -361,6 +471,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @LookAt.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAt;
                 @LookAt.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAt;
                 @LookAt.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAt;
+                @Dash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -374,6 +487,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @LookAt.started += instance.OnLookAt;
                 @LookAt.performed += instance.OnLookAt;
                 @LookAt.canceled += instance.OnLookAt;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -383,11 +499,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Paths;
     private IPathsActions m_PathsActionsCallbackInterface;
     private readonly InputAction m_Paths_Test;
+    private readonly InputAction m_Paths_Direction;
     public struct PathsActions
     {
         private @PlayerInputActions m_Wrapper;
         public PathsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Test => m_Wrapper.m_Paths_Test;
+        public InputAction @Direction => m_Wrapper.m_Paths_Direction;
         public InputActionMap Get() { return m_Wrapper.m_Paths; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -400,6 +518,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Test.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
                 @Test.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
                 @Test.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnTest;
+                @Direction.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
+                @Direction.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
+                @Direction.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
             }
             m_Wrapper.m_PathsActionsCallbackInterface = instance;
             if (instance != null)
@@ -407,6 +528,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Test.started += instance.OnTest;
                 @Test.performed += instance.OnTest;
                 @Test.canceled += instance.OnTest;
+                @Direction.started += instance.OnDirection;
+                @Direction.performed += instance.OnDirection;
+                @Direction.canceled += instance.OnDirection;
             }
         }
     }
@@ -434,9 +558,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnLookAt(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
     public interface IPathsActions
     {
         void OnTest(InputAction.CallbackContext context);
+        void OnDirection(InputAction.CallbackContext context);
     }
 }

@@ -19,7 +19,7 @@ public class BoidManager : MonoBehaviour {
     }
 
     void Update () {
-        if (boids.Length >0) {
+        if (boids.Length > 0) {
 
             int numBoids = boids.Length;
             var boidData = new BoidData[numBoids];
