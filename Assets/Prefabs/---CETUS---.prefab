@@ -971,10 +971,11 @@ GameObject:
   - component: {fileID: 4554275584816503828}
   - component: {fileID: 1062980296059658608}
   - component: {fileID: 1062980296059658620}
+  - component: {fileID: 863411582}
+  - component: {fileID: 592040733454954160}
   - component: {fileID: 5838829232959195930}
   - component: {fileID: 1865548814}
   - component: {fileID: 1865548815}
-  - component: {fileID: 863411582}
   - component: {fileID: 1062980297539273105}
   - component: {fileID: 1062980296059658616}
   - component: {fileID: 1062980297328231868}
@@ -1059,6 +1060,34 @@ MonoBehaviour:
   - {fileID: 423514866679696993}
   - {fileID: 3788097036223952427}
   - {fileID: 4524361815922027571}
+--- !u!114 &863411582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782981009252320942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff920ee67140c74c808c782b074bf99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _direction: 1
+  _speed: 30
+  _exitTime: 1
+  _timeToNextTravel: 1
+--- !u!114 &592040733454954160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782981009252320942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d459d46fb6e5814c9cbc0f715316a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5838829232959195930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,22 +1178,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &863411582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3782981009252320942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff920ee67140c74c808c782b074bf99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _direction: 1
-  _speed: 30
-  _exitTime: 1
-  _timeToNextTravel: 1
 --- !u!54 &1062980297539273105
 Rigidbody:
   m_ObjectHideFlags: 0
