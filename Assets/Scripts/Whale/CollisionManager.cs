@@ -4,36 +4,22 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
-    private Vector3 _newUp = Vector3.zero;
-    private bool _rotating = false;
-
-    private void Awake()
-    {
-        //_newUp = transform.up;
-    }
+    [Header("Rotation configuration")]
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private float _detectionDist;
+    [SerializeField] private float _rotationSpeed = 10;
 
     private void Update()
     {
-        //UpdateRotation();
+        CollisionDetection();
     }
 
-    private void UpdateRotation()
+    private void CollisionDetection()
     {
-        if (_rotating)
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _detectionDist, _layerMask))
         {
-            transform.up = Vector3.Slerp(transform.up, _newUp, Time.deltaTime * 1f);
-            print(transform.up + " == " +  _newUp);
-            if(Vector3.Distance(transform.up, _newUp) <= 0.5f)
-            {
-                _rotating = false;
-            }
+            transform.Rotate(-1*_rotationSpeed * Time.deltaTime, 0, 0);
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //_newUp = collision.contacts[0].normal;
-        //_rotating = true;
-        transform.up = collision.contacts[0].normal;
     }
 }

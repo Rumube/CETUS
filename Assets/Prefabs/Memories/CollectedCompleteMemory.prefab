@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 558897359949079118}
   - component: {fileID: 8145609417494660665}
   - component: {fileID: 52018838428111077}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CollectedCompleteMemory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c6f46b96d211945943f3da41024bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshFilter: {fileID: 0}
 --- !u!33 &8145609417494660665
 MeshFilter:
   m_ObjectHideFlags: 0

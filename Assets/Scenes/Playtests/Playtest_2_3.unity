@@ -1065,12 +1065,12 @@ PrefabInstance:
     - target: {fileID: 2190080540151139864, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000004290468
+      value: -0.000000004290469
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540151139864, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 3.091994e-10
+      value: -3.0919944e-10
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540151139864, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
@@ -1085,12 +1085,12 @@ PrefabInstance:
     - target: {fileID: 2190080540539442601, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000017664014
+      value: -0.000000017664014
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540539442601, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000001595575
+      value: -0.000000001595575
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540539442601, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
@@ -1120,12 +1120,12 @@ PrefabInstance:
     - target: {fileID: 2190080540580519297, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00000003532803
+      value: -0.00000003532803
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540580519297, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000000031911507
+      value: -0.0000000031911507
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540580519297, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
@@ -1588,6 +1588,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 592040733454954160, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _detectionDist
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 592040733454954160, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _rotationSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 592040733454954160, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _layerMask.m_Bits
+      value: 179
+      objectReference: {fileID: 0}
     - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
         type: 3}
       propertyPath: _dashBoost
