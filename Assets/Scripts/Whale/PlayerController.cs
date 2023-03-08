@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _dashCooldown;
     [Header("Sounds")]
     [SerializeField] private float _whaleSoundsDelay = 5.0f;
-    [Range(10,100)]
+    [Range(10, 100)]
     [SerializeField] private float _whaleSoundFrecuency = 5.0f;
     private bool _canPlaySound = true;
     private int _lastSound = 0;
@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
         dash = 2
     }
     [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
+
+    [Header("---TEST---")]
+    [Tooltip("Enable movement in dash")]
+    [SerializeField] private bool _testDash = false;
 
     private void Awake()
     {
@@ -103,18 +107,35 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Inputs()
     {
-        switch (_whaleState)
+        if (_testDash)
         {
-            case WHALE_STATE.move:
-                InputsMove();
-                break;
-            case WHALE_STATE.paht:
-                InputsPath();
-                break;
-            default:
-                break;
+            switch (_whaleState)
+            {
+                case WHALE_STATE.move:
+                case WHALE_STATE.dash:
+                    InputsMove();
+                    break;
+                case WHALE_STATE.paht:
+                    InputsPath();
+                    break;
+                default:
+                    break;
+            }
         }
-
+        else
+        {
+            switch (_whaleState)
+            {
+                case WHALE_STATE.move:
+                    InputsMove();
+                    break;
+                case WHALE_STATE.paht:
+                    InputsPath();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     /// <summary>
     /// Manage the inputs when the whale is move
@@ -129,7 +150,7 @@ public class PlayerController : MonoBehaviour
         _dashBtn = _playerInputActions.Gameplay.Dash.ReadValue<float>();
 
         //INPUT ACTIONS
-        if (_dashBtn != 0 && Time.realtimeSinceStartup >= _nextDash)
+        if (_whaleState != WHALE_STATE.dash && _dashBtn != 0 && Time.realtimeSinceStartup >= _nextDash)
         {
             if (_whaleSprint.IsPlaying()) _whaleSprint.Stop();
             _whaleSprint.Play();
@@ -256,7 +277,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ChooseWhaleSound()
     {
-        if (_canPlaySound && UnityEngine.Random.Range(0,100) >= (100 - _whaleSoundFrecuency))
+        if (_canPlaySound && UnityEngine.Random.Range(0, 100) >= (100 - _whaleSoundFrecuency))
         {
             for (int i = 0; i < _whaleSounds.Count; ++i)
             {
@@ -280,6 +301,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(_whaleSoundsDelay);
         _canPlaySound = true;
     }
-    
+
     #endregion
 }

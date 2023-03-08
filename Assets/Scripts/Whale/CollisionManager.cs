@@ -19,13 +19,13 @@ public class CollisionManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _detectionDist, _layerMask))
         {
-            if(transform.rotation.x > 0 )
+            if(hit.normal.y > transform.position.x)
             {
-                transform.Rotate(_rotationSpeed * Time.deltaTime * 1, 0, 0);
+                transform.Rotate(-1 * _rotationSpeed * Time.deltaTime * 1, 0, 0);
             }
             else
             {
-                transform.Rotate(-1 * _rotationSpeed * Time.deltaTime * 1, 0, 0);
+                transform.Rotate(_rotationSpeed * Time.deltaTime * 1, 0, 0);
             }
         }
     }

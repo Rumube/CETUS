@@ -1025,14 +1025,15 @@ MonoBehaviour:
   - {fileID: 1865548814}
   _whaleSprint: {fileID: 1865548815}
   _movementDelay: 1
-  _turnSpeed: 100
+  _turnSpeed: 65
   _moveSpeed: 1800
-  _dashBoost: 2
-  _dashDuration: 0
-  _dashCooldown: 0
+  _dashBoost: 4
+  _dashDuration: 1
+  _dashCooldown: 3
   _whaleSoundsDelay: 10
   _whaleSoundFrecuency: 11.4
   _whaleState: 0
+  _testDash: 1
 --- !u!114 &1062980296059658620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,6 +1089,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d459d46fb6e5814c9cbc0f715316a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 179
+  _detectionDist: 80
+  _rotationSpeed: 90
 --- !u!114 &5838829232959195930
 MonoBehaviour:
   m_ObjectHideFlags: 0
