@@ -38,14 +38,10 @@ public class WhalePahtController : MonoBehaviour
         _inputActions = _playerController.GetPlayerInputActions();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Manage the inputs when the whale is in path
+    /// </summary>
+    public void UpdatePath()
     {
         UpdateInputs();
         ExitConfiguration();
@@ -56,16 +52,19 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void UpdateInputs()
     {
-        //if (_inputActions.Paths.enabled)
-        //{
-        //    if (_inputActions.Paths.Test.IsPressed())
-        //    {
-        //        Debug.Log("TEST");
-        //    }
-        //}
+        if(_inputActions == null)
+        {
+            _inputActions = _playerController.GetPlayerInputActions();
+        }
 
-        //_verAxis = Input.GetAxis("Vertical");
-        //_horAxis = Input.GetAxis("Horizontal");
+
+        if (_inputActions.Paths.Test.IsPressed())
+        {
+            Debug.Log("TEST");
+        }
+
+        _horAxis = _inputActions.Paths.Direction.ReadValue<Vector2>().x;
+        _verAxis = _inputActions.Paths.Direction.ReadValue<Vector2>().y;
     }
 
     /// <summary>
@@ -80,11 +79,12 @@ public class WhalePahtController : MonoBehaviour
             {
                 _isExit = true;
                 _nextExit = Time.realtimeSinceStartup + _exitTime;
-            }else if(Time.realtimeSinceStartup >= _nextExit)
+            }
+            else if (Time.realtimeSinceStartup >= _nextExit)
             {
                 _isExit = false;
                 _isPath = false;
-                _playerController.SetInputActionGameplay();
+                _playerController.SwitchActionMap(PlayerController.WHALE_STATE.move);
                 _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
             }
         }
@@ -155,10 +155,11 @@ public class WhalePahtController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "PathGuide" && !_isPath)
+        if (other.tag == "PathGuide" && !_isPath)
         {
-            if(Time.realtimeSinceStartup >= _nextTravel)
+            if (Time.realtimeSinceStartup >= _nextTravel)
             {
+                _playerController.SwitchActionMap(PlayerController.WHALE_STATE.paht);
                 _isPath = true;
                 _playerController.SetInputActionPaths();
                 _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
