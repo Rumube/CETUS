@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 public class WhalePahtController : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject _pathCamera;
+
     [Header("PlayerController")]
     private PlayerController _playerController;
     private PlayerInputActions _inputActions;
@@ -86,6 +89,7 @@ public class WhalePahtController : MonoBehaviour
                 _isPath = false;
                 _playerController.SwitchActionMap(PlayerController.WHALE_STATE.move);
                 _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
+                _pathCamera.SetActive(false);
             }
         }
         else
@@ -164,6 +168,7 @@ public class WhalePahtController : MonoBehaviour
                 _playerController.SetInputActionPaths();
                 _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
                 _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
+                _pathCamera.SetActive(true);
             }
         }
     }

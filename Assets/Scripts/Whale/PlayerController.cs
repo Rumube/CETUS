@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private WhalePahtController _pathController;
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
+    [SerializeField] private GameObject _dashCamera;
 
     // CONFIGURATION
     [Header("Movement Configuration")]
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             SwitchActionMap(WHALE_STATE.move);
             _nextDash = Time.realtimeSinceStartup + _dashCooldown;
+            _dashCamera.SetActive(false);
         }
     }
     /// <summary>
@@ -156,6 +158,7 @@ public class PlayerController : MonoBehaviour
             _whaleSprint.Play();
             SwitchActionMap(WHALE_STATE.dash);
             _finishDash = Time.realtimeSinceStartup + _dashDuration;
+            _dashCamera.SetActive(true);
         }
     }
     /// <summary>
