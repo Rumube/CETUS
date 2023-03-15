@@ -1174,6 +1174,16 @@ PrefabInstance:
       propertyPath: _pathCamera
       value: 
       objectReference: {fileID: 665117302}
+    - target: {fileID: 592040733454954160, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _detectionDist
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 592040733454954160, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _rotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
         type: 3}
       propertyPath: _dashCamera

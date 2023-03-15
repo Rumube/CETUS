@@ -274,6 +274,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region GETTERS
+    public float GetVerticalAxis()
+    {
+        return _verticalValue;
+    }
+    #endregion
+
+
     #region Sounds
     /// <summary>
     /// Choose a sound for the whale with a delay

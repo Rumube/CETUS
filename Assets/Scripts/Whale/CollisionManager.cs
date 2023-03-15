@@ -9,6 +9,13 @@ public class CollisionManager : MonoBehaviour
     [SerializeField] private float _detectionDist;
     [SerializeField] private float _rotationSpeed = 10;
 
+    [Header("References")]
+    private PlayerController _playerController;
+
+    private void Awake()
+    {
+        _playerController = GetComponent<PlayerController>();
+    }
     private void Update()
     {
         CollisionDetection();
@@ -19,7 +26,7 @@ public class CollisionManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _detectionDist, _layerMask))
         {
-            if(hit.normal.y > transform.position.x)
+            if (_playerController.GetVerticalAxis() > 0)
             {
                 transform.Rotate(-1 * _rotationSpeed * Time.deltaTime * 1, 0, 0);
             }
