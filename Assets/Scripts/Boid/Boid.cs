@@ -60,6 +60,10 @@ public class Boid : MonoBehaviour
         forward = cachedTransform.forward;
 
         float startSpeed = (settings.minSpeed + settings.maxSpeed) / 2;
+        if (action==behaviour.Follower)
+        {
+            startSpeed = (45 +80) / 2;
+        }
         Vector3 random = new Vector3(Random.Range(-1f, 2f), Random.Range(-1f, 2f), Random.Range(-1f, 2f));
         velocity = random * startSpeed;
     }
@@ -162,12 +166,12 @@ public class Boid : MonoBehaviour
                 //}
                 
             }
-            //else if (IsHeadingForCollision())
-            //{
-            //    Vector3 collisionAvoidDir = ObstacleRays();
-            //    Vector3 collisionAvoidForce = SteerTowards(collisionAvoidDir) * settings.avoidCollisionWeight;
-            //    acceleration += collisionAvoidForce;
-            //}
+            else if (IsHeadingForCollision())
+            {
+                Vector3 collisionAvoidDir = ObstacleRays();
+                Vector3 collisionAvoidForce = SteerTowards(collisionAvoidDir) * settings.avoidCollisionWeight;
+                acceleration += collisionAvoidForce;
+            }
             else if (OutofRadious())
             {
                 Vector3 direction = (_spawner.transform.position - position).normalized;
@@ -208,7 +212,7 @@ public class Boid : MonoBehaviour
                 }
                 else
                 {
-                    speed = Mathf.Clamp(speed, settings.minSpeed, 100);
+                    speed = Mathf.Clamp(speed, 60, 100);
                     velocity = dir * speed;
                 }
                 
