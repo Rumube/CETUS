@@ -14,7 +14,7 @@ public class Boid : MonoBehaviour
     [HideInInspector]
     public Vector3 forward;
     Vector3 velocity;
-    private bool _playerDetected = false;
+    private bool _isScared = false;
     // To update:
     Vector3 acceleration;
     [HideInInspector]
@@ -59,10 +59,14 @@ public class Boid : MonoBehaviour
         position = cachedTransform.position;
         forward = cachedTransform.forward;
 
-        float startSpeed = (settings.minSpeed + settings.maxSpeed) / 2;
+        float startSpeed;
         if (action==behaviour.Follower)
         {
-            startSpeed = (45 +80) / 2;
+            startSpeed = (45 +60) / 2;
+        }
+        else
+        {
+           startSpeed = (settings.minSpeed + settings.maxSpeed) / 2;
         }
         Vector3 random = new Vector3(Random.Range(-1f, 2f), Random.Range(-1f, 2f), Random.Range(-1f, 2f));
         velocity = random * startSpeed;
@@ -84,45 +88,14 @@ public class Boid : MonoBehaviour
     {
         if (Time.realtimeSinceStartup >= _timeRunaway)
         {
-            Vector3 acceleration = Vector3.zero;
-            _playerDetected = PlayerDetection();
+           acceleration = Vector3.zero;
+            _isScared = PlayerDetection();
             if (target != null)
             {
                 Vector3 offsetToTarget = (target.position - position);
                 acceleration = SteerTowards(offsetToTarget) * settings.targetWeight;
             }
-            if (action == behaviour.Follower)
-            {
-
-                Vector3 offset = _player.transform.position - position;
-                float sqrDst = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
-
-                if (sqrDst < settings.perceptionRadius * 100)
-                {
-                    print("seguir");
-                    if (oneTime == true)
-                    {
-                        numPerceivedFlockmates += 1;
-                        oneTime = false;
-                    }
-
-                    avgFlockHeading += _player.transform.position.normalized;
-                    centreOfFlockmates += _player.transform.position;
-
-                    if (sqrDst < settings.avoidanceRadius * settings.avoidanceRadius)
-                    {
-                        avgAvoidanceHeading -= offset / sqrDst;
-                    }
-                }
-                else
-                {
-                    oneTime = true;
-                }
-                //    var playerAlignmentForce = SteerTowards(_player.transform.position.normalized) * settings.alignWeight;
-                //    acceleration += playerAlignmentForce;
-                //    Vector3 _playerCentre = (_player.transform.position - position);
-                //    var cohesionForce = SteerTowards(_playerCentre) * settings.cohesionWeight;
-            }
+            
             if (numPerceivedFlockmates != 0)
             {
                 centreOfFlockmates /= numPerceivedFlockmates;
@@ -147,24 +120,13 @@ public class Boid : MonoBehaviour
 
                
             }
-             else if (_playerDetected)
+             else if (_isScared)
             {
-                if (action==behaviour.Scared)
-                {
-                    Vector3 direction = (position - _player.transform.position).normalized;
-                    _lastDirect = direction;
-                    Vector3 collisionAvoidForce = SteerTowards(direction) * settings.avoidCollisionWeight;
-                    acceleration += collisionAvoidForce * 10;
-                }
-                //else if (action == behaviour.Follower)
-                //{
-                //    Debug.Log(action);
-                //    Vector3 direction = ( _player.transform.position-position).normalized;
-
-                //    Vector3 collisionAvoidForce = SteerTowards(direction) * settings.cohesionWeight;
-                //    acceleration += collisionAvoidForce*10;
-                //}
-                
+               Vector3 direction = (position - _player.transform.position).normalized;
+               _lastDirect = direction;
+               Vector3 collisionAvoidForce = SteerTowards(direction) * settings.avoidCollisionWeight;
+               acceleration += collisionAvoidForce * 10;
+               
             }
             else if (IsHeadingForCollision())
             {
@@ -179,101 +141,42 @@ public class Boid : MonoBehaviour
                 acceleration += collisionAvoidForce;
             }
 
-            if (_playerDetected)
-            {
-                if (action == behaviour.Scared)
-                {
-                    velocity += acceleration * Time.deltaTime;
-                    float speed = velocity.magnitude;
-                    Vector3 dir = velocity / speed;
-                    velocity = dir * speed;
-
-                    cachedTransform.position += velocity * Time.deltaTime;
-                    cachedTransform.forward = dir;
-                    position = cachedTransform.position;
-                    forward = dir;
-                }
-               
-
-            }
+            velocity += acceleration * Time.deltaTime;
+            float speed = velocity.magnitude;
+            Vector3 dir = velocity / speed;
+            
             if (action == behaviour.Follower)
             {
-                velocity += acceleration * Time.deltaTime;
-                float speed = velocity.magnitude;
-                Vector3 dir = velocity / speed;
 
-                //Debug.Log("actionfollower"+_player.transform.position);
                 if (Vector3.Distance(position, _player.transform.position) <= 20)
                 {
-                    Debug.Log("close");
                     speed = Mathf.Clamp(speed, 50, 60);
-                    velocity = dir*speed;
-                  
                 }
                 else
                 {
                     speed = Mathf.Clamp(speed, 60, 100);
-                    velocity = dir * speed;
                 }
-                
-                cachedTransform.position += velocity * Time.deltaTime;
-                cachedTransform.forward = dir;
-                position = cachedTransform.position;
-                forward = dir;
-                //velocity += acceleration * Time.deltaTime;
-                //float speed = velocity.magnitude;
-                //Vector3 dir = velocity / speed;
-                //if (Vector3.Distance(_player.transform.position, position)<=_maxRadius/3)
-                //{
-                //    dir = _player.transform.position.normalized;
-                //    velocity = dir * 5;
-                //}
-                //else
-                //{
-                //    velocity = dir * speed;
-                //}
-
-
-                //cachedTransform.position += velocity * Time.deltaTime;
-                //cachedTransform.forward = dir;
-                //position = cachedTransform.position;
-                //forward = dir;
             }
             else
             {
-                velocity += acceleration * Time.deltaTime;
-                float speed = velocity.magnitude;
-                Vector3 dir = velocity / speed;
-                speed = Mathf.Clamp(speed, settings.minSpeed, settings.maxSpeed);
-
-                velocity = dir * speed;
-                cachedTransform.position += velocity * Time.deltaTime;
-                cachedTransform.forward = dir;
-                position = cachedTransform.position;
-                forward = dir;
+                speed = Mathf.Clamp(speed, settings.minSpeed, settings.maxSpeed); 
             }
+            velocity = dir * speed;
+            cachedTransform.position += velocity * Time.deltaTime;
+            cachedTransform.forward = dir;
+            position = cachedTransform.position;
+            forward = dir;
         }
         else
         {
-            //print("ENtro");
-            //Vector3 collisionAvoidForce = SteerTowards(_lastDirect) * settings.avoidCollisionWeight;
-            //acceleration += collisionAvoidForce;
-
-            //velocity += acceleration * Time.deltaTime * 5;
-            //float speed = velocity.magnitude;
-            //Vector3 dir = velocity / speed;
-            //velocity = dir * speed;
-
-            //cachedTransform.position += velocity * Time.deltaTime;
-            //cachedTransform.forward = dir;
-            //position = cachedTransform.position;
-            //forward = dir;
-            Debug.Log("forward");
             transform.position += transform.forward * 0.5f;
         }
 
     }
-
+    /// <summary>
+    /// Checks if the boid is in or out of the spawn area
+    /// </summary>
+    /// <returns></returns>
     private bool OutofRadious()
     {
         float dist = Vector3.Distance(position, _spawner.transform.position);
@@ -325,7 +228,16 @@ public class Boid : MonoBehaviour
     /// <returns></returns>
     Vector3 SteerTowards(Vector3 vector)
     {
-        Vector3 v = vector.normalized * settings.maxSpeed - velocity;
+        Vector3 v;
+        if (action==behaviour.Follower)
+        {
+             v = vector.normalized * 45 - velocity;//whale speed
+        }
+        else
+        {
+           v = vector.normalized * settings.maxSpeed - velocity;
+        }
+        
         return Vector3.ClampMagnitude(v, settings.maxSteerForce);
     }
 
