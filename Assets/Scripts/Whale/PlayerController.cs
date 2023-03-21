@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class PlayerController : MonoBehaviour
 {
     //REFERENCES
-    [Header("Referenes")]
+    [Header("References")]
     private PlayerInputActions _playerInputActions;
     private Vector2 _inputMovement;
     private Rigidbody _rb;
     private Animator _animator;
     private WhalePahtController _pathController;
+    [SerializeField] private List<StudioEventEmitter> _whaleSounds;
+    [SerializeField] private StudioEventEmitter _whaleSprint;
+    [SerializeField] private GameObject _dashCamera;
 
     // CONFIGURATION
     [Header("Movement Configuration")]
@@ -24,6 +28,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _dashBoost = 2f;
     [SerializeField] private float _dashDuration;
     [SerializeField] private float _dashCooldown;
+    [Header("Sounds")]
+    [SerializeField] private float _whaleSoundsDelay = 5.0f;
+    [Range(10, 100)]
+    [SerializeField] private float _whaleSoundFrecuency = 5.0f;
+    private bool _canPlaySound = true;
+    private int _lastSound = 0;
 
     // INPUTS VALUES
     private float _horizontalValue;
@@ -41,6 +51,10 @@ public class PlayerController : MonoBehaviour
         dash = 2
     }
     [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
+
+    [Header("---TEST---")]
+    [Tooltip("Enable movement in dash")]
+    [SerializeField] private bool _testDash = false;
 
     private void Awake()
     {
@@ -65,6 +79,10 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
     }
+    private void Update()
+    {
+        ChooseWhaleSound();
+    }
 
     private void FixedUpdate()
     {
@@ -83,6 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             SwitchActionMap(WHALE_STATE.move);
             _nextDash = Time.realtimeSinceStartup + _dashCooldown;
+            _dashCamera.SetActive(false);
         }
     }
     /// <summary>
@@ -90,18 +109,35 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Inputs()
     {
-        switch (_whaleState)
+        if (_testDash)
         {
-            case WHALE_STATE.move:
-                InputsMove();
-                break;
-            case WHALE_STATE.paht:
-                InputsPath();
-                break;
-            default:
-                break;
+            switch (_whaleState)
+            {
+                case WHALE_STATE.move:
+                case WHALE_STATE.dash:
+                    InputsMove();
+                    break;
+                case WHALE_STATE.paht:
+                    InputsPath();
+                    break;
+                default:
+                    break;
+            }
         }
-
+        else
+        {
+            switch (_whaleState)
+            {
+                case WHALE_STATE.move:
+                    InputsMove();
+                    break;
+                case WHALE_STATE.paht:
+                    InputsPath();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     /// <summary>
     /// Manage the inputs when the whale is move
@@ -116,10 +152,13 @@ public class PlayerController : MonoBehaviour
         _dashBtn = _playerInputActions.Gameplay.Dash.ReadValue<float>();
 
         //INPUT ACTIONS
-        if (_dashBtn != 0 && Time.realtimeSinceStartup >= _nextDash)
+        if (_whaleState != WHALE_STATE.dash && _dashBtn != 0 && Time.realtimeSinceStartup >= _nextDash)
         {
+            if (_whaleSprint.IsPlaying()) _whaleSprint.Stop();
+            _whaleSprint.Play();
             SwitchActionMap(WHALE_STATE.dash);
             _finishDash = Time.realtimeSinceStartup + _dashDuration;
+            _dashCamera.SetActive(true);
         }
     }
     /// <summary>
@@ -153,7 +192,8 @@ public class PlayerController : MonoBehaviour
         {
             boost = _moveSpeed;
         }
-        transform.position += transform.forward * boost * Time.fixedDeltaTime;
+        _rb.velocity = transform.forward * boost * Time.fixedDeltaTime;
+        //transform.position += transform.forward * boost * Time.fixedDeltaTime;
     }
     /// <summary>
     /// Manage Animations using:
@@ -233,4 +273,45 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    #region GETTERS
+    public float GetVerticalAxis()
+    {
+        return _verticalValue;
+    }
+    #endregion
+
+
+    #region Sounds
+    /// <summary>
+    /// Choose a sound for the whale with a delay
+    /// </summary>
+    private void ChooseWhaleSound()
+    {
+        if (_canPlaySound && UnityEngine.Random.Range(0, 100) >= (100 - _whaleSoundFrecuency))
+        {
+            for (int i = 0; i < _whaleSounds.Count; ++i)
+            {
+                if (_whaleSounds[i].IsPlaying())
+                {
+                    return;
+                }
+            }
+            StudioEventEmitter soundChoosen = _whaleSounds[_lastSound];
+
+            if (_lastSound == 0) _lastSound = 1;
+            else _lastSound = 0;
+
+            soundChoosen.Play();
+            StartCoroutine(DelaySounds());
+        }
+    }
+    private IEnumerator DelaySounds()
+    {
+        _canPlaySound = false;
+        yield return new WaitForSeconds(_whaleSoundsDelay);
+        _canPlaySound = true;
+    }
+
+    #endregion
 }
