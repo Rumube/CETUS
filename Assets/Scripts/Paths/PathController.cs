@@ -29,4 +29,11 @@ public class PathController : MonoBehaviour
         _guide.transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
         _guide.transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
     }
+
+    #region GETTER
+    public GameObject[] GetFinishPaths()
+    {
+        return _finishPaths;
+    }
+    #endregion
 }

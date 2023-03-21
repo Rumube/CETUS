@@ -9,13 +9,16 @@ public class WhalePahtController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _pathCamera;
+    private PathCreator _pathcreator;
+    private PathController _pathController;
 
     [Header("PlayerController")]
     private PlayerController _playerController;
     private PlayerInputActions _inputActions;
     [Header("Status")]
     private bool _isPath = false;
-    [SerializeField]
+    [Tooltip("Initial entry direction. True = Strart to Final / False = Final to Start")]
+    private bool _enterDirection = false;
     private bool _direction = true;
 
     [Header("Travel values")]
@@ -23,7 +26,6 @@ public class WhalePahtController : MonoBehaviour
     float _distanceTravelled = 0;
     private const float MINSPEED = 10;
 
-    private PathCreator _pathcreator;
 
     //Input Values
     public float _exitTime = 0;
@@ -174,8 +176,10 @@ public class WhalePahtController : MonoBehaviour
         _isPath = true;
         _playerController.SetInputActionPaths();
         _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
+        _pathController = other.gameObject.GetComponentInParent<PathController>();
         _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
         _pathCamera.SetActive(true);
+        SetInitDirection();
     }
     /// <summary>
     /// Change ActionMap and whale status to get out of the way.
@@ -187,5 +191,29 @@ public class WhalePahtController : MonoBehaviour
         _playerController.SwitchActionMap(PlayerController.WHALE_STATE.move);
         _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
         _pathCamera.SetActive(false);
+    }
+
+    /// <summary>
+    /// Compare the distances between cetus and the two entrances and choose the closest one.
+    /// If the result is true = end direction.
+    /// If the result is false = direction to start.
+    /// </summary>
+    private void SetInitDirection()
+    {
+        float distanceBetweenCetusInit = Vector3.Distance(transform.position, _pathController.GetFinishPaths()[0].transform.position);
+        float distanceBetweenCetusFinish = Vector3.Distance(transform.position, _pathController.GetFinishPaths()[1].transform.position);
+
+        if ( distanceBetweenCetusInit < distanceBetweenCetusFinish)
+        {
+            _enterDirection = true;
+            _direction = true;
+            print("Dirección = " + true);
+        }
+        else
+        {
+            _direction = false;
+            _enterDirection = false;
+            print("Dirección = " + false);
+        }
     }
 }
