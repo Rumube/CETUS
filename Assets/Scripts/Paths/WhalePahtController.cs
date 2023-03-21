@@ -116,6 +116,11 @@ public class WhalePahtController : MonoBehaviour
             }
             transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
             transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
+
+            if (!_direction)
+            {
+                transform.forward *= -1;
+            }
         }
     }
 
@@ -203,17 +208,15 @@ public class WhalePahtController : MonoBehaviour
         float distanceBetweenCetusInit = Vector3.Distance(transform.position, _pathController.GetFinishPaths()[0].transform.position);
         float distanceBetweenCetusFinish = Vector3.Distance(transform.position, _pathController.GetFinishPaths()[1].transform.position);
 
-        if ( distanceBetweenCetusInit < distanceBetweenCetusFinish)
+        if (distanceBetweenCetusInit < distanceBetweenCetusFinish)
         {
             _enterDirection = true;
             _direction = true;
-            print("Dirección = " + true);
         }
         else
         {
             _direction = false;
             _enterDirection = false;
-            print("Dirección = " + false);
         }
     }
 }
