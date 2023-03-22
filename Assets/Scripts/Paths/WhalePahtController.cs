@@ -15,6 +15,10 @@ public class WhalePahtController : MonoBehaviour
     [Header("PlayerController")]
     private PlayerController _playerController;
     private PlayerInputActions _inputActions;
+    [Tooltip("Ease with which cetus gets out of the paths, the lower it is, the easier it gets out of them.")]
+    [SerializeField][Range(0f, 1f)] private float _exitSensitivity;
+    [Tooltip("Ease with which cetus changes direction, the lower the easier it changes direction.")]
+    [SerializeField][Range(0f, 1f)] private float _changeDirectionSensitivity;
     [Header("Status")]
     private bool _isPath = false;
     [Tooltip("Initial entry direction. True = Strart to Final / False = Final to Start")]
@@ -78,7 +82,7 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void ExitConfiguration()
     {
-        if (_horAxis >= 0.9f || _horAxis <= -0.9f)
+        if (_horAxis >= _exitSensitivity || _horAxis <= -_exitSensitivity)
         {
             if (!_isExit)
             {
@@ -132,11 +136,11 @@ public class WhalePahtController : MonoBehaviour
     /// <param name="playerVel"></param>
     private void SetDirection(float playerVel)
     {
-        if (playerVel <= -0.5f)
+        if (playerVel <= -_changeDirectionSensitivity)
         {
             _direction = false;
         }
-        else if (playerVel >= 0.5f)
+        else if (playerVel >= _changeDirectionSensitivity)
         {
             _direction = true;
         }
