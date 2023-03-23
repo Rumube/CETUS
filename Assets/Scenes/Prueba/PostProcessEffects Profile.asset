@@ -30,13 +30,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 3.73
+    m_Value: 5.58
   aperture:
     m_OverrideState: 1
-    m_Value: 9.4
+    m_Value: 16.4
   focalLength:
     m_OverrideState: 1
-    m_Value: 81
+    m_Value: 131
   bladeCount:
     m_OverrideState: 0
     m_Value: 9
@@ -100,19 +100,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   xMultiplier:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   yMultiplier:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   center:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   scale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
 --- !u!114 &-1312205245193427378
 MonoBehaviour:
@@ -458,7 +458,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.632
+    m_Value: 0.683
   clamp:
     m_OverrideState: 1
-    m_Value: 0.0457
+    m_Value: 0.0916
