@@ -687,7 +687,6 @@ MonoBehaviour:
   - {fileID: 7969124837247139119, guid: cde57fb9a3139364db67a0bb7f3a31a0, type: 3}
   - {fileID: 5277710173623222851, guid: f18322c224fa0a447a0d5b7067cb75bc, type: 3}
   - {fileID: 8613029390718879351, guid: b48405af19bb8a04894a738489ac139a, type: 3}
-  _nexo: {fileID: 0}
 --- !u!1 &3408610660709166971
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,143 +822,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &3742474267497697140
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7074681543918190720}
-  - component: {fileID: 5216904895365602059}
-  - component: {fileID: 5403916948982730882}
-  - component: {fileID: 7218763612592044803}
-  - component: {fileID: 2063225764}
-  m_Layer: 3
-  m_Name: CameraDelete
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7074681543918190720
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3742474267497697140}
-  m_LocalRotation: {x: 0.053500775, y: -0, z: -0, w: 0.9985678}
-  m_LocalPosition: {x: -1.19, y: 10.59, z: -23.31}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4554275584816503828}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 6.134, y: 0, z: 0}
---- !u!20 &5216904895365602059
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3742474267497697140}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!114 &5403916948982730882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3742474267497697140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
---- !u!114 &7218763612592044803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3742474267497697140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
---- !u!114 &2063225764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3742474267497697140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
 --- !u!1 &3782981009252320942
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,9 +832,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4554275584816503828}
   - component: {fileID: 1062980296059658608}
-  - component: {fileID: 1062980296059658620}
-  - component: {fileID: 5838829232959195930}
   - component: {fileID: 863411582}
+  - component: {fileID: 1062980296059658620}
+  - component: {fileID: 592040733454954160}
+  - component: {fileID: 5838829232959195930}
+  - component: {fileID: 1865548814}
+  - component: {fileID: 1865548815}
   - component: {fileID: 1062980297539273105}
   - component: {fileID: 1062980296059658616}
   - component: {fileID: 1062980297328231868}
@@ -1001,7 +866,6 @@ Transform:
   - {fileID: 1758396450}
   - {fileID: 3363217754646859821}
   - {fileID: 9106441155892778846}
-  - {fileID: 7074681543918190720}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1017,8 +881,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c01fef111bddbe4782c34c4b4ecac4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turnSpeed: 60
-  _boostSpeed: 5
+  _whaleSounds:
+  - {fileID: 5838829232959195930}
+  - {fileID: 1865548814}
+  _whaleSprint: {fileID: 1865548815}
+  _dashCamera: {fileID: 0}
+  _movementDelay: 1
+  _turnSpeed: 65
+  _moveSpeed: 1800
+  _dashBoost: 4
+  _dashDuration: 1
+  _dashCooldown: 3
+  _whaleSoundsDelay: 10
+  _whaleSoundFrecuency: 11.4
+  _whaleState: 0
+  _testDash: 1
+--- !u!114 &863411582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782981009252320942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff920ee67140c74c808c782b074bf99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pathCamera: {fileID: 0}
+  _exitSensitivity: 0.8
+  _changeDirectionSensitivity: 0.5
+  _speed: 30
+  _exitTime: 1
+  _timeToNextTravel: 1
 --- !u!114 &1062980296059658620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,6 +941,23 @@ MonoBehaviour:
   - {fileID: 423514866679696993}
   - {fileID: 3788097036223952427}
   - {fileID: 4524361815922027571}
+--- !u!114 &592040733454954160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782981009252320942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d459d46fb6e5814c9cbc0f715316a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 179
+  _detectionDist: 80
+  _rotationSpeed: 90
 --- !u!114 &5838829232959195930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1061,11 +973,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1153525045
+      Data2: 1151866477
+      Data3: 344240813
+      Data4: 872090720
+    Path: event:/Whale/WhaleSound1
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -1076,7 +988,7 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &863411582
+--- !u!114 &1865548814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1085,13 +997,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 3782981009252320942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff920ee67140c74c808c782b074bf99, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: 1
-  _speed: 30
-  _exitTime: 1
-  _timeToNextTravel: 1
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1394097015
+      Data2: 1323250222
+      Data3: 253232294
+      Data4: -1829889068
+    Path: event:/Whale/WhaleSound2
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1865548815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782981009252320942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1617664722
+      Data2: 1114287954
+      Data3: -446911565
+      Data4: 483604932
+    Path: event:/Whale/WhaleSprint
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!54 &1062980297539273105
 Rigidbody:
   m_ObjectHideFlags: 0

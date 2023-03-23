@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class Boid : MonoBehaviour
 {
 
@@ -33,6 +33,8 @@ public class Boid : MonoBehaviour
     Transform target;
     private Vector3 _lastDirect;
     [SerializeField] private FishMaterial _fishMaterial;
+    [SerializeField] private StudioEventEmitter _runSound;
+    [SerializeField] [Range(0, 100)] private float _bubbleSoundProbability;
 
     enum behaviour { Scared, Follower };
     behaviour action;
@@ -44,6 +46,7 @@ public class Boid : MonoBehaviour
         material = transform.GetComponentInChildren<MeshRenderer>().material;
         _player = GameObject.FindGameObjectWithTag("Player");
         cachedTransform = transform;
+        
     }
 
     /// <summary>
@@ -253,6 +256,10 @@ public class Boid : MonoBehaviour
         {
             _timeRunaway = Time.realtimeSinceStartup + 1f;
             _fishMaterial.SetFuerza(1f);
+            if (!_runSound.IsPlaying() && Random.Range(0,100) < _bubbleSoundProbability)
+            {
+                _runSound.Play();
+            }
             return true;
         }
         else
