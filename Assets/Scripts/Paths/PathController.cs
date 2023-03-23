@@ -9,7 +9,8 @@ public class PathController : MonoBehaviour
     private float _distanceTravelled = 0;
     [Header("References")]
     //References
-    public GameObject _guide;
+    [SerializeField]private GameObject _guide;
+    [SerializeField]private GameObject[] _finishPaths = new GameObject[2];
     private GameObject _player;
     private PathCreator _pathcreator;
 
@@ -17,6 +18,8 @@ public class PathController : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _pathcreator = GetComponent<PathCreator>();
+        _finishPaths[0].transform.position = _pathcreator.path.GetPoint(0);
+        _finishPaths[1].transform.position = _pathcreator.path.GetPoint(_pathcreator.path.NumPoints - 1);
     }
 
     // Update is called once per frame
@@ -26,4 +29,11 @@ public class PathController : MonoBehaviour
         _guide.transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
         _guide.transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
     }
+
+    #region GETTER
+    public GameObject[] GetFinishPaths()
+    {
+        return _finishPaths;
+    }
+    #endregion
 }
