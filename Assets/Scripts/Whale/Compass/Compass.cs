@@ -13,8 +13,12 @@ public class Compass : MonoBehaviour
     [Header("References")]
     public List<GameObject> _memoryParticle = new List<GameObject>();
     private List<GameObject> _memoriesList = new List<GameObject>();
-    [SerializeField]
     private GameObject _nexo;
+
+    private void Awake()
+    {
+        _nexo = GameObject.FindGameObjectWithTag("Nexo");
+    }
     /// <summary>
     /// Creates a new memory
     /// </summary>

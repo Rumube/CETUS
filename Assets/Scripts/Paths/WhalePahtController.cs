@@ -2,12 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using UnityEngine.InputSystem;
+
 
 public class WhalePahtController : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject _pathCamera;
+    private PathCreator _pathcreator;
+    private PathController _pathController;
+
+    [Header("PlayerController")]
+    private PlayerController _playerController;
+    private PlayerInputActions _inputActions;
+    [Tooltip("Ease with which cetus gets out of the paths, the lower it is, the easier it gets out of them.")]
+    [SerializeField][Range(0f, 1f)] private float _exitSensitivity;
+    [Tooltip("Ease with which cetus changes direction, the lower the easier it changes direction.")]
+    [SerializeField][Range(0f, 1f)] private float _changeDirectionSensitivity;
     [Header("Status")]
     private bool _isPath = false;
-    [SerializeField]
+    [Tooltip("Initial entry direction. True = Strart to Final / False = Final to Start")]
+    private bool _enterDirection = false;
     private bool _direction = true;
 
     [Header("Travel values")]
@@ -15,7 +30,6 @@ public class WhalePahtController : MonoBehaviour
     float _distanceTravelled = 0;
     private const float MINSPEED = 10;
 
-    private PathCreator _pathcreator;
 
     //Input Values
     public float _exitTime = 0;
@@ -27,14 +41,16 @@ public class WhalePahtController : MonoBehaviour
     private float _nextTravel = 0;
     private bool _isExit = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
+        _playerController = GetComponent<PlayerController>();
+        _inputActions = _playerController.GetPlayerInputActions();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Manage the inputs when the whale is in path
+    /// </summary>
+    public void UpdatePath()
     {
         UpdateInputs();
         ExitConfiguration();
@@ -45,8 +61,19 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void UpdateInputs()
     {
-        _verAxis = Input.GetAxis("Vertical");
-        _horAxis = Input.GetAxis("Horizontal");
+        if (_inputActions == null)
+        {
+            _inputActions = _playerController.GetPlayerInputActions();
+        }
+
+
+        if (_inputActions.Paths.Test.IsPressed())
+        {
+            Debug.Log("TEST");
+        }
+
+        _horAxis = _inputActions.Paths.Direction.ReadValue<Vector2>().x;
+        _verAxis = _inputActions.Paths.Direction.ReadValue<Vector2>().y;
     }
 
     /// <summary>
@@ -55,17 +82,16 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void ExitConfiguration()
     {
-        if (_horAxis >= 0.9f || _horAxis <= -0.9f)
+        if (_horAxis >= _exitSensitivity || _horAxis <= -_exitSensitivity)
         {
             if (!_isExit)
             {
                 _isExit = true;
                 _nextExit = Time.realtimeSinceStartup + _exitTime;
-            }else if(Time.realtimeSinceStartup >= _nextExit)
+            }
+            else if (Time.realtimeSinceStartup >= _nextExit)
             {
-                _isExit = false;
-                _isPath = false;
-                _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
+                GetOutPath();
             }
         }
         else
@@ -94,6 +120,11 @@ public class WhalePahtController : MonoBehaviour
             }
             transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
             transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
+
+            if (!_direction)
+            {
+                transform.forward *= -1;
+            }
         }
     }
 
@@ -105,11 +136,11 @@ public class WhalePahtController : MonoBehaviour
     /// <param name="playerVel"></param>
     private void SetDirection(float playerVel)
     {
-        if (playerVel <= -0.5f)
+        if (playerVel <= -_changeDirectionSensitivity)
         {
             _direction = false;
         }
-        else if (playerVel >= 0.5f)
+        else if (playerVel >= _changeDirectionSensitivity)
         {
             _direction = true;
         }
@@ -135,14 +166,61 @@ public class WhalePahtController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "PathGuide" && !_isPath)
+        if (other.tag == "PathGuide" && !_isPath && Time.realtimeSinceStartup >= _nextTravel)
         {
-            if(Time.realtimeSinceStartup >= _nextTravel)
-            {
-                _isPath = true;
-                _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
-                _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
-            }
+            EnterInPath(other);
+        }
+        else if (other.tag == "PathFinish" && _isPath)
+        {
+            GetOutPath();
+        }
+    }
+    /// <summary>
+    /// ActionMap and whale status are changed to run on the road.
+    /// </summary>
+    /// <param name="other">The collider with which the collision occurred</param>
+    private void EnterInPath(Collider other)
+    {
+        _playerController.SwitchActionMap(PlayerController.WHALE_STATE.paht);
+        _isPath = true;
+        _playerController.SetInputActionPaths();
+        _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
+        _pathController = other.gameObject.GetComponentInParent<PathController>();
+        _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
+        _pathCamera.SetActive(true);
+        SetInitDirection();
+    }
+    /// <summary>
+    /// Change ActionMap and whale status to get out of the way.
+    /// </summary>
+    private void GetOutPath()
+    {
+        _isExit = false;
+        _isPath = false;
+        _playerController.SwitchActionMap(PlayerController.WHALE_STATE.move);
+        _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
+        _pathCamera.SetActive(false);
+    }
+
+    /// <summary>
+    /// Compare the distances between cetus and the two entrances and choose the closest one.
+    /// If the result is true = end direction.
+    /// If the result is false = direction to start.
+    /// </summary>
+    private void SetInitDirection()
+    {
+        float distanceBetweenCetusInit = Vector3.Distance(transform.position, _pathController.GetFinishPaths()[0].transform.position);
+        float distanceBetweenCetusFinish = Vector3.Distance(transform.position, _pathController.GetFinishPaths()[1].transform.position);
+
+        if (distanceBetweenCetusInit < distanceBetweenCetusFinish)
+        {
+            _enterDirection = true;
+            _direction = true;
+        }
+        else
+        {
+            _direction = false;
+            _enterDirection = false;
         }
     }
 }

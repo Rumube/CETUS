@@ -30,14 +30,7 @@ public class Whale : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.I))
-        {
-            LightUp();
-        }
-        else if (Input.GetKeyUp(KeyCode.K))
-        {
-            LightDown();
-        }
+
     }
 
     public void RestartLife()
