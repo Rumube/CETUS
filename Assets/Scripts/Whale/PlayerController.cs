@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
     {
         move = 0,
         paht = 1,
-        dash = 2
+        dash = 2,
+        wormhole=3
     }
     [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
 
@@ -120,6 +121,11 @@ public class PlayerController : MonoBehaviour
                 case WHALE_STATE.paht:
                     InputsPath();
                     break;
+                case WHALE_STATE.wormhole:
+                    SetStartRotation();
+                     print("Estado gusano");
+                   
+                    break;
                 default:
                     break;
             }
@@ -133,6 +139,10 @@ public class PlayerController : MonoBehaviour
                     break;
                 case WHALE_STATE.paht:
                     InputsPath();
+                    break;
+                case WHALE_STATE.wormhole:
+                    SetStartRotation();
+                    
                     break;
                 default:
                     break;
@@ -167,6 +177,14 @@ public class PlayerController : MonoBehaviour
     private void InputsPath()
     {
         _pathController.UpdatePath();
+    }
+    /// <summary>
+    /// Sets te rotations to zero
+    /// </summary>
+    private void SetStartRotation()
+    {
+        print(" rot Estado gusano");
+        transform.rotation = transform.rotation = Quaternion.Euler(0, 0, 0); 
     }
     /// <summary>
     /// Manage the rotations

@@ -37,11 +37,13 @@ public class WormTeleport : MonoBehaviour
             {
                 _cinemachine.m_Lens.FieldOfView = 179;
                 _wormManager._outside = false;
+                //collision.gameObject.GetComponent<PlayerController>().SetWhaleState(PlayerController.WHALE_STATE.move);
             }
             else
             {
                 _cinemachine.m_Lens.FieldOfView = 40;
                 _wormManager._outside = true;
+                collision.gameObject.GetComponent<PlayerController>().SetWhaleState(PlayerController.WHALE_STATE.move);
             }
             _wormHole._holeLocation= _destiny.transform;
         }
@@ -49,7 +51,7 @@ public class WormTeleport : MonoBehaviour
     IEnumerator Enable()
     {
         _destiny.GetComponent<Collider>().enabled = false;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         _destiny.GetComponent<Collider>().enabled = true;
     }
 }
