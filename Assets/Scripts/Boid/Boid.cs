@@ -110,7 +110,13 @@ public class Boid : MonoBehaviour
                 acceleration += cohesionForce;
                 acceleration += seperationForce;
             }
-            if (action == behaviour.Follower)
+            if (OutofRadious())
+            {
+                Vector3 direction = (_spawner.transform.position - position).normalized;
+                Vector3 collisionAvoidForce = SteerTowards(direction) * settings.avoidCollisionWeight;
+                acceleration += collisionAvoidForce;
+            }
+            else if (action == behaviour.Follower)
             {
                 
                 Vector3 direction = (_player.transform.position - position).normalized;
@@ -134,12 +140,7 @@ public class Boid : MonoBehaviour
                 Vector3 collisionAvoidForce = SteerTowards(collisionAvoidDir) * settings.avoidCollisionWeight;
                 acceleration += collisionAvoidForce;
             }
-            else if (OutofRadious())
-            {
-                Vector3 direction = (_spawner.transform.position - position).normalized;
-                Vector3 collisionAvoidForce = SteerTowards(direction) * settings.avoidCollisionWeight;
-                acceleration += collisionAvoidForce;
-            }
+            
 
             velocity += acceleration * Time.deltaTime;
             float speed = velocity.magnitude;
