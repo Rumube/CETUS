@@ -42,6 +42,14 @@ public class Randomiser : EditorWindow
                 }
             }
         }
+
+        if(GUILayout.Button("Reset Rotations"))
+        {
+            foreach (GameObject go in Selection.gameObjects)
+            {
+                go.transform.rotation = Quaternion.Euler(new Vector3(-90,0,0));
+            }
+        }
     }
 
     private Vector3 GetRandomRotation(Vector3 currentRotation)
