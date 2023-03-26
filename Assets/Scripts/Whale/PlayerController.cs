@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
     {
         move = 0,
         paht = 1,
-        dash = 2
+        dash = 2,
+        pause = 3
     }
     [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
 
