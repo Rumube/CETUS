@@ -14,11 +14,17 @@ public class Menu : MonoBehaviour
     public GameObject OptionsSound;
     public GameObject OptionsControls;
 
+    private float _nextPress = 0;
+
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerController = _player.GetComponent<PlayerController>();
         _inputActions = _playerController.GetPlayerInputActions();
+        if (_inputActions == null)
+        {
+            _inputActions = _playerController.GetPlayerInputActions();
+        }
     }
 
     void Start()
@@ -30,11 +36,17 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if((_inputActions.Gameplay.Menu.ReadValue<float>() != 0 || _inputActions.Paths.Menu.ReadValue<float>() != 0) && Time.realtimeSinceStartup >= _nextPress)
         {
-            if(Options.activeSelf == true)
+            _nextPress = Time.realtimeSinceStartup + 1f;
+            _player.GetComponent<PlayerController>().SetPause();
+            if (Options.activeSelf)
             {
                 Options.SetActive(false);
+            }
+            else
+            {
+                Options.SetActive(true);
             }
         }
     }
@@ -54,6 +66,6 @@ public class Menu : MonoBehaviour
     }
     public void PlayScene()
     {
-        //loadscene
+        _player.GetComponent<PlayerController>().SetPause();
     }
 }

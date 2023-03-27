@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
     [SerializeField] private GameObject _dashCamera;
+    [SerializeField] private GameObject _menu;
 
     // CONFIGURATION
     [Header("Movement Configuration")]
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     // PLAYER STATES
     private float _finishDash;
     private float _nextDash = 0;
+    private int _lastState = 0;
     public enum WHALE_STATE
     {
         move = 0,
@@ -52,10 +54,6 @@ public class PlayerController : MonoBehaviour
         pause = 3
     }
     [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
-
-    [Header("---TEST---")]
-    [Tooltip("Enable movement in dash")]
-    [SerializeField] private bool _testDash = false;
 
     private void Awake()
     {
@@ -89,8 +87,11 @@ public class PlayerController : MonoBehaviour
     {
         CheckCooldowns();
         Inputs();
-        Turn();
-        Thrust();
+        if (_whaleState != WHALE_STATE.pause)
+        {
+            Turn();
+            Thrust();
+        }
         Animation();
     }
     /// <summary>
@@ -110,34 +111,17 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Inputs()
     {
-        if (_testDash)
+        switch (_whaleState)
         {
-            switch (_whaleState)
-            {
-                case WHALE_STATE.move:
-                case WHALE_STATE.dash:
-                    InputsMove();
-                    break;
-                case WHALE_STATE.paht:
-                    InputsPath();
-                    break;
-                default:
-                    break;
-            }
-        }
-        else
-        {
-            switch (_whaleState)
-            {
-                case WHALE_STATE.move:
-                    InputsMove();
-                    break;
-                case WHALE_STATE.paht:
-                    InputsPath();
-                    break;
-                default:
-                    break;
-            }
+            case WHALE_STATE.move:
+            case WHALE_STATE.dash:
+                InputsMove();
+                break;
+            case WHALE_STATE.paht:
+                InputsPath();
+                break;
+            default:
+                break;
         }
     }
     /// <summary>
@@ -194,7 +178,6 @@ public class PlayerController : MonoBehaviour
             boost = _moveSpeed;
         }
         _rb.velocity = transform.forward * boost * Time.fixedDeltaTime;
-        //transform.position += transform.forward * boost * Time.fixedDeltaTime;
     }
     /// <summary>
     /// Manage Animations using:
@@ -279,6 +262,27 @@ public class PlayerController : MonoBehaviour
     public float GetVerticalAxis()
     {
         return _verticalValue;
+    }
+    #endregion
+
+    #region SETTERS
+
+    public void SetPause()
+    {
+        if (_whaleState != WHALE_STATE.pause)
+        {
+            _lastState = (int)_whaleState;
+            _whaleState = WHALE_STATE.pause;
+            _rb.velocity = Vector3.zero;
+            _menu.SetActive(true);
+            Cursor.visible = true;
+        }
+        else
+        {
+            _whaleState = (WHALE_STATE)_lastState;
+            _menu.SetActive(false);
+            Cursor.visible = false;
+        }
     }
     #endregion
 
