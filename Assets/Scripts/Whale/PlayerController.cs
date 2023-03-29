@@ -183,7 +183,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void SetStartRotation()
     {
-        print(" rot Estado gusano");
         transform.rotation = transform.rotation = Quaternion.Euler(0, 0, 0); 
     }
     /// <summary>

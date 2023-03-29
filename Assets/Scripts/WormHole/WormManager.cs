@@ -20,10 +20,11 @@ public class WormManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_outside==false)
-        {
-            player.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
-        }
+        //if (_outside==false)
+        //{
+        //    player.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
+        //}
+       
     }
     public void CameraChange()
     {
