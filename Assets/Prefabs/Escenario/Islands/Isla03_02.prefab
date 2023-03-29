@@ -70,7 +70,27 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 495cff888b31f274297e7e0a3c0bd154,
         type: 3}
       propertyPath: m_Name
-      value: Isla03_01 1
+      value: Isla03_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 495cff888b31f274297e7e0a3c0bd154, type: 3}
+--- !u!1 &6203960149180415072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 495cff888b31f274297e7e0a3c0bd154,
+    type: 3}
+  m_PrefabInstance: {fileID: 6546418785029374257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &-3333030855408584103
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203960149180415072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3996760141626369306, guid: 495cff888b31f274297e7e0a3c0bd154, type: 3}
