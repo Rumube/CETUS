@@ -22,12 +22,9 @@ public class PlayerController : MonoBehaviour
     // CONFIGURATION
     [Header("Movement Configuration")]
     [Range(0.1f, 3f)]
-    [SerializeField] private float _movementDelay = 1f;
     [SerializeField] private float _turnSpeed = 60f;
     [SerializeField] private float _moveSpeed = 45f;
-
-    private float _lastYaw = 0;
-    private float _lastPitch = 0;
+    [SerializeField] private float _moveDelay = 0.2f;
 
     [Header("Dash Configuration")]
     [SerializeField] private float _dashBoost = 2f;
@@ -168,25 +165,25 @@ public class PlayerController : MonoBehaviour
         float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue;
         float roll = _turnSpeed * Time.fixedDeltaTime * _rotateValue;
 
-        float rampUp = 0.2f;
+        
 
-        if (yaw < 0.2f && yaw > -0.2f)
+        if (yaw < 0.1f && yaw > -0.1f)
         {
             speedYaw = 0;
         }
         else
         {
-            speedYaw += yaw * rampUp * Time.deltaTime;
+            speedYaw += yaw * _moveDelay * Time.deltaTime;
         }
 
 
-        if (pitch < 0.2f && pitch > -0.2f)
+        if (pitch < 0.1f && pitch > -0.1f)
         {
             speedPitch = 0;
         }
         else
         {
-            speedPitch += pitch * rampUp * Time.deltaTime;
+            speedPitch += pitch * _moveDelay * Time.deltaTime;
         }
 
         speedYaw = Mathf.Clamp(speedYaw, -1, 1);

@@ -3137,8 +3137,18 @@ PrefabInstance:
       objectReference: {fileID: 2097238430}
     - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
         type: 3}
+      propertyPath: _moveDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
       propertyPath: _turnSpeed
-      value: 65
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
         type: 3}
