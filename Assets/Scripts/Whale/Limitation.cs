@@ -16,7 +16,7 @@ public class Limitation : MonoBehaviour
     public Transform endWormhole;
 
     bool nextLevel;
-    bool _outside;
+    bool _outside=true;
     // Start is called before the first frame update
   
     void Start()
