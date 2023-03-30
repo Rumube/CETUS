@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _movementDelay = 1f;
     [SerializeField] private float _turnSpeed = 60f;
     [SerializeField] private float _moveSpeed = 45f;
+
+    private float _lastYaw = 0;
+    private float _lastPitch = 0;
+
     [Header("Dash Configuration")]
     [SerializeField] private float _dashBoost = 2f;
     [SerializeField] private float _dashDuration;
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _whaleSoundFrecuency = 5.0f;
     private bool _canPlaySound = true;
     private int _lastSound = 0;
+    private float speedYaw = 0;
+    private float speedPitch = 0;
 
     // INPUTS VALUES
     private float _horizontalValue;
@@ -158,10 +164,35 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Turn()
     {
-        float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue / _movementDelay;
-        float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue / _movementDelay;
+        float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue;
+        float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue;
         float roll = _turnSpeed * Time.fixedDeltaTime * _rotateValue;
-        transform.Rotate(-1 * pitch, yaw, roll);
+
+        float rampUp = 0.2f;
+
+        if (yaw < 0.2f && yaw > -0.2f)
+        {
+            speedYaw = 0;
+        }
+        else
+        {
+            speedYaw += yaw * rampUp * Time.deltaTime;
+        }
+
+
+        if (pitch < 0.2f && pitch > -0.2f)
+        {
+            speedPitch = 0;
+        }
+        else
+        {
+            speedPitch += pitch * rampUp * Time.deltaTime;
+        }
+
+        speedYaw = Mathf.Clamp(speedYaw, -1, 1);
+        speedPitch = Mathf.Clamp(speedPitch, -1, 1);
+
+        transform.Rotate(-1 * speedPitch, speedYaw, roll);
     }
     /// <summary>
     /// Manage the movement

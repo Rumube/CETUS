@@ -886,8 +886,9 @@ MonoBehaviour:
   - {fileID: 1865548814}
   _whaleSprint: {fileID: 1865548815}
   _dashCamera: {fileID: 0}
+  _menu: {fileID: 0}
   _movementDelay: 1
-  _turnSpeed: 65
+  _turnSpeed: 1000
   _moveSpeed: 1800
   _dashBoost: 4
   _dashDuration: 1
@@ -895,7 +896,6 @@ MonoBehaviour:
   _whaleSoundsDelay: 10
   _whaleSoundFrecuency: 11.4
   _whaleState: 0
-  _testDash: 1
 --- !u!114 &863411582
 MonoBehaviour:
   m_ObjectHideFlags: 0
