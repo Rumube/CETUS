@@ -6,7 +6,12 @@ public class CollectedMemory : SpaceObject
 {
     //References
     private StudioEventEmitter _cristalFound;
-    private MeshFilter _meshFilter;     
+    private bool _found;
+    private MeshFilter _meshFilter;
+    private GameObject _player;
+
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _scaleSpeed;
     // Start is called before the first frame update
     void Awake()
     {
@@ -14,12 +19,26 @@ public class CollectedMemory : SpaceObject
         _cristalFound = GetComponent<StudioEventEmitter>();
     }
 
+    private void Update()
+    {
+        if( _found)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _moveSpeed * Time.deltaTime);
+            if(transform.localScale.x >= _scaleSpeed)
+            {
+                transform.localScale -= new Vector3(_scaleSpeed, _scaleSpeed, _scaleSpeed);
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            _player = other.gameObject;
             other.gameObject.GetComponent<Whale>().GetCompass().MemoriesUp();
             _cristalFound.Play();
+            _found = true;
             StartCoroutine(DestroyAfterSound());
             
         }

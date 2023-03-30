@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1703809691128096832}
   m_Layer: 0
   m_Name: FinishPath_2
-  m_TagString: PathGuide
+  m_TagString: PathFinish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262224975069121382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4, y: 2.3292117, z: -5.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 4665601559727986497}
   m_Layer: 0
   m_Name: FinishPath_1
-  m_TagString: PathGuide
+  m_TagString: PathFinish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802658225985021409}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4, y: 2.3292117, z: -5.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5735387563608371028
 Transform:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5735387563608371033}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -375,7 +375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5735387564182499218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4, y: 2.3292117, z: -5.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -470,7 +470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5735387565320509698}
-  - component: {fileID: 5735387565320509697}
+  - component: {fileID: 3091431540650509512}
   - component: {fileID: 5735387565320509692}
   - component: {fileID: 5735387565320509699}
   m_Layer: 0
@@ -497,7 +497,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5735387565320509697
+--- !u!114 &3091431540650509512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -512,39 +512,19 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -2104.6611, y: 19.960632, z: -1170.1722}
-      - {x: -1319.0479, y: 6.592498, z: -363.10135}
-      - {x: -533.4347, y: -6.7756367, z: 443.96954}
-      - {x: -313.95886, y: -31.074787, z: 416.30637}
-      - {x: -282.11432, y: -34.600437, z: 412.2926}
-      - {x: -107.93969, y: -67.25495, z: 157.07333}
-      - {x: -123.20743, y: -73.55459, z: 129.3276}
-      - {x: -156.58022, y: -87.32457, z: 68.67996}
-      - {x: -866.82355, y: -189.2475, z: 150.48914}
-      - {x: -880.58466, y: -121.1641, z: 137.96815}
-      - {x: -898.2229, y: -33.898514, z: 121.91945}
-      - {x: -17.287464, y: 136.2479, z: 128.73557}
-      - {x: 40.094364, y: 187.65942, z: 81.32109}
-      - {x: 52.051315, y: 198.37231, z: 71.44109}
-      - {x: 56.641262, y: 305.84454, z: -60.91753}
-      - {x: 56.862156, y: 310.2174, z: -79.2527}
-      - {x: 58.392437, y: 340.5113, z: -206.2736}
-      - {x: 14.5486355, y: 197.83658, z: -831.8486}
-      - {x: -29.295166, y: 55.161865, z: -1457.4236}
+      - {x: -2, y: 0, z: 0}
+      - {x: -1, y: 0.5, z: 0}
+      - {x: 1, y: -0.5, z: 0}
+      - {x: 2, y: 0, z: 0}
       isClosed: 0
       space: 0
-      controlMode: 3
-      autoControlLength: 0.093
+      controlMode: 0
+      autoControlLength: 0.3
       boundsUpToDate: 0
       bounds:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
       perAnchorNormalsAngle:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
       - 0
       - 0
       globalNormalsAngle: 0
@@ -553,20 +533,20 @@ MonoBehaviour:
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
+    showPathBounds: 1
+    showPerSegmentBounds: 1
     displayAnchorPoints: 1
     displayControlPoints: 1
-    bezierHandleScale: 52.22
+    bezierHandleScale: 5.5
     globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
+    keepConstantHandleSize: 1
     showNormalsInVertexMode: 0
     showBezierPathInVertexMode: 0
     showDisplayOptions: 1
     showPathOptions: 1
     showVertexPathDisplayOptions: 0
     showVertexPathOptions: 1
-    showNormals: 1
+    showNormals: 0
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
@@ -582,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b275c3b78f8717c4cbc60f74a3247f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathCreator: {fileID: 5735387565320509697}
+  pathCreator: {fileID: 3091431540650509512}
   autoUpdate: 1
   roadWidth: 6
   thickness: 0.15
