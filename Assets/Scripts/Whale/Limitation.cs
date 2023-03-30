@@ -5,78 +5,82 @@ using Cinemachine;
 
 public class Limitation : MonoBehaviour
 {
-    private Transform nexo;
-   
-    public float[] _maxDistance;
+    public float[] maxDistance;
+    public Transform[] centerOfTheLevel;
     public int _level;
+
     CinemachineFreeLook _cinemachine;
-    WormManager _wormManager;
     PlayerController _playerController;
-    public GameObject _wormhole;
+
+    public GameObject wormhole;
     public Transform endWormhole;
-    private Animator _animator;
-    Vector3 prevPos;
+
+    bool nextLevel;
+    bool _outside;
     // Start is called before the first frame update
-    private void Awake()
-    {
-        nexo = GameObject.FindGameObjectWithTag("Nexo").GetComponent<Transform>();
-    }
+  
     void Start()
     {
-        _wormManager = GameObject.FindGameObjectWithTag("WormManager").GetComponentInChildren<WormManager>();
         _cinemachine = GameObject.FindGameObjectWithTag("FreeLook").GetComponent<CinemachineFreeLook>();
         _playerController = GetComponent<PlayerController>();
-        //_maxDistance[0] = nexo.transform.position;
-        _animator = GetComponent<Animator>();
-      
     }
     
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
 
-        for (int i = 0; i < _maxDistance.Length; i++)
+        for (int i = 0; i < maxDistance.Length; i++)
         {
             
-            Gizmos.DrawSphere(nexo.position, _maxDistance[i]);
+            Gizmos.DrawSphere(centerOfTheLevel[i].position, maxDistance[i]);
         }
 
     }
     // Update is called once per frame
     void Update()
     {
+        if (_outside == true)
+        {
+            if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) >= maxDistance[_level - 1] )
+            {
+                nextLevel = true;
+                TeleportToWormHole();
+            }
+            else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 10)
+            {
+                nextLevel = false;
+                TeleportToWormHole();
+            }
+        }
        
-        if (Vector3.Distance(nexo.transform.position, transform.position)>=_maxDistance[_level-1] && _wormManager._outside == true)
+        else if (Vector3.Distance(endWormhole.position, transform.position) <= 5 &&_outside == false)
         {
-            print("Teletransporta worm");
+            if (nextLevel==true && _level != centerOfTheLevel.Length)
+            {
+                transform.position = new Vector3(centerOfTheLevel[_level].position.x+20, centerOfTheLevel[_level].position.y + 20, centerOfTheLevel[_level].position.z + 20);
+                
+                _level++;
+            }
+            else if (nextLevel == false || _level == centerOfTheLevel.Length)
+            {
+                _level--;
+                transform.position = new Vector3(centerOfTheLevel[_level-1].position.x+20, centerOfTheLevel[_level-1].position.y + 20, centerOfTheLevel[_level-1].position.z + 20);
+            }
 
-            prevPos= transform.position;
-           
-                transform.position = _wormhole.transform.position;
-                //_cinemachine.m_Lens.FieldOfView = Mathf.Lerp(40, 179, 5f);
-                _wormManager._outside = false;
-                _cinemachine.m_Lens.FieldOfView =179;
-            _playerController.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
-
-
-
-
-
-
-
-        }
-        else if (Vector3.Distance(endWormhole.position, transform.position) <= 5 && _wormManager._outside == false)
-        {
-            Debug.Log("Teletransporta al siguiente nivel " + new Vector3( _maxDistance[_level], prevPos.y,  _maxDistance[_level]) );
-            transform.position = new Vector3( _maxDistance[_level], prevPos.y,  _maxDistance[_level]);
-            _cinemachine.m_Lens.FieldOfView = 40;
-            _level+=2;
-             _playerController.SetWhaleState(PlayerController.WHALE_STATE.move);
-            _wormManager._outside = true;
+            _cinemachine.m_Lens.FieldOfView = Mathf.Lerp(179, 40, 5f);
+            _playerController.SetWhaleState(PlayerController.WHALE_STATE.move);
+            _outside = true;
 
         }
 
+    }
+    void TeleportToWormHole()
+    {
+        transform.position = wormhole.transform.position;
+        _outside = false;
+        _cinemachine.m_Lens.FieldOfView = Mathf.Lerp(40, 179, 5f);
+        _playerController.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
     }
     
 }
