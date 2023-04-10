@@ -3137,6 +3137,21 @@ PrefabInstance:
       objectReference: {fileID: 2097238430}
     - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
         type: 3}
+      propertyPath: _moveDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: _turnSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062980296059658608, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
       propertyPath: _dashCamera
       value: 
       objectReference: {fileID: 749404964}
@@ -3665,7 +3680,7 @@ PrefabInstance:
     - target: {fileID: 2190080540539442601, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.028812245
+      value: -0.02881224
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540580519297, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
