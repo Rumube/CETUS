@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -20,12 +21,15 @@ public class Menu : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerController = _player.GetComponent<PlayerController>();
+    }
+    private void Start()
+    {
         _inputActions = _playerController.GetPlayerInputActions();
         if (_inputActions == null)
         {
             _inputActions = _playerController.GetPlayerInputActions();
         }
-        _player.GetComponent<PlayerController>().SetPause();
+        _playerController.SetPause();
     }
 
     // Update is called once per frame
@@ -34,7 +38,7 @@ public class Menu : MonoBehaviour
         if((_inputActions.Gameplay.Menu.ReadValue<float>() != 0 || _inputActions.Paths.Menu.ReadValue<float>() != 0) && Time.realtimeSinceStartup >= _nextPress)
         {
             _nextPress = Time.realtimeSinceStartup + 1f;
-            _player.GetComponent<PlayerController>().SetPause();
+            _playerController.SetPause();
         }
     }
     public void GeneralOptions()
@@ -53,7 +57,7 @@ public class Menu : MonoBehaviour
     }
     public void PlayScene()
     {
-        _player.GetComponent<PlayerController>().SetPause();
+        _playerController.SetPause();
     }
 
     public void ExitGame()
@@ -63,5 +67,20 @@ public class Menu : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    public void InvertMovement(Toggle toggle)
+    {
+        if(_playerController != null)
+        {
+            if (toggle.isOn)
+            {
+                _playerController.SetInvertValue(1);
+            }
+            else
+            {
+                _playerController.SetInvertValue(-1);
+            }
+        }
     }
 }
