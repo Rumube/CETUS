@@ -25,12 +25,7 @@ public class Menu : MonoBehaviour
         {
             _inputActions = _playerController.GetPlayerInputActions();
         }
-    }
-
-    void Start()
-    {
-        Options.SetActive(false);
-        
+        _player.GetComponent<PlayerController>().SetPause();
     }
 
     // Update is called once per frame
@@ -40,14 +35,6 @@ public class Menu : MonoBehaviour
         {
             _nextPress = Time.realtimeSinceStartup + 1f;
             _player.GetComponent<PlayerController>().SetPause();
-            if (Options.activeSelf)
-            {
-                Options.SetActive(false);
-            }
-            else
-            {
-                Options.SetActive(true);
-            }
         }
     }
     public void GeneralOptions()
@@ -67,5 +54,14 @@ public class Menu : MonoBehaviour
     public void PlayScene()
     {
         _player.GetComponent<PlayerController>().SetPause();
+    }
+
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }

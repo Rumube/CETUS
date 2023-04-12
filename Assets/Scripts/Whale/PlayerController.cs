@@ -72,15 +72,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb.useGravity = false;
-
-        // Releases the cursor
-        Cursor.lockState = CursorLockMode.None;
-        // Locks the cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        // Confines the cursor
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
-
     }
     private void Update()
     {
@@ -315,12 +306,16 @@ public class PlayerController : MonoBehaviour
             _whaleState = WHALE_STATE.pause;
             _rb.velocity = Vector3.zero;
             _menu.SetActive(true);
+            // Confines the cursor
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
         else
         {
             _whaleState = (WHALE_STATE)_lastState;
             _menu.SetActive(false);
+            // Confines the cursor
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
         }
     }
