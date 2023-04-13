@@ -15,6 +15,11 @@ public class Menu : MonoBehaviour
     public GameObject OptionsSound;
     public GameObject OptionsControls;
 
+    [Header("Vaues")]
+    [SerializeField] private float _generalVolume = 0.5f;
+    [SerializeField] private float _ambientVolume = 0.5f;
+    [SerializeField] private float _musicVolume = 0.5f;
+
     private float _nextPress = 0;
 
     private void Awake()
@@ -69,6 +74,7 @@ public class Menu : MonoBehaviour
         #endif
     }
 
+    #region Controllers
     public void InvertMovement(Toggle toggle)
     {
         if(_playerController != null)
@@ -83,4 +89,33 @@ public class Menu : MonoBehaviour
             }
         }
     }
+
+    public void InvertCamera(Toggle toggle)
+    {
+        if(toggle.isOn)
+        {
+            //TODO: CAMARA INVERTIDA
+        }
+        else
+        {
+            //TODO: CAMARA NORMAL
+        }
+    }
+    #endregion
+    #region Sound
+    public void GeneralSlider(Slider slider)
+    {
+        _generalVolume = slider.value;
+    }
+
+    public void AmbientSlider(Slider slider)
+    {
+        _ambientVolume = slider.value;
+    }
+
+    public void MusicSlider(Slider slider)
+    {
+        _musicVolume = slider.value;
+    }
+    #endregion
 }
