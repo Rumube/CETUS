@@ -3120,6 +3120,11 @@ PrefabInstance:
       propertyPath: _pathCamera
       value: 
       objectReference: {fileID: 665117302}
+    - target: {fileID: 326562316830887302, guid: 95f3d1700c49f9541968e68af3f4a059,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 592040733454954160, guid: 95f3d1700c49f9541968e68af3f4a059,
         type: 3}
       propertyPath: _detectionDist
@@ -3680,7 +3685,7 @@ PrefabInstance:
     - target: {fileID: 2190080540539442601, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.02881224
+      value: -0.028812245
       objectReference: {fileID: 0}
     - target: {fileID: 2190080540580519297, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
