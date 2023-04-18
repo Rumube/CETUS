@@ -116,6 +116,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8561800571357635560}
     m_Modifications:
+    - target: {fileID: 8461191745609096608, guid: b7ed0ab9b01975745bc452354a9ff8f2,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 8140
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: b7ed0ab9b01975745bc452354a9ff8f2,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: b7ed0ab9b01975745bc452354a9ff8f2,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: b7ed0ab9b01975745bc452354a9ff8f2,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: b7ed0ab9b01975745bc452354a9ff8f2,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8461191745609096609, guid: b7ed0ab9b01975745bc452354a9ff8f2,
         type: 3}
       propertyPath: m_RootOrder
@@ -179,7 +204,7 @@ PrefabInstance:
     - target: {fileID: 8461191745609096615, guid: b7ed0ab9b01975745bc452354a9ff8f2,
         type: 3}
       propertyPath: m_shaderPropertyID
-      value: 975
+      value: 875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7ed0ab9b01975745bc452354a9ff8f2, type: 3}

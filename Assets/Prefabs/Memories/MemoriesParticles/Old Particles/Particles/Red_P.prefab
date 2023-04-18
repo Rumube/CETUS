@@ -116,6 +116,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7935753227389994030}
     m_Modifications:
+    - target: {fileID: 8461191745609096608, guid: 4d5c19fb72517854e814cc5322fb4520,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 16404
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 4d5c19fb72517854e814cc5322fb4520,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 4d5c19fb72517854e814cc5322fb4520,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 4d5c19fb72517854e814cc5322fb4520,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 4d5c19fb72517854e814cc5322fb4520,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8461191745609096609, guid: 4d5c19fb72517854e814cc5322fb4520,
         type: 3}
       propertyPath: m_RootOrder
