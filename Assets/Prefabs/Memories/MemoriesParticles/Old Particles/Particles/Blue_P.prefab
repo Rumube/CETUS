@@ -131,6 +131,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.00036
       objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: f2a3f3253e745ba4a84bdaf8ae4b5903,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 32192
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: f2a3f3253e745ba4a84bdaf8ae4b5903,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: f2a3f3253e745ba4a84bdaf8ae4b5903,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: f2a3f3253e745ba4a84bdaf8ae4b5903,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: f2a3f3253e745ba4a84bdaf8ae4b5903,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8461191745609096609, guid: f2a3f3253e745ba4a84bdaf8ae4b5903,
         type: 3}
       propertyPath: m_RootOrder

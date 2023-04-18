@@ -116,6 +116,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1651067817809071106}
     m_Modifications:
+    - target: {fileID: 8461191745609096608, guid: 45d08ff6981756b4da0e99304ee8befa,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 45d08ff6981756b4da0e99304ee8befa,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 32192
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 45d08ff6981756b4da0e99304ee8befa,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 45d08ff6981756b4da0e99304ee8befa,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 45d08ff6981756b4da0e99304ee8befa,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096608, guid: 45d08ff6981756b4da0e99304ee8befa,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8461191745609096609, guid: 45d08ff6981756b4da0e99304ee8befa,
         type: 3}
       propertyPath: m_RootOrder
