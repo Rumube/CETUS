@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Cinemachine;
 
 public class Menu : MonoBehaviour
 {
@@ -8,24 +10,34 @@ public class Menu : MonoBehaviour
     private GameObject _player;
     private PlayerController _playerController;
     private PlayerInputActions _inputActions;
+    private CinemachineFreeLook _cameraOptions;
 
     [Header("Options")]
     public GameObject Options;
     public GameObject OptionsSound;
     public GameObject OptionsControls;
 
+    [Header("Vaues")]
+    [SerializeField] private float _generalVolume = 0.5f;
+    [SerializeField] private float _ambientVolume = 0.5f;
+    [SerializeField] private float _musicVolume = 0.5f;
+
     private float _nextPress = 0;
 
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _cameraOptions = GameObject.FindGameObjectWithTag("CameraNormal").GetComponent<CinemachineFreeLook>();
         _playerController = _player.GetComponent<PlayerController>();
+    }
+    private void Start()
+    {
         _inputActions = _playerController.GetPlayerInputActions();
         if (_inputActions == null)
         {
             _inputActions = _playerController.GetPlayerInputActions();
         }
-        _player.GetComponent<PlayerController>().SetPause();
+        _playerController.SetPause();
     }
 
     // Update is called once per frame
@@ -34,7 +46,7 @@ public class Menu : MonoBehaviour
         if((_inputActions.Gameplay.Menu.ReadValue<float>() != 0 || _inputActions.Paths.Menu.ReadValue<float>() != 0) && Time.realtimeSinceStartup >= _nextPress)
         {
             _nextPress = Time.realtimeSinceStartup + 1f;
-            _player.GetComponent<PlayerController>().SetPause();
+            _playerController.SetPause();
         }
     }
     public void GeneralOptions()
@@ -53,7 +65,7 @@ public class Menu : MonoBehaviour
     }
     public void PlayScene()
     {
-        _player.GetComponent<PlayerController>().SetPause();
+        _playerController.SetPause();
     }
 
     public void ExitGame()
@@ -64,4 +76,51 @@ public class Menu : MonoBehaviour
             Application.Quit();
         #endif
     }
+
+    #region Controllers
+    public void InvertMovement(Toggle toggle)
+    {
+        if(_playerController != null)
+        {
+            if (toggle.isOn)
+            {
+                _playerController.SetInvertValue(1);
+            }
+            else
+            {
+                _playerController.SetInvertValue(-1);
+            }
+        }
+    }
+
+    public void InvertCamera(Toggle toggle)
+    {
+        if(toggle.isOn)
+        {
+            _cameraOptions.m_YAxis.m_InvertInput = false;
+            _cameraOptions.m_XAxis.m_InvertInput = false;
+        }
+        else
+        {
+            _cameraOptions.m_YAxis.m_InvertInput = true;
+            _cameraOptions.m_XAxis.m_InvertInput = true;
+        }
+    }
+    #endregion
+    #region Sound
+    public void GeneralSlider(Slider slider)
+    {
+        _generalVolume = slider.value;
+    }
+
+    public void AmbientSlider(Slider slider)
+    {
+        _ambientVolume = slider.value;
+    }
+
+    public void MusicSlider(Slider slider)
+    {
+        _musicVolume = slider.value;
+    }
+    #endregion
 }

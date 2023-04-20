@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 276484074425784286}
   - component: {fileID: 276484074425784287}
   m_Layer: 0
-  m_Name: Toggle
+  m_Name: ToggleMovement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276484074425784273}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -187,7 +187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210, y: 7.6661}
+  m_AnchoredPosition: {x: 210, y: 7.6660995}
   m_SizeDelta: {x: 189.0364, y: 25.332}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276484074425784287
@@ -236,8 +236,20 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 1
+      m_Calls:
+      - m_Target: {fileID: 276484076146497140}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: InvertMovement
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 276484074425784287}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 0
 --- !u!1 &276484074433714285
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,10 +562,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276484076146497140}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: GeneralSlider
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 276484074607298850}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &276484074665148805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,7 +1229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 12.4944, y: -12.494}
+  m_AnchoredPosition: {x: 93.000015, y: -12.494}
   m_SizeDelta: {x: 24.9889, y: 24.989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &276484074819231843
@@ -1933,10 +1957,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276484076146497140}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: MusicSlider
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 276484075604804010}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &276484075637963498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,7 +2389,7 @@ GameObject:
   - component: {fileID: 276484075824102323}
   - component: {fileID: 276484075824102322}
   m_Layer: 0
-  m_Name: general (1)
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2408,7 +2444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Invert X Axis
+  m_text: Invert Movement
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2471,7 +2507,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -69.68735, w: 0}
+  m_margin: {x: 0, y: 0, z: -147.30771, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2640,10 +2676,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 276484076146497140}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: AmbientSlider
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 276484075838190561}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &276484076066833580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2923,9 @@ MonoBehaviour:
   Options: {fileID: 276484075375330341}
   OptionsSound: {fileID: 276484075261478043}
   OptionsControls: {fileID: 276484074497437327}
+  _generalVolume: 0.5
+  _ambientVolume: 0.5
+  _musicVolume: 0.5
 --- !u!1 &276484076153393429
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,7 +3287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 12.4944, y: -12.494}
+  m_AnchoredPosition: {x: 93, y: -12.494}
   m_SizeDelta: {x: 24.9889, y: 24.989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &276484076374334821
@@ -3328,7 +3379,7 @@ GameObject:
   - component: {fileID: 276484076487082921}
   - component: {fileID: 276484076487082920}
   m_Layer: 0
-  m_Name: ambient (1)
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3383,7 +3434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Invert Y Axis
+  m_text: Invert Camera
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3446,7 +3497,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -55.749847, w: 0}
+  m_margin: {x: 0, y: 0, z: -148.61703, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3463,7 +3514,7 @@ GameObject:
   - component: {fileID: 276484076499178612}
   - component: {fileID: 276484076499178613}
   m_Layer: 0
-  m_Name: Toggle (1)
+  m_Name: ToggleCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3536,8 +3587,20 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 1
+      m_Calls:
+      - m_Target: {fileID: 276484076146497140}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: InvertCamera
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 276484076499178613}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 0
 --- !u!1 &276484076512143825
 GameObject:
   m_ObjectHideFlags: 0

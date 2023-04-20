@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _whaleSoundsDelay = 5.0f;
     [Range(10, 100)]
     [SerializeField] private float _whaleSoundFrecuency = 5.0f;
+    private int _invertValue = -1;
     private bool _canPlaySound = true;
     private int _lastSound = 0;
     private float speedYaw = 0;
@@ -192,7 +193,7 @@ public class PlayerController : MonoBehaviour
         speedYaw = Mathf.Clamp(speedYaw, -1, 1);
         speedPitch = Mathf.Clamp(speedPitch, -1, 1);
 
-        transform.Rotate(-1 * speedPitch, speedYaw, roll);
+        transform.Rotate(_invertValue * speedPitch, speedYaw, roll);
     }
     /// <summary>
     /// Manage the movement
@@ -318,6 +319,11 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
         }
+    }
+
+    public void SetInvertValue(int value)
+    {
+        _invertValue = value;
     }
     #endregion
 
