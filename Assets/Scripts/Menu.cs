@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     private GameObject _player;
     private PlayerController _playerController;
     private PlayerInputActions _inputActions;
+    
 
     [Header("Options")]
     public GameObject Options;
