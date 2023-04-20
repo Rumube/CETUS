@@ -2153,6 +2153,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -320.76193
       objectReference: {fileID: 0}
+    - target: {fileID: 2190080540761419905, guid: 024a722e47b19204781a0bd91aceb98f,
+        type: 3}
+      propertyPath: m_TagString
+      value: CameraNormal
+      objectReference: {fileID: 0}
     - target: {fileID: 2190080540761419907, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_Follow
@@ -2163,6 +2168,21 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 607579417}
+    - target: {fileID: 2190080540761419907, guid: 024a722e47b19204781a0bd91aceb98f,
+        type: 3}
+      propertyPath: m_XAxis.m_AccelTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190080540761419907, guid: 024a722e47b19204781a0bd91aceb98f,
+        type: 3}
+      propertyPath: m_YAxis.m_AccelTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190080540761419907, guid: 024a722e47b19204781a0bd91aceb98f,
+        type: 3}
+      propertyPath: m_XAxis.m_InvertInput
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2190080540761419907, guid: 024a722e47b19204781a0bd91aceb98f,
         type: 3}
       propertyPath: m_YAxis.m_InvertInput

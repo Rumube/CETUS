@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Menu : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Menu : MonoBehaviour
     private GameObject _player;
     private PlayerController _playerController;
     private PlayerInputActions _inputActions;
-    
+    private CinemachineFreeLook _cameraOptions;
 
     [Header("Options")]
     public GameObject Options;
@@ -26,6 +27,7 @@ public class Menu : MonoBehaviour
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _cameraOptions = GameObject.FindGameObjectWithTag("CameraNormal").GetComponent<CinemachineFreeLook>();
         _playerController = _player.GetComponent<PlayerController>();
     }
     private void Start()
@@ -95,11 +97,13 @@ public class Menu : MonoBehaviour
     {
         if(toggle.isOn)
         {
-            //TODO: CAMARA INVERTIDA
+            _cameraOptions.m_YAxis.m_InvertInput = false;
+            _cameraOptions.m_XAxis.m_InvertInput = false;
         }
         else
         {
-            //TODO: CAMARA NORMAL
+            _cameraOptions.m_YAxis.m_InvertInput = true;
+            _cameraOptions.m_XAxis.m_InvertInput = true;
         }
     }
     #endregion
