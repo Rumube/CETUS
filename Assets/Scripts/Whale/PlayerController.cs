@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _inputMovement;
     private Rigidbody _rb;
     private Animator _animator;
+    private Button _playBtn;
     private WhalePahtController _pathController;
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _playerInputActions = new PlayerInputActions();
         _pathController = GetComponent<WhalePahtController>();
+        _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
 
         SwitchActionMap(WHALE_STATE.move);
     }
@@ -307,6 +310,7 @@ public class PlayerController : MonoBehaviour
             _whaleState = WHALE_STATE.pause;
             _rb.velocity = Vector3.zero;
             _menu.SetActive(true);
+            _playBtn.Select();
             // Confines the cursor
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
