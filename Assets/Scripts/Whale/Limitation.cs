@@ -9,7 +9,7 @@ public class Limitation : MonoBehaviour
     public Transform[] centerOfTheLevel;
     public int _level;
 
-    CinemachineFreeLook _cinemachine;
+    public CinemachineVirtualCamera _cinemachine;
     PlayerController _playerController;
 
     public GameObject wormhole;
@@ -17,11 +17,11 @@ public class Limitation : MonoBehaviour
 
     bool nextLevel;
     bool _outside=true;
+    float timer = 0;
     // Start is called before the first frame update
   
     void Start()
     {
-        _cinemachine = GameObject.FindGameObjectWithTag("FreeLook").GetComponent<CinemachineFreeLook>();
         _playerController = GetComponent<PlayerController>();
     }
     
@@ -67,19 +67,45 @@ public class Limitation : MonoBehaviour
                 _level--;
                 transform.position = new Vector3(centerOfTheLevel[_level-1].position.x+20, centerOfTheLevel[_level-1].position.y + 20, centerOfTheLevel[_level-1].position.z + 20);
             }
-
-            _cinemachine.m_Lens.FieldOfView = Mathf.Lerp(179, 40, 5f);
+            StartCoroutine(DesactivateCamera());
+            // _cinemachine.m_Lens.FieldOfView = Mathf.Lerp(179, 40, timer);
+            DowngradeFOV(179,40);
             _playerController.SetWhaleState(PlayerController.WHALE_STATE.move);
             _outside = true;
 
         }
+    }
+        IEnumerator DesactivateCamera()
+    {
+        yield return new WaitForSeconds(3f);
+        _cinemachine.gameObject.SetActive(false);
+    }
+    IEnumerator UpgradeFOV(int initial, int finished)
+    {
+        while (_cinemachine.m_Lens.FieldOfView < finished)
+        {
+            _cinemachine.m_Lens.FieldOfView += 10;
+            yield return new WaitForSeconds(0.25f);
+        }
+      
+    }
+    void DowngradeFOV(int initial, int finished)
+    {
+        if (_cinemachine.m_Lens.FieldOfView > finished)
+        {
+            _cinemachine.m_Lens.FieldOfView -= 10;
+        }
+           
+
 
     }
     void TeleportToWormHole()
     {
         transform.position = wormhole.transform.position;
         _outside = false;
-        _cinemachine.m_Lens.FieldOfView = Mathf.Lerp(40, 179, 5f);
+        _cinemachine.gameObject.SetActive(true);
+        StartCoroutine(UpgradeFOV(40,179));
+       // _cinemachine.m_Lens.FieldOfView = Mathf.Lerp(40, 179, 0.25f);
         _playerController.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
     }
     
