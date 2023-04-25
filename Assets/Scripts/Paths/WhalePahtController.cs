@@ -28,7 +28,7 @@ public class WhalePahtController : MonoBehaviour
     [Header("Travel values")]
     public float _speed = 0;
     float _distanceTravelled = 0;
-    private const float MINSPEED = 10;
+    public float MINSPEED = 10;
 
 
     //Input Values
