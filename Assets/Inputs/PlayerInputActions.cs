@@ -62,6 +62,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""89907948-af03-4986-92a8-4792e8212d72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -213,7 +222,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""id"": ""6288e917-9043-46a2-a7b8-e57c10058c78"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
+                    ""processors"": ""InvertVector2(invertX=false,invertY=false),ScaleVector2(x=25,y=25)"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""LookAt"",
                     ""isComposite"": false,
@@ -273,6 +282,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10753b33-469e-42af-8f48-07b8ce35bad8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""221e3a40-6e81-4260-9960-baf3455da6cd"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -293,6 +324,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": ""Direction"",
                     ""type"": ""Button"",
                     ""id"": ""cb9fefb2-874f-417e-ba99-a482d9b33791"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""aec8d280-7a37-4008-9dc8-06db5792798c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -376,6 +416,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Direction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""548af309-d1a2-4fdd-9163-b191c6efb5ae"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acebcbbc-78a0-4d56-9b0d-3b0f2cb8faf6"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -411,10 +473,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
         m_Gameplay_LookAt = m_Gameplay.FindAction("LookAt", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
+        m_Gameplay_Menu = m_Gameplay.FindAction("Menu", throwIfNotFound: true);
         // Paths
         m_Paths = asset.FindActionMap("Paths", throwIfNotFound: true);
         m_Paths_Test = m_Paths.FindAction("Test", throwIfNotFound: true);
         m_Paths_Direction = m_Paths.FindAction("Direction", throwIfNotFound: true);
+        m_Paths_Menu = m_Paths.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -478,6 +542,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Rotate;
     private readonly InputAction m_Gameplay_LookAt;
     private readonly InputAction m_Gameplay_Dash;
+    private readonly InputAction m_Gameplay_Menu;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -486,6 +551,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
         public InputAction @LookAt => m_Wrapper.m_Gameplay_LookAt;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
+        public InputAction @Menu => m_Wrapper.m_Gameplay_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -507,6 +573,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
+                @Menu.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -523,6 +592,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -533,12 +605,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IPathsActions m_PathsActionsCallbackInterface;
     private readonly InputAction m_Paths_Test;
     private readonly InputAction m_Paths_Direction;
+    private readonly InputAction m_Paths_Menu;
     public struct PathsActions
     {
         private @PlayerInputActions m_Wrapper;
         public PathsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Test => m_Wrapper.m_Paths_Test;
         public InputAction @Direction => m_Wrapper.m_Paths_Direction;
+        public InputAction @Menu => m_Wrapper.m_Paths_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Paths; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -554,6 +628,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Direction.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
                 @Direction.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
                 @Direction.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnDirection;
+                @Menu.started -= m_Wrapper.m_PathsActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PathsActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PathsActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PathsActionsCallbackInterface = instance;
             if (instance != null)
@@ -564,6 +641,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Direction.started += instance.OnDirection;
                 @Direction.performed += instance.OnDirection;
                 @Direction.canceled += instance.OnDirection;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -592,10 +672,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnRotate(InputAction.CallbackContext context);
         void OnLookAt(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IPathsActions
     {
         void OnTest(InputAction.CallbackContext context);
         void OnDirection(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
 }

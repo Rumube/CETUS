@@ -17,13 +17,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
     [SerializeField] private GameObject _dashCamera;
+    [SerializeField] private GameObject _menu;
 
     // CONFIGURATION
     [Header("Movement Configuration")]
     [Range(0.1f, 3f)]
-    [SerializeField] private float _movementDelay = 1f;
     [SerializeField] private float _turnSpeed = 60f;
     [SerializeField] private float _moveSpeed = 45f;
+    [SerializeField] private float _moveDelay = 0.2f;
+
     [Header("Dash Configuration")]
     [SerializeField] private float _dashBoost = 2f;
     [SerializeField] private float _dashDuration;
@@ -32,8 +34,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _whaleSoundsDelay = 5.0f;
     [Range(10, 100)]
     [SerializeField] private float _whaleSoundFrecuency = 5.0f;
+    private int _invertValue = -1;
     private bool _canPlaySound = true;
     private int _lastSound = 0;
+    private float speedYaw = 0;
+    private float speedPitch = 0;
 
     // INPUTS VALUES
     private float _horizontalValue;
@@ -44,17 +49,16 @@ public class PlayerController : MonoBehaviour
     // PLAYER STATES
     private float _finishDash;
     private float _nextDash = 0;
+    private int _lastState = 0;
     public enum WHALE_STATE
     {
         move = 0,
         paht = 1,
-        dash = 2
+        dash = 2,
+        wormhole=3,
+        pause = 4
     }
     [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
-
-    [Header("---TEST---")]
-    [Tooltip("Enable movement in dash")]
-    [SerializeField] private bool _testDash = false;
 
     private void Awake()
     {
@@ -69,15 +73,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb.useGravity = false;
-
-        // Releases the cursor
-        Cursor.lockState = CursorLockMode.None;
-        // Locks the cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        // Confines the cursor
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
-
     }
     private void Update()
     {
@@ -88,8 +83,11 @@ public class PlayerController : MonoBehaviour
     {
         CheckCooldowns();
         Inputs();
-        Turn();
-        Thrust();
+        if (_whaleState != WHALE_STATE.pause)
+        {
+            Turn();
+            Thrust();
+        }
         Animation();
     }
     /// <summary>
@@ -109,35 +107,22 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Inputs()
     {
-        if (_testDash)
-        {
-            switch (_whaleState)
+        switch (_whaleState)
             {
-                case WHALE_STATE.move:
-                case WHALE_STATE.dash:
-                    InputsMove();
-                    break;
-                case WHALE_STATE.paht:
-                    InputsPath();
-                    break;
-                default:
-                    break;
+            case WHALE_STATE.move:
+                InputsMove();
+                break;
+            case WHALE_STATE.paht:
+                InputsPath();
+                break;
+            case WHALE_STATE.wormhole:
+                SetStartRotation();
+                break;
+            default:
+                break;
             }
-        }
-        else
-        {
-            switch (_whaleState)
-            {
-                case WHALE_STATE.move:
-                    InputsMove();
-                    break;
-                case WHALE_STATE.paht:
-                    InputsPath();
-                    break;
-                default:
-                    break;
-            }
-        }
+
+
     }
     /// <summary>
     /// Manage the inputs when the whale is move
@@ -169,14 +154,46 @@ public class PlayerController : MonoBehaviour
         _pathController.UpdatePath();
     }
     /// <summary>
+    /// Sets te rotations to zero
+    /// </summary>
+    private void SetStartRotation()
+    {
+        transform.rotation = transform.rotation = Quaternion.Euler(0, 0, 0); 
+    }
+    /// <summary>
     /// Manage the rotations
     /// </summary>
     private void Turn()
     {
-        float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue / _movementDelay;
-        float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue / _movementDelay;
+        float yaw = _turnSpeed * Time.fixedDeltaTime * _horizontalValue;
+        float pitch = _turnSpeed * Time.fixedDeltaTime * _verticalValue;
         float roll = _turnSpeed * Time.fixedDeltaTime * _rotateValue;
-        transform.Rotate(-1 * pitch, yaw, roll);
+
+        
+
+        if (yaw < 0.1f && yaw > -0.1f)
+        {
+            speedYaw = 0;
+        }
+        else
+        {
+            speedYaw += yaw * _moveDelay * Time.deltaTime;
+        }
+
+
+        if (pitch < 0.1f && pitch > -0.1f)
+        {
+            speedPitch = 0;
+        }
+        else
+        {
+            speedPitch += pitch * _moveDelay * Time.deltaTime;
+        }
+
+        speedYaw = Mathf.Clamp(speedYaw, -1, 1);
+        speedPitch = Mathf.Clamp(speedPitch, -1, 1);
+
+        transform.Rotate(_invertValue * speedPitch, speedYaw, roll);
     }
     /// <summary>
     /// Manage the movement
@@ -193,7 +210,6 @@ public class PlayerController : MonoBehaviour
             boost = _moveSpeed;
         }
         _rb.velocity = transform.forward * boost * Time.fixedDeltaTime;
-        //transform.position += transform.forward * boost * Time.fixedDeltaTime;
     }
     /// <summary>
     /// Manage Animations using:
@@ -278,6 +294,36 @@ public class PlayerController : MonoBehaviour
     public float GetVerticalAxis()
     {
         return _verticalValue;
+    }
+    #endregion
+
+    #region SETTERS
+
+    public void SetPause()
+    {
+        if (_whaleState != WHALE_STATE.pause)
+        {
+            _lastState = (int)_whaleState;
+            _whaleState = WHALE_STATE.pause;
+            _rb.velocity = Vector3.zero;
+            _menu.SetActive(true);
+            // Confines the cursor
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else
+        {
+            _whaleState = (WHALE_STATE)_lastState;
+            _menu.SetActive(false);
+            // Confines the cursor
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+        }
+    }
+
+    public void SetInvertValue(int value)
+    {
+        _invertValue = value;
     }
     #endregion
 
