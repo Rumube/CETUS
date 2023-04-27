@@ -35,12 +35,14 @@ public class ChainGenerator : MonoBehaviour
                     GameObject clone;
                     if (chains.Count % 2 == 0)
                     {
-                        clone = Instantiate(chain, new Vector3(transform.position.x + chains.Count - 1 * distance, transform.position.y , transform.position.z), transform.rotation);
+                        clone = Instantiate(chain, new Vector3(transform.position.x + (chains.Count - 1) * distance, transform.position.y , transform.position.z), transform.rotation);
                     }
                     else
                     {
-                        clone = Instantiate(chain, new Vector3(transform.position.x + chains.Count - 1 * distance, transform.position.y , transform.position.z), Quaternion.Euler(90, transform.rotation.y, transform.rotation.z));
+                        clone = Instantiate(chain, new Vector3(transform.position.x + (chains.Count - 1) * distance, transform.position.y , transform.position.z), Quaternion.Euler(90, transform.rotation.y, transform.rotation.z));
                     }
+                    
+                   // counterDistance += distance;
                     chains.Add(clone);
                 }
             }
