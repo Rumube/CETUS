@@ -887,9 +887,9 @@ MonoBehaviour:
   _whaleSprint: {fileID: 1865548815}
   _dashCamera: {fileID: 0}
   _menu: {fileID: 0}
-  _turnSpeed: 80
-  _moveSpeed: 150
-  _moveDelay: 0.1
+  _turnSpeed: 100
+  _moveSpeed: 1500
+  _moveDelay: 0.3
   _dashBoost: 4
   _dashDuration: 1
   _dashCooldown: 3
@@ -912,6 +912,7 @@ MonoBehaviour:
   _exitSensitivity: 0.8
   _changeDirectionSensitivity: 0.5
   _speed: 30
+  MINSPEED: 10
   _exitTime: 1
   _timeToNextTravel: 1
 --- !u!114 &1062980296059658620
@@ -956,8 +957,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 179
-  _detectionDist: 80
-  _rotationSpeed: 90
+  _detectionDist: 50
+  _rotationSpeed: 100
 --- !u!114 &5838829232959195930
 MonoBehaviour:
   m_ObjectHideFlags: 0

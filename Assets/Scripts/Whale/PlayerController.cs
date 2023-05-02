@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
 
     // CONFIGURATION
     [Header("Movement Configuration")]
-    [Range(0.1f, 3f)]
-    [SerializeField] private float _turnSpeed = 60f;
+    [Range(0.1f, 300f)]
+    [SerializeField] private float _turnSpeed = 100f;
     [SerializeField] private float _moveSpeed = 45f;
     [SerializeField] private float _moveDelay = 0.2f;
 
