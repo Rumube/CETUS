@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions _playerInputActions;
     private Vector2 _inputMovement;
     private Rigidbody _rb;
-    private Animator _animator;
     private WhalePahtController _pathController;
+    [SerializeField] private Animator _animator;
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
     [SerializeField] private GameObject _dashCamera;
@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
 
     // CONFIGURATION
     [Header("Movement Configuration")]
-    [Range(0.1f, 3f)]
-    [SerializeField] private float _turnSpeed = 60f;
+    [Range(0.1f, 300f)]
+    [SerializeField] private float _turnSpeed = 100f;
     [SerializeField] private float _moveSpeed = 45f;
     [SerializeField] private float _moveDelay = 0.2f;
 
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private float _verticalValue;
     private float _rotateValue;
     private float _dashBtn;
+    private float _pitch;
 
     // PLAYER STATES
     private float _finishDash;
@@ -63,7 +64,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
         _playerInputActions = new PlayerInputActions();
         _pathController = GetComponent<WhalePahtController>();
 
@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour
         speedPitch = Mathf.Clamp(speedPitch, -1, 1);
 
         transform.Rotate(_invertValue * speedPitch, speedYaw, roll);
+        _pitch = speedYaw;
     }
     /// <summary>
     /// Manage the movement
@@ -213,16 +214,33 @@ public class PlayerController : MonoBehaviour
     }
     /// <summary>
     /// Manage Animations using:
-    /// <see cref="_horizontalValue"/>
-    /// <see cref="_verticalValue"/>
     /// </summary>
     private void Animation()
     {
+
         _animator.SetBool("Space", _dashBtn != 0 ? true : false);
-        _animator.SetBool("Left", _horizontalValue < 0 ? true : false);
-        _animator.SetBool("Right", _horizontalValue > 0 ? true : false);
-        _animator.SetBool("Up", _verticalValue > 0 ? true : false);
-        _animator.SetBool("Down", _verticalValue < 0 ? true : false);
+        _animator.SetFloat("Pitch", _pitch);
+
+        //if (_animator.GetBool("Left") || _animator.GetBool("Right"))
+        //{
+        //    if (_animator.GetBool("Left"))
+        //    {
+        //        _animator.SetBool("StopTurnLeft", _horizontalValue > 0.3f ? true : false);
+        //        _animator.SetBool("Left", false);
+        //    }
+        //    else if (_animator.GetBool("Right"))
+        //    {
+        //        _animator.SetBool("StopTurnRight", _horizontalValue < -0.3f ? true : false);
+        //        _animator.SetBool("Left", false);
+        //    }
+        //}
+        //else
+        //{
+        //    _animator.SetBool("Left", _horizontalValue < -0.3f ? true : false);
+        //    _animator.SetBool("Right", _horizontalValue > 0.3f ? true : false);
+        //}
+        //_animator.SetBool("Up", _verticalValue > 0 ? true : false);
+        //_animator.SetBool("Down", _verticalValue < 0 ? true : false);
     }
     /// <summary>
     /// Return's <see cref="_playerInputActions"/>
