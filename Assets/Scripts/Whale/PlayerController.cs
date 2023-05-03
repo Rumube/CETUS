@@ -69,7 +69,10 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _playerInputActions = new PlayerInputActions();
         _pathController = GetComponent<WhalePahtController>();
-        _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
+        if (GameObject.FindGameObjectWithTag("PlayButton"))
+        {
+            _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
+        }
 
         SwitchActionMap(WHALE_STATE.move);
     }
