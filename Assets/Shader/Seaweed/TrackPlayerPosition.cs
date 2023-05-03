@@ -13,12 +13,12 @@ public class TrackPlayerPosition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
-        pez = GameObject.Find("Pez");
+        player = GameObject.FindGameObjectWithTag("Player");
+        //pez = GameObject.FindGameObjectWithTag("Pez");
 
         seaweedMat = GetComponent<Renderer>().material;
         seaweedMat.SetFloat("_RadioAlgaJugador", player.GetComponent<Transform>().localScale.x - 0.4f);        
-        seaweedMat.SetFloat("_RadioAlgaPez", pez.GetComponent<Transform>().localScale.x - 0.4f);
+        //seaweedMat.SetFloat("_RadioAlgaPez", pez.GetComponent<Transform>().localScale.x - 0.4f);
     }
 
     // Update is called once per frame
@@ -27,10 +27,10 @@ public class TrackPlayerPosition : MonoBehaviour
 
 
         Vector3 playerPos = player.GetComponent<Transform>().position;
-        Vector3 pezPos = pez.GetComponent<Transform>().position;
+        //Vector3 pezPos = pez.GetComponent<Transform>().position;
 
         seaweedMat.SetVector("_trackerPosition", playerPos);
-        seaweedMat.SetVector("_trackerPositionPez", pezPos);
+        //seaweedMat.SetVector("_trackerPositionPez", pezPos);
 
         /* Collider[] coll = Physics.OverlapSphere(transform.position, _radius);
          List<Collider> collList = new List<Collider>(coll);
