@@ -7,14 +7,24 @@ public class FishMaterial : MonoBehaviour
     [SerializeField] Texture2D[] _posibleTextures;
     [SerializeField][ColorUsage(true, true, 0f, 8f, 0.125f, 3f)][System.Obsolete] Color[] _posibleColors;
     private Material _material;
+    [SerializeField] bool _isTurtle;
 
     private void Awake()
     {
-        _material = GetComponent<Renderer>().material;
-        SetFuerza(0.4f);
-        int random = Random.Range(0,_posibleTextures.Length);
-        _material.SetTexture("_Textura", _posibleTextures[random]);
-        _material.SetColor("_Color", _posibleColors[random]);
+        if(!_isTurtle)
+        {
+            _material = GetComponent<Renderer>().material;
+            SetFuerza(0.4f);
+            int random = Random.Range(0, _posibleTextures.Length);
+            _material.SetTexture("_Textura", _posibleTextures[random]);
+            _material.SetColor("_Color", _posibleColors[random]);
+        }
+        else
+        {
+            SkinnedMeshRenderer skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+            skinnedMeshRenderer.materials[0].mainTexture = _posibleTextures[Random.Range(0,_posibleTextures.Length)];
+        }
+
     }
 
     public void SetFuerza(float fuerza)
