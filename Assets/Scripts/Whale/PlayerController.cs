@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions _playerInputActions;
     private Vector2 _inputMovement;
     private Rigidbody _rb;
-    private Animator _animator;
     private Button _playBtn;
     private WhalePahtController _pathController;
 
