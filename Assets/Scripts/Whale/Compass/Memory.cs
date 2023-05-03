@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Memory : MonoBehaviour
 {
+    //References
+    private GameObject _nexo;
+
     //Parameters
     [Header("Parameters")]
     public float _followVelocity;
@@ -30,6 +33,7 @@ public class Memory : MonoBehaviour
         _collider.enabled = true;
         _memoryState = MemoryState.followWhave;
         SelectNewTarget();
+        _nexo = GameObject.FindGameObjectWithTag("Nexo");
     }
 
     // Update is called once per frame
@@ -39,6 +43,10 @@ public class Memory : MonoBehaviour
 
         if (_memoryState == MemoryState.followNexo && transform.position == _target)
         {
+            if(_nexo.GetComponent<InitialNexo>() != null)
+            {
+                _nexo.GetComponent<InitialNexo>().AddFragment();
+            }
             Destroy(this.gameObject);
         }
     }

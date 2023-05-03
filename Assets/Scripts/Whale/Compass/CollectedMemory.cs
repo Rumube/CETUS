@@ -9,6 +9,7 @@ public class CollectedMemory : SpaceObject
     private bool _found;
     private MeshFilter _meshFilter;
     private GameObject _player;
+    private bool _used = false;
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _scaleSpeed;
@@ -33,8 +34,9 @@ public class CollectedMemory : SpaceObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !_used)
         {
+            _used = true;
             _player = other.gameObject;
             other.gameObject.GetComponent<Whale>().GetCompass().MemoriesUp();
             _cristalFound.Play();
