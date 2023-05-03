@@ -159,7 +159,7 @@ PrefabInstance:
     - target: {fileID: 8461191745609096609, guid: b7ed0ab9b01975745bc452354a9ff8f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8461191745609096609, guid: b7ed0ab9b01975745bc452354a9ff8f2,
         type: 3}
@@ -204,7 +204,12 @@ PrefabInstance:
     - target: {fileID: 8461191745609096615, guid: b7ed0ab9b01975745bc452354a9ff8f2,
         type: 3}
       propertyPath: m_shaderPropertyID
-      value: 875
+      value: 938
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461191745609096615, guid: b7ed0ab9b01975745bc452354a9ff8f2,
+        type: 3}
+      propertyPath: m_materialData.Array.data[0].m_move
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7ed0ab9b01975745bc452354a9ff8f2, type: 3}
