@@ -889,7 +889,7 @@ MonoBehaviour:
   _whaleSprint: {fileID: 1865548815}
   _dashCamera: {fileID: 0}
   _menu: {fileID: 0}
-  _turnSpeed: 100
+  _turnSpeed: 50
   _moveSpeed: 1500
   _moveDelay: 0.3
   _dashBoost: 4
@@ -2105,6 +2105,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4554275584816503828}
     m_Modifications:
+    - target: {fileID: 1851934798244745622, guid: acf7e5e712edc454c830cc879837cb48,
+        type: 3}
+      propertyPath: m_TagString
+      value: Cola
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008565418975285141, guid: acf7e5e712edc454c830cc879837cb48,
+        type: 3}
+      propertyPath: m_TagString
+      value: AletaIz
+      objectReference: {fileID: 0}
     - target: {fileID: 6218419434926703179, guid: acf7e5e712edc454c830cc879837cb48,
         type: 3}
       propertyPath: m_RootOrder
@@ -2169,6 +2179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455981778854197928, guid: acf7e5e712edc454c830cc879837cb48,
+        type: 3}
+      propertyPath: m_TagString
+      value: AletaDer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf7e5e712edc454c830cc879837cb48, type: 3}

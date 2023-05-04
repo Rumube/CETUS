@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions _playerInputActions;
     private Vector2 _inputMovement;
     private Rigidbody _rb;
+    private Button _playBtn;
     private WhalePahtController _pathController;
+
     [SerializeField] private Animator _animator;
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
     [SerializeField] private GameObject _dashCamera;
+    [SerializeField] private GameObject _initialCamera;
     [SerializeField] private GameObject _menu;
 
     // CONFIGURATION
@@ -66,6 +70,10 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _playerInputActions = new PlayerInputActions();
         _pathController = GetComponent<WhalePahtController>();
+        if (GameObject.FindGameObjectWithTag("PlayButton"))
+        {
+            _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
+        }
 
         SwitchActionMap(WHALE_STATE.move);
     }
@@ -73,6 +81,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb.useGravity = false;
+        StartCoroutine(DesactivateInitialCamera());
     }
     private void Update()
     {
@@ -89,6 +98,12 @@ public class PlayerController : MonoBehaviour
             Thrust();
         }
         Animation();
+    }
+
+    private IEnumerator DesactivateInitialCamera()
+    {
+        yield return new WaitForSeconds(3f);
+        _initialCamera.SetActive(false);
     }
     /// <summary>
     /// Manage the cooldowns
@@ -325,6 +340,7 @@ public class PlayerController : MonoBehaviour
             _whaleState = WHALE_STATE.pause;
             _rb.velocity = Vector3.zero;
             _menu.SetActive(true);
+            _playBtn.Select();
             // Confines the cursor
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
