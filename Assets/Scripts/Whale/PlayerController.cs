@@ -148,11 +148,20 @@ public class PlayerController : MonoBehaviour
         {
             if (_whaleSprint.IsPlaying()) _whaleSprint.Stop();
             _whaleSprint.Play();
+            _animator.SetBool("Space", true);
+            StartCoroutine(StopDash());
             SwitchActionMap(WHALE_STATE.dash);
             _finishDash = Time.realtimeSinceStartup + _dashDuration;
             _dashCamera.SetActive(true);
         }
     }
+
+    private IEnumerator StopDash()
+    {
+        yield return 0;
+        _animator.SetBool("Space", false);
+    }
+
     /// <summary>
     /// Manage the inputs when the whale is in path
     /// </summary>
@@ -224,8 +233,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Animation()
     {
-
-        _animator.SetBool("Space", _dashBtn != 0 ? true : false);
         _animator.SetFloat("Pitch", _pitch);
 
         //if (_animator.GetBool("Left") || _animator.GetBool("Right"))
