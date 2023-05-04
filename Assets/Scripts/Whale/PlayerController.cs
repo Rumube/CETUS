@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
     [SerializeField] private GameObject _dashCamera;
+    [SerializeField] private GameObject _initialCamera;
     [SerializeField] private GameObject _menu;
 
     // CONFIGURATION
@@ -60,9 +61,10 @@ public class PlayerController : MonoBehaviour
         paht = 1,
         dash = 2,
         wormhole=3,
-        pause = 4
+        pause = 4,
+        initGame = 5
     }
-    [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
+    [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.initGame;
 
     private void Awake()
     {
@@ -73,13 +75,13 @@ public class PlayerController : MonoBehaviour
         {
             _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
         }
-
-        SwitchActionMap(WHALE_STATE.move);
+        StartCoroutine(StartWait());
     }
 
     private void Start()
     {
         _rb.useGravity = false;
+        StartCoroutine(DesactivateInitialCamera());
     }
     private void Update()
     {
@@ -96,6 +98,12 @@ public class PlayerController : MonoBehaviour
             Thrust();
         }
         Animation();
+    }
+
+    private IEnumerator DesactivateInitialCamera()
+    {
+        yield return new WaitForSeconds(3f);
+        _initialCamera.SetActive(false);
     }
     /// <summary>
     /// Manage the cooldowns
@@ -148,11 +156,20 @@ public class PlayerController : MonoBehaviour
         {
             if (_whaleSprint.IsPlaying()) _whaleSprint.Stop();
             _whaleSprint.Play();
+            _animator.SetBool("Space", true);
+            StartCoroutine(StopDash());
             SwitchActionMap(WHALE_STATE.dash);
             _finishDash = Time.realtimeSinceStartup + _dashDuration;
             _dashCamera.SetActive(true);
         }
     }
+
+    private IEnumerator StopDash()
+    {
+        yield return 0;
+        _animator.SetBool("Space", false);
+    }
+
     /// <summary>
     /// Manage the inputs when the whale is in path
     /// </summary>
@@ -224,8 +241,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Animation()
     {
-
-        _animator.SetBool("Space", _dashBtn != 0 ? true : false);
         _animator.SetFloat("Pitch", _pitch);
 
         //if (_animator.GetBool("Left") || _animator.GetBool("Right"))
@@ -313,6 +328,13 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private IEnumerator StartWait()
+    {
+        SwitchActionMap(WHALE_STATE.initGame);
+        yield return new WaitForSeconds(6f);
+        SwitchActionMap(WHALE_STATE.move);
     }
 
     #region GETTERS
