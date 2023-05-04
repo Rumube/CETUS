@@ -33,6 +33,7 @@ public class Memory : MonoBehaviour
         _collider.enabled = true;
         _memoryState = MemoryState.followWhave;
         SelectNewTarget();
+        //if(GetComponent<>)
         _nexo = GameObject.FindGameObjectWithTag("Nexo");
     }
 
@@ -46,6 +47,10 @@ public class Memory : MonoBehaviour
             if(_nexo.GetComponent<InitialNexo>() != null)
             {
                 _nexo.GetComponent<InitialNexo>().AddFragment();
+            }
+            else
+            {
+                _nexo.GetComponent<AnimationNexo>().StartAnimBeat();
             }
             Destroy(this.gameObject);
         }

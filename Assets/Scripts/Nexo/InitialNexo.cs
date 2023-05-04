@@ -6,19 +6,12 @@ using UnityEngine.SceneManagement;
 public class InitialNexo : MonoBehaviour
 {
     [SerializeField]private int _fragments = 0;
-    [SerializeField]private Animator _animator;
     [SerializeField]private Animator _animatorTitle;
+    [SerializeField]private AnimationNexo _anim;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _anim = GetComponent<AnimationNexo>();
     }
 
     public void AddFragment()
@@ -26,8 +19,11 @@ public class InitialNexo : MonoBehaviour
         _fragments++;
         if(_fragments==8)
         {
-            _animator.Play("Nexo_Animation01_Zone0");
+            _anim.StartAnimOpen();
             StartCoroutine(JumpNextScene());
+        }
+        else{
+            _anim.StartAnimBeat();
         }
     }
     public IEnumerator JumpNextScene()
