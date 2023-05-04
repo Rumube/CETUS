@@ -60,9 +60,10 @@ public class PlayerController : MonoBehaviour
         paht = 1,
         dash = 2,
         wormhole=3,
-        pause = 4
+        pause = 4,
+        initGame = 5
     }
-    [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
+    [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.initGame;
 
     private void Awake()
     {
@@ -73,8 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
         }
-
-        SwitchActionMap(WHALE_STATE.move);
+        StartCoroutine(StartWait());
     }
 
     private void Start()
@@ -313,6 +313,13 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private IEnumerator StartWait()
+    {
+        SwitchActionMap(WHALE_STATE.initGame);
+        yield return new WaitForSeconds(6f);
+        SwitchActionMap(WHALE_STATE.move);
     }
 
     #region GETTERS
