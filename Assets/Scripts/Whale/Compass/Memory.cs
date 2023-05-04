@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Memory : MonoBehaviour
 {
+    //References
+    private GameObject _nexo;
+
     //Parameters
     [Header("Parameters")]
     public float _followVelocity;
     private Vector3 _target;
     private GameObject _whale;
     private SphereCollider _collider;
+    private Transform[] _posibleFollows = new Transform[3];
+    private Transform _followTarget;
 
     public enum MemoryState
     {
@@ -27,6 +32,8 @@ public class Memory : MonoBehaviour
         _collider = GetComponent<SphereCollider>();
         _collider.enabled = true;
         _memoryState = MemoryState.followWhave;
+        SelectNewTarget();
+        _nexo = GameObject.FindGameObjectWithTag("Nexo");
     }
 
     // Update is called once per frame
@@ -36,8 +43,20 @@ public class Memory : MonoBehaviour
 
         if (_memoryState == MemoryState.followNexo && transform.position == _target)
         {
+            if(_nexo.GetComponent<InitialNexo>() != null)
+            {
+                _nexo.GetComponent<InitialNexo>().AddFragment();
+            }
             Destroy(this.gameObject);
         }
+    }
+
+    void SelectNewTarget()
+    {
+        _posibleFollows[0] = GameObject.FindGameObjectWithTag("AletaIz").transform;
+        _posibleFollows[1] = GameObject.FindGameObjectWithTag("AletaDer").transform;
+        _posibleFollows[2] = GameObject.FindGameObjectWithTag("Cola").transform;
+        _followTarget = _posibleFollows[Random.Range(0, _posibleFollows.Length)];
     }
 
     /// <summary>
@@ -51,7 +70,11 @@ public class Memory : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, _target, _followVelocity * Time.deltaTime);
                 break;
             case MemoryState.followWhave:
-                transform.position = Vector3.MoveTowards(transform.position, _whale.transform.position, _followVelocity * Time.deltaTime);
+                if(_followTarget == null)
+                {
+                    SelectNewTarget();
+                }
+                transform.position = Vector3.MoveTowards(transform.position, _followTarget.position, _followVelocity * Time.deltaTime);
                 break;
             case MemoryState.followTail:
                 transform.position = Vector3.MoveTowards(transform.position, _whale.transform.position, _followVelocity * Time.deltaTime);
