@@ -18,6 +18,7 @@ public class Whale : MonoBehaviour
     public Material _highStar;
     public Material _lowStar;
     public List<GameObject> _lightsList = new List<GameObject>();
+    [SerializeField] private GameObject _nexoCamera;
     #endregion
 
 
@@ -88,8 +89,18 @@ public class Whale : MonoBehaviour
         {
             StartCoroutine(_compass.LeaveMemoriesIntoNexo());
         }
+        if (other.tag == "NexoCamera")
+        {
+            _nexoCamera.SetActive(true);
+        }
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "NexoCamera")
+        {
+            _nexoCamera.SetActive(false);
+        }
+    }
     public Compass GetCompass()
     {
         return _compass;
