@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<StudioEventEmitter> _whaleSounds;
     [SerializeField] private StudioEventEmitter _whaleSprint;
     [SerializeField] private GameObject _dashCamera;
+    [SerializeField] private GameObject _initialCamera;
     [SerializeField] private GameObject _menu;
 
     // CONFIGURATION
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rb.useGravity = false;
+        StartCoroutine(DesactivateInitialCamera());
     }
     private void Update()
     {
@@ -96,6 +98,12 @@ public class PlayerController : MonoBehaviour
             Thrust();
         }
         Animation();
+    }
+
+    private IEnumerator DesactivateInitialCamera()
+    {
+        yield return new WaitForSeconds(3f);
+        _initialCamera.SetActive(false);
     }
     /// <summary>
     /// Manage the cooldowns
