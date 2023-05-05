@@ -243,27 +243,6 @@ public class PlayerController : MonoBehaviour
     private void Animation()
     {
         _animator.SetFloat("Pitch", _pitch);
-
-        //if (_animator.GetBool("Left") || _animator.GetBool("Right"))
-        //{
-        //    if (_animator.GetBool("Left"))
-        //    {
-        //        _animator.SetBool("StopTurnLeft", _horizontalValue > 0.3f ? true : false);
-        //        _animator.SetBool("Left", false);
-        //    }
-        //    else if (_animator.GetBool("Right"))
-        //    {
-        //        _animator.SetBool("StopTurnRight", _horizontalValue < -0.3f ? true : false);
-        //        _animator.SetBool("Left", false);
-        //    }
-        //}
-        //else
-        //{
-        //    _animator.SetBool("Left", _horizontalValue < -0.3f ? true : false);
-        //    _animator.SetBool("Right", _horizontalValue > 0.3f ? true : false);
-        //}
-        //_animator.SetBool("Up", _verticalValue > 0 ? true : false);
-        //_animator.SetBool("Down", _verticalValue < 0 ? true : false);
     }
     /// <summary>
     /// Return's <see cref="_playerInputActions"/>

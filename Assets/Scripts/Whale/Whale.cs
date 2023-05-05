@@ -105,4 +105,9 @@ public class Whale : MonoBehaviour
     {
         return _compass;
     }
+
+    public int GetMemoryCount()
+    {
+        return _compass._currentMemories;
+    }
 }

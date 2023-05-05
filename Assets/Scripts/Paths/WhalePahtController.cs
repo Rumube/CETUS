@@ -11,6 +11,7 @@ public class WhalePahtController : MonoBehaviour
     [SerializeField] private GameObject _pathCamera;
     private PathCreator _pathcreator;
     private PathController _pathController;
+    private InitialNexo _nexo;
 
     [Header("PlayerController")]
     private PlayerController _playerController;
@@ -46,6 +47,7 @@ public class WhalePahtController : MonoBehaviour
     {
         _playerController = GetComponent<PlayerController>();
         _inputActions = _playerController.GetPlayerInputActions();
+        _nexo = GameObject.FindGameObjectWithTag("Nexo").GetComponent<InitialNexo>();
     }
 
     /// <summary>
@@ -185,17 +187,38 @@ public class WhalePahtController : MonoBehaviour
     /// <param name="other">The collider with which the collision occurred</param>
     private void EnterInPath(Collider other)
     {
-        _playerController.SwitchActionMap(PlayerController.WHALE_STATE.paht);
-        _isPath = true;
-        _playerController.SetInputActionPaths();
-        _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
-        _pathController = other.gameObject.GetComponentInParent<PathController>();
-        _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
-        if(!_initPath)
+        if (CanEnterInAPath())
         {
-            _pathCamera.SetActive(true);
+            _playerController.SwitchActionMap(PlayerController.WHALE_STATE.paht);
+            _isPath = true;
+            _playerController.SetInputActionPaths();
+            _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
+            _pathController = other.gameObject.GetComponentInParent<PathController>();
+            _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
+            if (!_initPath)
+            {
+                _pathCamera.SetActive(true);
+            }
+            else
+            {
+                _pathController.GetFinishPaths()[0].SetActive(false);
+                _pathController.GetFinishPaths()[1].SetActive(false);
+            }
+            SetInitDirection();
         }
-        SetInitDirection();
+    }
+
+    private bool CanEnterInAPath()
+    {
+        bool result = true;
+        if (_initPath)
+        {
+            if (GetComponent<Whale>().GetMemoryCount() + _nexo.GetFragments() != 8)
+            {
+                result = false;
+            }
+        }
+        return result;
     }
     /// <summary>
     /// Change ActionMap and whale status to get out of the way.
@@ -206,7 +229,10 @@ public class WhalePahtController : MonoBehaviour
         _isPath = false;
         _playerController.SwitchActionMap(PlayerController.WHALE_STATE.move);
         _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
-        _pathCamera.SetActive(false);
+        if (!_initPath)
+        {
+            _pathCamera.SetActive(false);
+        }
     }
 
     /// <summary>

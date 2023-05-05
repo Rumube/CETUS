@@ -30,4 +30,9 @@ public class InitialNexo : MonoBehaviour
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(1);
     }
+
+    public int GetFragments()
+    {
+        return _fragments;
+    }
 }
