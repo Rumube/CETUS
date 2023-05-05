@@ -888,6 +888,7 @@ MonoBehaviour:
   - {fileID: 1865548814}
   _whaleSprint: {fileID: 1865548815}
   _dashCamera: {fileID: 0}
+  _initialCamera: {fileID: 0}
   _menu: {fileID: 0}
   _turnSpeed: 50
   _moveSpeed: 1500
@@ -944,6 +945,7 @@ MonoBehaviour:
   - {fileID: 423514866679696993}
   - {fileID: 3788097036223952427}
   - {fileID: 4524361815922027571}
+  _nexoCamera: {fileID: 0}
 --- !u!114 &592040733454954160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,7 +962,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 179
   _detectionDist: 50
-  _rotationSpeed: 100
+  _rotationSpeed: 50
 --- !u!114 &5838829232959195930
 MonoBehaviour:
   m_ObjectHideFlags: 0

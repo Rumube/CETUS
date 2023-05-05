@@ -44,13 +44,10 @@ public class Memory : MonoBehaviour
 
         if (_memoryState == MemoryState.followNexo && transform.position == _target)
         {
-            if(_nexo.GetComponent<InitialNexo>() != null)
+            _nexo.GetComponent<AnimationNexo>().StartAnimBeat();
+            if (_nexo.GetComponent<InitialNexo>() != null)
             {
                 _nexo.GetComponent<InitialNexo>().AddFragment();
-            }
-            else
-            {
-                _nexo.GetComponent<AnimationNexo>().StartAnimBeat();
             }
             Destroy(this.gameObject);
         }

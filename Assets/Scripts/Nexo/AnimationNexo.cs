@@ -10,13 +10,16 @@ public class AnimationNexo : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-
+    private void Update()
+    {
+        _animator.SetBool("Beat", false);
+    }
     public void StartAnimOpen()
     {
         _animator.Play("Nexo_Animation01_Zone0");
     }
     public void StartAnimBeat()
     {
-        _animator.Play("BeatNexo_Animation_Zone0");
+        _animator.SetBool("Beat", true);
     }
 }

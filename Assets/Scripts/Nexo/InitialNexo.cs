@@ -22,9 +22,6 @@ public class InitialNexo : MonoBehaviour
             _anim.StartAnimOpen();
             StartCoroutine(JumpNextScene());
         }
-        else{
-            _anim.StartAnimBeat();
-        }
     }
     public IEnumerator JumpNextScene()
     {

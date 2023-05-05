@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         {
             _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
         }
+        _menu.SetActive(false);
         StartCoroutine(StartWait());
     }
 

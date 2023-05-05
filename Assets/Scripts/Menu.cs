@@ -38,7 +38,6 @@ public class Menu : MonoBehaviour
         {
             _inputActions = _playerController.GetPlayerInputActions();
         }
-        //_playerController.SetPause();
     }
 
     // Update is called once per frame
