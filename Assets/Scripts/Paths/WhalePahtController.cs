@@ -26,6 +26,7 @@ public class WhalePahtController : MonoBehaviour
     private bool _direction = true;
 
     [Header("Travel values")]
+    [SerializeField] private bool _initPath;
     public float _speed = 0;
     float _distanceTravelled = 0;
     public float MINSPEED = 10;
@@ -52,8 +53,11 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     public void UpdatePath()
     {
-        UpdateInputs();
-        ExitConfiguration();
+        if (!_isPath)
+        {
+            UpdateInputs();
+            ExitConfiguration();
+        }
         UpdateInPath();
     }
     /// <summary>
@@ -187,7 +191,10 @@ public class WhalePahtController : MonoBehaviour
         _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
         _pathController = other.gameObject.GetComponentInParent<PathController>();
         _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
-        _pathCamera.SetActive(true);
+        if(!_initPath)
+        {
+            _pathCamera.SetActive(true);
+        }
         SetInitDirection();
     }
     /// <summary>
