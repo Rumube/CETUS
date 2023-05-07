@@ -22,13 +22,14 @@ public class Compass : MonoBehaviour
     /// <summary>
     /// Creates a new memory
     /// </summary>
-    public void MemoriesUp()
+    public void MemoriesUp(CollectedMemory.Zone zone)
     {
         _currentMemories++;
 
         int randomParticle = Random.Range(0, _memoryParticle.Count);
         GameObject newMemory = Instantiate(_memoryParticle[randomParticle], transform);
         newMemory.GetComponent<Memory>().SetTarge(_nexo.transform.position);
+        newMemory.GetComponent<Memory>().SetZone(zone);
         _memoriesList.Add(newMemory);
     }
 

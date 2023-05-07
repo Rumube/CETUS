@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationNexo : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    private bool _showingMemory = false;
 
     private void Awake()
     {
@@ -16,10 +17,16 @@ public class AnimationNexo : MonoBehaviour
     }
     public void StartAnimOpen()
     {
+        _showingMemory = true;
         _animator.Play("Nexo_Animation01_Zone0");
     }
     public void StartAnimBeat()
     {
-        _animator.SetBool("Beat", true);
+        if (!_showingMemory)
+        {
+            _animator.SetBool("Beat", true);
+        }
     }
+
+
 }
