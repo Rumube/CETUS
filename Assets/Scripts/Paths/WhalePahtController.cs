@@ -55,7 +55,7 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     public void UpdatePath()
     {
-        if (!_isPath)
+        if (!_initPath)
         {
             UpdateInputs();
             ExitConfiguration();
@@ -70,12 +70,6 @@ public class WhalePahtController : MonoBehaviour
         if (_inputActions == null)
         {
             _inputActions = _playerController.GetPlayerInputActions();
-        }
-
-
-        if (_inputActions.Paths.Test.IsPressed())
-        {
-            Debug.Log("TEST");
         }
 
         _horAxis = _inputActions.Paths.Direction.ReadValue<Vector2>().x;
