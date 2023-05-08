@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 1062980297539273105}
   - component: {fileID: 1062980296059658616}
   - component: {fileID: 1062980297328231868}
+  - component: {fileID: 1529159934}
   m_Layer: 3
   m_Name: ---CETUS---
   m_TagString: Player
@@ -914,6 +915,7 @@ MonoBehaviour:
   _pathCamera: {fileID: 0}
   _exitSensitivity: 0.8
   _changeDirectionSensitivity: 0.5
+  _initPath: 0
   _speed: 30
   MINSPEED: 10
   _exitTime: 1
@@ -1102,6 +1104,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1529159934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782981009252320942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c893b30b36891d459e3999f15764bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance:
+  - 120.23
+  - 200
+  - 100
+  centerOfTheLevel:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _level: 1
+  _cinemachine: {fileID: 0}
+  wormhole: {fileID: 0}
+  endWormhole: {fileID: 0}
 --- !u!1 &3788097036223952427
 GameObject:
   m_ObjectHideFlags: 0

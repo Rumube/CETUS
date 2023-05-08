@@ -67,7 +67,7 @@ public class SolarSystem : SpaceObject
     {
         if(other.tag == "Player")
         {
-            other.gameObject.GetComponent<Whale>().GetCompass().MemoriesUp();
+            //other.gameObject.GetComponent<Whale>().GetCompass().MemoriesUp();
 
             //GameObject space = GameObject.FindGameObjectWithTag("Space");
             //GameObject newParticle;
