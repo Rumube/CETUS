@@ -26,8 +26,8 @@ public class AnimationNexo : MonoBehaviour
 
     public IEnumerator StartAnimClose()
     {
-        //TODO: ACTIVAR ANIM
-        yield return new WaitForSeconds(2f);
+        _animator.Play("CloseNexo_Animation_Zone0");
+        yield return new WaitForSeconds(3.5f);
         _showingMemory = false;
 
     }
