@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _dashCamera;
     [SerializeField] private GameObject _initialCamera;
     [SerializeField] private GameObject _menu;
+    [SerializeField] private GameObject[] _pathSparks;
 
     // CONFIGURATION
     [Header("Movement Configuration")]
@@ -295,6 +296,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="whaleState">New State</param>
     public void SwitchActionMap(WHALE_STATE whaleState)
     {
+        TurnOfOnPathSparks(false);
         SetWhaleState(whaleState);
         switch (whaleState)
         {
@@ -303,10 +305,19 @@ public class PlayerController : MonoBehaviour
                 _playerInputActions.Gameplay.Enable();
                 break;
             case WHALE_STATE.paht:
+                TurnOfOnPathSparks(true);
                 _playerInputActions.Paths.Enable();
                 break;
             default:
                 break;
+        }
+    }
+
+    private void TurnOfOnPathSparks(bool value)
+    {
+        foreach (GameObject item in _pathSparks)
+        {
+            item.SetActive(value);
         }
     }
 
