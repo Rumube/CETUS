@@ -17,10 +17,11 @@ public class Menu : MonoBehaviour
     public GameObject OptionsSound;
     public GameObject OptionsControls;
 
-    [Header("Vaues")]
+    [Header("Audio")]
     [SerializeField] private float _generalVolume = 0.5f;
     [SerializeField] private float _ambientVolume = 0.5f;
     [SerializeField] private float _musicVolume = 0.5f;
+
 
     private float _nextPress = 0;
 
@@ -37,7 +38,6 @@ public class Menu : MonoBehaviour
         {
             _inputActions = _playerController.GetPlayerInputActions();
         }
-        _playerController.SetPause();
     }
 
     // Update is called once per frame

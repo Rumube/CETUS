@@ -13,7 +13,7 @@ public class Boid : MonoBehaviour
     public Vector3 position;
     [HideInInspector]
     public Vector3 forward;
-    Vector3 velocity;
+    [SerializeField]private Vector3 velocity;
     private bool _isScared = false;
     // To update:
     Vector3 acceleration;
@@ -43,7 +43,10 @@ public class Boid : MonoBehaviour
 
     void Awake()
     {
-        material = transform.GetComponentInChildren<MeshRenderer>().material;
+        if(transform.GetComponentInChildren<MeshRenderer>() != null)
+        {
+            material = transform.GetComponentInChildren<MeshRenderer>().material;
+        }
         _player = GameObject.FindGameObjectWithTag("Player");
         cachedTransform = transform;
         
@@ -255,7 +258,10 @@ public class Boid : MonoBehaviour
         if (Vector3.Distance(_player.transform.position, position) <= _maxRadius/2 && action==behaviour.Scared)
         {
             _timeRunaway = Time.realtimeSinceStartup + 1f;
-            _fishMaterial.SetFuerza(1f);
+            if(_fishMaterial != null)
+            {
+                _fishMaterial.SetFuerza(1f);
+            }
             if (!_runSound.IsPlaying() && Random.Range(0,100) < _bubbleSoundProbability)
             {
                 _runSound.Play();
@@ -264,7 +270,10 @@ public class Boid : MonoBehaviour
         }
         else
         {
-            _fishMaterial.SetFuerza(0.4f);
+            if(_fishMaterial != null)
+            {
+                _fishMaterial.SetFuerza(0.4f);
+            }
             return false;
         }
     }

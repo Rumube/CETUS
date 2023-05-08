@@ -28,10 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8100429016969147497}
-  - {fileID: 8100429015736882045}
   - {fileID: 8100429017178261954}
-  - {fileID: 8100429017199058412}
   - {fileID: 8100429016289783906}
   - {fileID: 8100429016525459002}
   - {fileID: 8100429015492442253}
@@ -43,8 +40,6 @@ Transform:
   - {fileID: 8100429015783075699}
   - {fileID: 8100429016051170617}
   - {fileID: 8100429016605921198}
-  - {fileID: 8100429016867373789}
-  - {fileID: 8100429015714959754}
   - {fileID: 8100429016071794851}
   - {fileID: 8100429015836673141}
   - {fileID: 8100429016167491854}
@@ -776,7 +771,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -847,6 +842,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (61)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -956,7 +956,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -1027,6 +1027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -1496,7 +1501,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -1567,6 +1572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -2041,7 +2051,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -2112,6 +2122,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (79)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -2311,7 +2326,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 41
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -2382,6 +2397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (94)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -3031,7 +3051,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -3103,6 +3123,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429016756256125 stripped
@@ -3121,7 +3146,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -3192,6 +3217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (75)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -3481,7 +3511,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 38
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -3552,6 +3582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (91)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -3650,96 +3685,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3085762207307687732, guid: e89ac3b34f54ebb4e8969caee82f82b3,
     type: 3}
   m_PrefabInstance: {fileID: 9091817639933241036}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &9091817639943591329
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 9091817640061658425}
-    m_Modifications:
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 114.566696
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -170.09888
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -55.370735
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.12937036
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7870139
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.052197844
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.60095584
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -15.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -64.137
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -24.314
-      objectReference: {fileID: 0}
-    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_Name
-      value: CollectedFragmentMemory (68)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
---- !u!4 &8100429016867373789 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 9091817639943591329}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9091817639968619804
 PrefabInstance:
@@ -3931,7 +3876,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -4002,6 +3947,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (87)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -4291,7 +4241,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -4362,6 +4312,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (80)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -5561,7 +5516,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 44
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -5633,6 +5588,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (97)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429017129558847 stripped
@@ -5651,7 +5611,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -5723,6 +5683,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429017132747322 stripped
@@ -5741,7 +5706,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -5812,6 +5777,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (88)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -5921,7 +5891,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -5992,6 +5962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (82)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -6101,7 +6076,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -6172,6 +6147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (73)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -6461,7 +6441,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -6533,6 +6513,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (77)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429016966397945 stripped
@@ -6540,96 +6525,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
     type: 3}
   m_PrefabInstance: {fileID: 9091817640311007365}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &9091817640311399189
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 9091817640061658425}
-    m_Modifications:
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 109.38843
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -179.35504
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12.103844
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.12937036
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7870139
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.052197844
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.60095584
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -15.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -64.137
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -24.314
-      objectReference: {fileID: 0}
-    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_Name
-      value: CollectedFragmentMemory (7)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
---- !u!4 &8100429016969147497 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 9091817640311399189}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9091817640327852253
 PrefabInstance:
@@ -6641,7 +6536,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -6712,6 +6607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (74)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -8176,7 +8076,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -8247,6 +8147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -8356,7 +8261,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -8428,6 +8333,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (86)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429017162475734 stripped
@@ -8446,7 +8356,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -8517,6 +8427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (83)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -8616,96 +8531,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9091817640546942378}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &9091817640551828112
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 9091817640061658425}
-    m_Modifications:
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 148.95728
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -172.46812
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -30.59986
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.12937036
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7870139
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.052197844
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.60095584
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -15.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -64.137
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -24.314
-      objectReference: {fileID: 0}
-    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_Name
-      value: CollectedFragmentMemory (11)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
---- !u!4 &8100429017199058412 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 9091817640551828112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9091817640569370089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8716,7 +8541,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -8788,6 +8613,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429017243853461 stripped
@@ -8816,17 +8646,17 @@ PrefabInstance:
     - target: {fileID: 3085762207307687732, guid: e89ac3b34f54ebb4e8969caee82f82b3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1953098
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3085762207307687732, guid: e89ac3b34f54ebb4e8969caee82f82b3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.20073195
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3085762207307687732, guid: e89ac3b34f54ebb4e8969caee82f82b3,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2736118
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3085762207307687732, guid: e89ac3b34f54ebb4e8969caee82f82b3,
         type: 3}
@@ -8877,6 +8707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -86.45599
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085762207307687732, guid: e89ac3b34f54ebb4e8969caee82f82b3,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e89ac3b34f54ebb4e8969caee82f82b3, type: 3}
@@ -9346,7 +9181,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -9417,6 +9252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -9886,7 +9726,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 43
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -9957,6 +9797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (96)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -10686,7 +10531,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -10757,6 +10602,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (90)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -11126,96 +10976,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9091817640878295025}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &9091817640894613238
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 9091817640061658425}
-    m_Modifications:
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 135.23032
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -164.72916
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -73.69887
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.12937036
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7870139
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.052197844
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.60095584
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -15.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -64.137
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -24.314
-      objectReference: {fileID: 0}
-    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_Name
-      value: CollectedFragmentMemory (69)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
---- !u!4 &8100429015714959754 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 9091817640894613238}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9091817640907927116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11226,7 +10986,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -11297,6 +11057,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (93)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -11665,96 +11430,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4041571090087557166, guid: df0157990fbe9ab4e9d7afee5508e918,
     type: 3}
   m_PrefabInstance: {fileID: 9091817640935057932}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &9091817640935146497
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 9091817640061658425}
-    m_Modifications:
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 126.62963
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -177.47806
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -14.6688385
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.12937036
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7870139
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.052197844
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.60095584
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -15.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -64.137
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -24.314
-      objectReference: {fileID: 0}
-    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-        type: 3}
-      propertyPath: m_Name
-      value: CollectedFragmentMemory (8)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
---- !u!4 &8100429015736882045 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 9091817640935146497}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9091817640936579547
 PrefabInstance:
@@ -12131,7 +11806,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -12203,6 +11878,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429015766463702 stripped
@@ -12221,7 +11901,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -12292,6 +11972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (65)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -12941,7 +12626,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -13013,6 +12698,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429015550755023 stripped
@@ -13031,7 +12721,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -13103,6 +12793,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (84)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429015607321602 stripped
@@ -13121,7 +12816,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -13192,6 +12887,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (92)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -13301,7 +13001,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -13372,6 +13072,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (78)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -13661,7 +13366,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -13732,6 +13437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (81)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -14211,7 +13921,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -14282,6 +13992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (76)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -14391,7 +14106,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -14462,6 +14177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -14571,7 +14291,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -14643,6 +14363,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429016071794851 stripped
@@ -14661,7 +14386,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -14732,6 +14457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (71)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -15111,7 +14841,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -15182,6 +14912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -16191,7 +15926,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -16262,6 +15997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
@@ -17006,7 +16746,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -17078,6 +16818,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectedFragmentMemory (95)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
 --- !u!4 &8100429016169667186 stripped
@@ -17096,7 +16841,7 @@ PrefabInstance:
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1028543361089427324, guid: d64f0f6ca55c95f4da7f1821605b18f4,
         type: 3}
@@ -17167,6 +16912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CollectedFragmentMemory (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814220354512377900, guid: d64f0f6ca55c95f4da7f1821605b18f4,
+        type: 3}
+      propertyPath: m_TagString
+      value: FragmentsZone1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64f0f6ca55c95f4da7f1821605b18f4, type: 3}
