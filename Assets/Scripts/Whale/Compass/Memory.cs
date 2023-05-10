@@ -24,6 +24,7 @@ public class Memory : MonoBehaviour
     }
 
     public MemoryState _memoryState;
+    [SerializeField] private CollectedMemory.Zone _zone;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +44,13 @@ public class Memory : MonoBehaviour
 
         if (_memoryState == MemoryState.followNexo && transform.position == _target)
         {
-            if(_nexo.GetComponent<InitialNexo>() != null)
+            _nexo.GetComponent<AnimationNexo>().StartAnimBeat();
+            if (_nexo.GetComponent<InitialNexo>() != null)
             {
                 _nexo.GetComponent<InitialNexo>().AddFragment();
+            }else if(_nexo.GetComponent<NexoManager>() != null)
+            {
+                _nexo.GetComponent<NexoManager>().FragmentProvided(_zone);
             }
             Destroy(this.gameObject);
         }
@@ -59,6 +64,10 @@ public class Memory : MonoBehaviour
         _followTarget = _posibleFollows[Random.Range(0, _posibleFollows.Length)];
     }
 
+    public void SetZone(CollectedMemory.Zone zone)
+    {
+        _zone = zone;
+    }
     /// <summary>
     /// Moves the memory in the correct direction
     /// </summary>
