@@ -848,7 +848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4554275584816503828
 Transform:
   m_ObjectHideFlags: 0
@@ -2384,6 +2384,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: AletaIz
       objectReference: {fileID: 0}
+    - target: {fileID: 5691635277821833122, guid: acf7e5e712edc454c830cc879837cb48,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b7aa3667b36afa54fa679505afa14721, type: 2}
     - target: {fileID: 6218419434926703179, guid: acf7e5e712edc454c830cc879837cb48,
         type: 3}
       propertyPath: m_RootOrder
