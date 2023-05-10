@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishMaterial : MonoBehaviour
 {
     [SerializeField] Texture2D[] _posibleTextures;
-    [SerializeField][ColorUsage(true, true, 0f, 8f, 0.125f, 3f)][System.Obsolete] Color[] _posibleColors;
+    [SerializeField, ColorUsageAttribute(true, true)] Color[] _posibleColors;
     private Material _material;
     [SerializeField] bool _isTurtle;
 
@@ -17,7 +17,7 @@ public class FishMaterial : MonoBehaviour
             SetFuerza(0.4f);
             int random = Random.Range(0, _posibleTextures.Length);
             _material.SetTexture("_Textura", _posibleTextures[random]);
-            _material.SetColor("_Color", _posibleColors[random]);
+            _material.SetColor("_ColorEmision", _posibleColors[random]);
         }
         else
         {
