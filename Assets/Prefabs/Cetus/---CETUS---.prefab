@@ -680,6 +680,7 @@ MonoBehaviour:
   _traspassingToNexoLocked: 0
   _currentMemories: 0
   _compasActive: 0
+  _armorMaterial: {fileID: 8190234100745805729}
   _memoryParticle:
   - {fileID: 3099120374714183570, guid: f0a41bf8a9bb6544d894a28419f44d84, type: 3}
   - {fileID: 1715054440558612972, guid: ad7ac946604bea3499b38eb7ff9dce59, type: 3}
@@ -2470,6 +2471,12 @@ Animator:
 --- !u!4 &7573098696614179400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6218419434926703179, guid: acf7e5e712edc454c830cc879837cb48,
+    type: 3}
+  m_PrefabInstance: {fileID: 4563640265697947651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8190234100745805729 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5691635277821833122, guid: acf7e5e712edc454c830cc879837cb48,
     type: 3}
   m_PrefabInstance: {fileID: 4563640265697947651}
   m_PrefabAsset: {fileID: 0}

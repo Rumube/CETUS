@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Compass : MonoBehaviour
 {
+    [Header("Emision")]
+    [SerializeField] private float _emissionIntensity = 1.2f;
+    [SerializeField] private float _emissiveIntensity = 1;
+
+    private Color _emissionColor = new Color(0.202095553f, 0.689502418f, 2.27060294f, 1);
+    private Color _currentEmissionColor = new Color(0.202095553f, 0.689502418f, 2.27060294f, 1);
+
     [Header("Configuration")]
     public bool _traspassingToNexoLocked;
+
     [Header("Stats")]
     public int _currentMemories;
     public bool _compasActive;
 
     [Header("References")]
+    [SerializeField] private SkinnedMeshRenderer _armorMaterial;
     public List<GameObject> _memoryParticle = new List<GameObject>();
     private List<GameObject> _memoriesList = new List<GameObject>();
     private GameObject _nexo;
@@ -19,6 +28,26 @@ public class Compass : MonoBehaviour
     {
         _nexo = GameObject.FindGameObjectWithTag("Nexo");
     }
+
+    private IEnumerator UpdateLight()
+    {
+        do
+        {
+            yield return new WaitForSeconds(0.05f);
+            _emissiveIntensity -= 1f;
+            UpdateEmission();
+        } while (_emissiveIntensity > 1);
+        _emissiveIntensity = 1;
+        UpdateEmission();
+    }
+
+    private void UpdateEmission()
+    {
+        _currentEmissionColor = _emissionColor * _emissiveIntensity;
+        _currentEmissionColor = Color.Lerp(_currentEmissionColor, _emissionColor, 2f * Time.deltaTime);
+        _armorMaterial.materials[0].SetColor("_EmissionColor", _currentEmissionColor);
+    }
+
     /// <summary>
     /// Creates a new memory
     /// </summary>
@@ -31,6 +60,17 @@ public class Compass : MonoBehaviour
         newMemory.GetComponent<Memory>().SetTarge(_nexo.transform.position);
         newMemory.GetComponent<Memory>().SetZone(zone);
         _memoriesList.Add(newMemory);
+        GenerateArmorEffect();
+    }
+
+    private void GenerateArmorEffect()
+    {
+        if(_emissiveIntensity < 200f)
+        {
+            _emissiveIntensity += _emissionIntensity;
+            StopAllCoroutines();
+            StartCoroutine(UpdateLight());
+        }
     }
 
     /// <summary>
