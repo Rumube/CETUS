@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
   forward: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   avgFlockHeading: {x: 0, y: 0, z: 0}
   avgAvoidanceHeading: {x: 0, y: 0, z: 0}
   centreOfFlockmates: {x: 0, y: 0, z: 0}
@@ -188,8 +189,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 8fe2d175e41817e40b18880f5e895096, type: 3}
   - {fileID: 2800000, guid: 37248d96dc376fc4c8ae6ff2fccfdd14, type: 3}
   _posibleColors:
-  - {r: 0.1441285, g: 0.09305898, b: 0.2917707, a: 1}
-  - {r: 0.27049786, g: 0.06847818, b: 0.17788847, a: 0}
-  - {r: 0.001214108, g: 0.17788847, b: 0.3467041, a: 0}
-  - {r: 0.084376216, g: 0.086500466, b: 0.22696589, a: 0}
-  - {r: 0.048171833, g: 0.13563336, b: 0.1878208, a: 0}
+  - {r: 2.2377, g: 0.069762394, b: 4.4415474, a: 1}
+  - {r: 4.634989, g: 0.32357454, b: 1.3981428, a: 0}
+  - {r: 0, g: 1.5372549, b: 2.9960785, a: 0}
+  - {r: 1.594015, g: 0.47148353, b: 4.030425, a: 0}
+  - {r: 0, g: 3.9999995, b: 2.3600137, a: 0}
+  _isTurtle: 0
