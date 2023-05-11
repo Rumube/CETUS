@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _dashCamera;
     [SerializeField] private GameObject _initialCamera;
     [SerializeField] private GameObject _menu;
+    [SerializeField] private GameObject[] _pathSparks;
 
     // CONFIGURATION
     [Header("Movement Configuration")]
@@ -61,9 +62,10 @@ public class PlayerController : MonoBehaviour
         paht = 1,
         dash = 2,
         wormhole=3,
-        pause = 4
+        pause = 4,
+        initGame = 5
     }
-    [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.move;
+    [SerializeField] private WHALE_STATE _whaleState = WHALE_STATE.initGame;
 
     private void Awake()
     {
@@ -74,8 +76,8 @@ public class PlayerController : MonoBehaviour
         {
             _playBtn = GameObject.FindGameObjectWithTag("PlayButton").GetComponent<Button>();
         }
-
-        SwitchActionMap(WHALE_STATE.move);
+        _menu.SetActive(false);
+        StartCoroutine(StartWait());
     }
 
     private void Start()
@@ -156,11 +158,20 @@ public class PlayerController : MonoBehaviour
         {
             if (_whaleSprint.IsPlaying()) _whaleSprint.Stop();
             _whaleSprint.Play();
+            _animator.SetBool("Space", true);
+            StartCoroutine(StopDash());
             SwitchActionMap(WHALE_STATE.dash);
             _finishDash = Time.realtimeSinceStartup + _dashDuration;
             _dashCamera.SetActive(true);
         }
     }
+
+    private IEnumerator StopDash()
+    {
+        yield return 0;
+        _animator.SetBool("Space", false);
+    }
+
     /// <summary>
     /// Manage the inputs when the whale is in path
     /// </summary>
@@ -232,30 +243,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Animation()
     {
-
-        _animator.SetBool("Space", _dashBtn != 0 ? true : false);
         _animator.SetFloat("Pitch", _pitch);
-
-        //if (_animator.GetBool("Left") || _animator.GetBool("Right"))
-        //{
-        //    if (_animator.GetBool("Left"))
-        //    {
-        //        _animator.SetBool("StopTurnLeft", _horizontalValue > 0.3f ? true : false);
-        //        _animator.SetBool("Left", false);
-        //    }
-        //    else if (_animator.GetBool("Right"))
-        //    {
-        //        _animator.SetBool("StopTurnRight", _horizontalValue < -0.3f ? true : false);
-        //        _animator.SetBool("Left", false);
-        //    }
-        //}
-        //else
-        //{
-        //    _animator.SetBool("Left", _horizontalValue < -0.3f ? true : false);
-        //    _animator.SetBool("Right", _horizontalValue > 0.3f ? true : false);
-        //}
-        //_animator.SetBool("Up", _verticalValue > 0 ? true : false);
-        //_animator.SetBool("Down", _verticalValue < 0 ? true : false);
     }
     /// <summary>
     /// Return's <see cref="_playerInputActions"/>
@@ -308,6 +296,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="whaleState">New State</param>
     public void SwitchActionMap(WHALE_STATE whaleState)
     {
+        TurnOfOnPathSparks(false);
         SetWhaleState(whaleState);
         switch (whaleState)
         {
@@ -316,11 +305,27 @@ public class PlayerController : MonoBehaviour
                 _playerInputActions.Gameplay.Enable();
                 break;
             case WHALE_STATE.paht:
+                TurnOfOnPathSparks(true);
                 _playerInputActions.Paths.Enable();
                 break;
             default:
                 break;
         }
+    }
+
+    private void TurnOfOnPathSparks(bool value)
+    {
+        foreach (GameObject item in _pathSparks)
+        {
+            item.SetActive(value);
+        }
+    }
+
+    private IEnumerator StartWait()
+    {
+        SwitchActionMap(WHALE_STATE.initGame);
+        yield return new WaitForSeconds(6f);
+        SwitchActionMap(WHALE_STATE.move);
     }
 
     #region GETTERS

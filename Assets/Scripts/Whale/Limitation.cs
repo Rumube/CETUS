@@ -54,7 +54,7 @@ public class Limitation : MonoBehaviour
             }
         }
        
-        else if (Vector3.Distance(endWormhole.position, transform.position) <= 5 &&_outside == false)
+        else if (Vector3.Distance(endWormhole.position, transform.position) <= 25 &&_outside == false)
         {
             if (nextLevel==true && _level != centerOfTheLevel.Length)
             {
