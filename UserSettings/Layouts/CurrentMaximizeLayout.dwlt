@@ -87,7 +87,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
       y: 21
       width: 383
       height: 517
-    m_Scale: {x: 0.19947916, y: 0.19947918}
+    m_Scale: {x: 0.19947916, y: 0.19947915}
     m_Translation: {x: 191.5, y: 258.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -107,9 +107,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -960
-      y: -1295.8746
+      y: -1295.8748
       width: 1920
-      height: 2591.7493
+      height: 2591.7495
     m_MinimalGUI: 1
   m_defaultScale: 0.19947916
   m_LastWindowPixelSize: {x: 383, y: 538}
@@ -227,9 +227,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d629feff
-      m_LastClickedID: -120362
-      m_ExpandedIDs: 6c5cddfdb82afefffc3ffeff127656006e83560072835600748356007a835600dc875600
+      m_SelectedIDs: 12f9faff
+      m_LastClickedID: -329454
+      m_ExpandedIDs: 6c5cddfdecf9faff300ffbffb82afefffc3ffefffe420400127656006e83560072835600748356007a835600dc875600
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -801,7 +801,7 @@ MonoBehaviour:
       index: 13
       layout: 4
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
-  m_Gizmos: 0
+  m_Gizmos: 1
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
@@ -810,9 +810,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -9.696075, y: 49.007545, z: -374.59277}
+    m_Target: {x: -1.7999992, y: 41, z: 2.9000015}
     speed: 2
-    m_Value: {x: -9.696075, y: 49.007545, z: -374.59277}
+    m_Value: {x: 258.12292, y: 91.23999, z: -86.35913}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -861,11 +861,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.032978024, y: -0.03118055, z: -0.0010213661, w: 0.99897635}
     speed: 2
-    m_Value: {x: -0.032977786, y: -0.031180322, z: -0.0010213587, w: 0.9989691}
+    m_Value: {x: 0.063231364, y: -0.34726647, z: 0.023476161, w: 0.9353377}
   m_Size:
-    m_Target: 6.4145184
+    m_Target: 158.89609
     speed: 2
-    m_Value: 6.4145184
+    m_Value: 209.588
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -975,7 +975,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: spa
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -987,22 +987,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Whale/Compass
+    - Assets/Prefabs/Escenario/Plants
     m_Globs: []
-    m_OriginalText: 
+    m_OriginalText: spa
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts/Whale/Compass
+  - Assets/Prefabs/Escenario/Plants
   m_LastFoldersGridSize: 96
   m_LastProjectPath: E:\UnityProjects\Proyecto4\Proyecto4\Astrocetaceo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 341}
-    m_SelectedIDs: ee7a0200
-    m_LastClickedID: 162542
-    m_ExpandedIDs: 00000000167a0200187a02001a7a02001c7a02001e7a0200207a0200227a0200247a0200b07a0200ffffff7f
+    scrollPos: {x: 0, y: 37}
+    m_SelectedIDs: 1a7f0200
+    m_LastClickedID: 163610
+    m_ExpandedIDs: 00000000167a0200187a02001a7a02001c7a02001e7a0200207a0200227a0200247a0200887a0200ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1055,8 +1055,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d629feff
-    m_LastClickedInstanceID: -120362
+    m_SelectedInstanceIDs: 12f9faff
+    m_LastClickedInstanceID: -329454
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000909600007c700000f87e000074800000fe3d00000c3e0000387e000038570000
     m_RenameOverlay:
@@ -1146,7 +1146,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -120362
+  m_LastSelectedObjectID: -856824
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
