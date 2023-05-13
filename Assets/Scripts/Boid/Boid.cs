@@ -33,8 +33,6 @@ public class Boid : MonoBehaviour
     Transform target;
     private Vector3 _lastDirect;
     [SerializeField] private FishMaterial _fishMaterial;
-    [SerializeField] private StudioEventEmitter _runSound;
-    [SerializeField] [Range(0, 100)] private float _bubbleSoundProbability;
 
     enum behaviour { Scared, Follower };
     behaviour action;
@@ -129,8 +127,6 @@ public class Boid : MonoBehaviour
 
                 Vector3 cohesionWeight = SteerTowards(direction) * settings.cohesionWeight;
                 acceleration += cohesionWeight*10;
-
-               
             }
              else if (_isScared)
             {
@@ -262,10 +258,7 @@ public class Boid : MonoBehaviour
             {
                 _fishMaterial.SetFuerza(1f);
             }
-            if (!_runSound.IsPlaying() && Random.Range(0,100) < _bubbleSoundProbability)
-            {
-                _runSound.Play();
-            }
+
             return true;
         }
         else
