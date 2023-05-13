@@ -16,7 +16,7 @@ public class StoriesNexo : MonoBehaviour
     }
     public void PlayMarket()
     {
-wwwwwwwwwwwww        _market.Play();
+       _market.Play();
     }
     public void PlayKids()
     {
