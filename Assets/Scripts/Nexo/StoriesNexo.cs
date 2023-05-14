@@ -5,21 +5,11 @@ using UnityEngine;
 
 public class StoriesNexo : MonoBehaviour
 {
-    [Header("Sounds")]
-    [SerializeField] private StudioEventEmitter _volcano;
-    [SerializeField] private StudioEventEmitter _market;
-    [SerializeField] private StudioEventEmitter _kids;
+    [SerializeField] private StudioEventEmitter _sound;
 
-    public void PlayVolcano()
+    public void PlaySound()
     {
-        _volcano.Play();
+        _sound.Play();
     }
-    public void PlayMarket()
-    {
-        _market.Play();
-    }
-    public void PlayKids()
-    {
-        _kids.Play();
-    }
+   
 }
