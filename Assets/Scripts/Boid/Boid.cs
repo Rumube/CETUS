@@ -4,6 +4,7 @@ using UnityEngine;
 using FMODUnity;
 public class Boid : MonoBehaviour
 {
+    private Transform _spawnerParent;
 
     BoidSettings settings;
     private GameObject _player;
@@ -244,10 +245,12 @@ public class Boid : MonoBehaviour
         return Vector3.ClampMagnitude(v, settings.maxSteerForce);
     }
 
-    public void InitValues(GameObject spawner, float radius)
+    public void InitValues(GameObject spawner, float radius, Transform parent)
     {
         _spawner = spawner;
         _maxRadius = radius;
+        _spawnerParent = parent;
+        transform.SetParent(_spawnerParent);
     }
     private bool PlayerDetection()
     {
