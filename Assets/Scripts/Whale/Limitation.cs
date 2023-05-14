@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+using FMODUnity;
 public class Limitation : MonoBehaviour
 {
     [Header("Elementos por nivel")]
@@ -91,14 +91,31 @@ public class Limitation : MonoBehaviour
         if (_level == 1)
         {
             print("Level 1");
+            if (!_zones[0].GetComponent<StudioEventEmitter>().IsPlaying())
+            {
+                _zones[1].GetComponent<StudioEventEmitter>().Stop();
+                //_zones[2].GetComponent<StudioEventEmitter>().Play();
+                _zones[0].GetComponent<StudioEventEmitter>().Play();
+            }
         }
         else if (_level == 2)
         {
             print("Level 2");
+            if (!_zones[1].GetComponent<StudioEventEmitter>().IsPlaying())
+            {
+                _zones[0].GetComponent<StudioEventEmitter>().Stop();
+                //_zones[2].GetComponent<StudioEventEmitter>().Stop();
+                _zones[1].GetComponent<StudioEventEmitter>().Play();
+            }
         }
         else if (_level == 3)
         {
-
+            if (!_zones[2].GetComponent<StudioEventEmitter>().IsPlaying())
+            {
+                _zones[0].GetComponent<StudioEventEmitter>().Stop();
+                _zones[1].GetComponent<StudioEventEmitter>().Stop();
+                _zones[2].GetComponent<StudioEventEmitter>().Play();
+            }
         }
     }
 

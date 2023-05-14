@@ -8166,9 +8166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b30e65ae6ea6834b826650c791b56ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _volcano: {fileID: 1623950423119577079}
-  _market: {fileID: 0}
-  _kids: {fileID: 0}
+  _sound: {fileID: 0}
 --- !u!114 &1623950423119577079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35934,7 +35932,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3456557010819137864}
-  _memorysAnims: []
+  _memorysAnims:
+  - {fileID: 4575860266598171993}
+  - {fileID: 5061591957509317960}
+  - {fileID: 8274470026869957132}
+  - {fileID: 6147148467140550044}
+  - {fileID: 330384113576836759}
 --- !u!1001 &8434111981283296518
 PrefabInstance:
   m_ObjectHideFlags: 0

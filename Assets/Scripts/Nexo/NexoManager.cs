@@ -27,7 +27,7 @@ public class NexoManager : MonoBehaviour
     {
         _fragmentsNumZone1 = GameObject.FindGameObjectsWithTag("FragmentsZone1").Length;
         //_fragmentsNumZone3 = GameObject.FindGameObjectsWithTag("FragmentsZone3").Length;
-        //_fragmentsNumZone6 = GameObject.FindGameObjectsWithTag("FragmentsZone6").Length;
+        _fragmentsNumZone6 = GameObject.FindGameObjectsWithTag("FragmentsZone6").Length;
 
         _fragmentsToFinishZone1 = (int)(_fragmentsNumZone1 - _fragmentsNumZone1 * Mathf.Clamp01(_requiredFragmentsZone1));
         _fragmentsToFinishZone3 = (int)(_fragmentsNumZone3 - _fragmentsNumZone3 * Mathf.Clamp01(_requiredFragmentsZone3));
@@ -85,7 +85,7 @@ public class NexoManager : MonoBehaviour
 
     private void CheckZone6()
     {
-        if (_fragmentsNumZone6 == _fragmentsToFinishZone1)
+        if (_fragmentsNumZone6 == _fragmentsToFinishZone6)
         {
             StartCoroutine(_animationNexo.StartMemory4());
         }
