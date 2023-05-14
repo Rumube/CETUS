@@ -679,6 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _emissionIntensity: 1.2
   _emissiveIntensity: 1
+  _maxEmissionIntensity: 0
   _traspassingToNexoLocked: 0
   _currentMemories: 0
   _compasActive: 0
@@ -925,8 +926,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pathCamera: {fileID: 0}
+  _compass: {fileID: 8964683422998474878}
   _exitSensitivity: 0.8
   _changeDirectionSensitivity: 0.5
+  _inNexoPath: 0
   _initPath: 0
   _speed: 30
   MINSPEED: 10
@@ -1128,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c893b30b36891d459e3999f15764bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _zones: []
   maxDistance:
   - 120.23
   - 200

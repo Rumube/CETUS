@@ -9,6 +9,7 @@ public class WhalePahtController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _pathCamera;
+    [SerializeField] Compass _compass;
     private PathCreator _pathcreator;
     private PathController _pathController;
     private InitialNexo _nexo;
@@ -25,12 +26,15 @@ public class WhalePahtController : MonoBehaviour
     [Tooltip("Initial entry direction. True = Strart to Final / False = Final to Start")]
     private bool _enterDirection = false;
     private bool _direction = true;
+    [SerializeField] private bool _inNexoPath = false;
 
     [Header("Travel values")]
     [SerializeField] private bool _initPath;
     public float _speed = 0;
     float _distanceTravelled = 0;
     public float MINSPEED = 10;
+
+    [Header("Travel values nexo")]
 
 
     //Input Values
@@ -55,9 +59,12 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     public void UpdatePath()
     {
-        if (!_initPath)
+        if (!_initPath && !_inNexoPath)
         {
             UpdateInputs();
+            ExitConfiguration();
+        }else if (_inNexoPath)
+        {
             ExitConfiguration();
         }
         UpdateInPath();
@@ -168,6 +175,10 @@ public class WhalePahtController : MonoBehaviour
     {
         if (other.tag == "PathGuide" && !_isPath && Time.realtimeSinceStartup >= _nextTravel)
         {
+            if (other.GetComponentInParent<Transform>().GetComponentInParent<PathController>().GetNexoPath())
+            {
+                _inNexoPath = true;
+            }
             EnterInPath(other);
         }
         else if (other.tag == "PathFinish" && _isPath)
@@ -189,11 +200,11 @@ public class WhalePahtController : MonoBehaviour
             _pathcreator = other.gameObject.GetComponentInParent<PathCreator>();
             _pathController = other.gameObject.GetComponentInParent<PathController>();
             _distanceTravelled = _pathcreator.path.GetClosestDistanceAlongPath(transform.position);
-            if (!_initPath)
+            if (!_initPath && !_inNexoPath)
             {
                 _pathCamera.SetActive(true);
             }
-            else
+            else if(_initPath || _inNexoPath)
             {
                 _pathController.GetFinishPaths()[0].SetActive(false);
                 _pathController.GetFinishPaths()[1].SetActive(false);
@@ -212,6 +223,13 @@ public class WhalePahtController : MonoBehaviour
                 result = false;
             }
         }
+        if(_inNexoPath)
+        {
+            if(_compass._currentMemories <= 0)
+            {
+                result = false;
+            }
+        }
         return result;
     }
     /// <summary>
@@ -223,7 +241,7 @@ public class WhalePahtController : MonoBehaviour
         _isPath = false;
         _playerController.SwitchActionMap(PlayerController.WHALE_STATE.move);
         _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
-        if (!_initPath)
+        if (!_initPath && !_inNexoPath)
         {
             _pathCamera.SetActive(false);
         }

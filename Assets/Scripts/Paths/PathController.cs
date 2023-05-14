@@ -6,6 +6,7 @@ using UnityEngine;
 public class PathController : MonoBehaviour
 {
     //Values
+    [SerializeField] private bool _nexoPath;
     private float _distanceTravelled = 0;
     [Header("References")]
     //References
@@ -34,6 +35,10 @@ public class PathController : MonoBehaviour
     public GameObject[] GetFinishPaths()
     {
         return _finishPaths;
+    }
+    public bool GetNexoPath()
+    {
+        return _nexoPath;
     }
     #endregion
 }
