@@ -121,5 +121,6 @@ public class Compass : MonoBehaviour
         _memoriesList.Clear();
         _memoriesListAux.Clear();
         _traspassingToNexoLocked = false;
+        transform.GetComponentInParent<WhalePahtController>().ActivateExitPath();
     }
 }

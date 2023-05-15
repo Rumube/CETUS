@@ -35,9 +35,12 @@ public class WhalePahtController : MonoBehaviour
     public float MINSPEED = 10;
 
     [Header("Travel values nexo")]
+    public float _nexoSpeed = 0;
+    public float NEXO_MINSPEED = 0;
 
 
     //Input Values
+    [Header("Exit Conf")]
     public float _exitTime = 0;
     public float _timeToNextTravel = 0;
 
@@ -62,9 +65,6 @@ public class WhalePahtController : MonoBehaviour
         if (!_initPath && !_inNexoPath)
         {
             UpdateInputs();
-            ExitConfiguration();
-        }else if (_inNexoPath)
-        {
             ExitConfiguration();
         }
         UpdateInPath();
@@ -117,16 +117,32 @@ public class WhalePahtController : MonoBehaviour
             float playerDirection = _verAxis;
             SetDirection(playerDirection);
             playerDirection = CorrectVelocity(playerDirection);
-            if (_direction)
+            if (!_inNexoPath)
             {
-                _distanceTravelled += (playerDirection * _speed * Time.deltaTime) + MINSPEED;
+                if (_direction)
+                {
+                    _distanceTravelled += (playerDirection * _speed * Time.deltaTime) + MINSPEED;
+                }
+                else
+                {
+                    _distanceTravelled += (playerDirection * _speed * Time.deltaTime) - MINSPEED;
+                }
             }
             else
             {
-                _distanceTravelled += (playerDirection * _speed * Time.deltaTime) - MINSPEED;
+                _distanceTravelled += (playerDirection * _nexoSpeed * Time.deltaTime) - NEXO_MINSPEED;
             }
-            transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
-            transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
+            if(_inNexoPath || _initPath)
+            {
+                transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Loop);
+                transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Loop);
+            }
+            else
+            {
+                transform.position = _pathcreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
+                transform.rotation = _pathcreator.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
+            }
+
 
             if (!_direction)
             {
@@ -237,8 +253,10 @@ public class WhalePahtController : MonoBehaviour
     /// </summary>
     private void GetOutPath()
     {
+        print("Saliendo...");
         _isExit = false;
         _isPath = false;
+        _inNexoPath = false;
         _playerController.SwitchActionMap(PlayerController.WHALE_STATE.move);
         _nextTravel = Time.realtimeSinceStartup + _timeToNextTravel;
         if (!_initPath && !_inNexoPath)
@@ -267,5 +285,16 @@ public class WhalePahtController : MonoBehaviour
             _direction = false;
             _enterDirection = false;
         }
+    }
+
+    public void ActivateExitPath()
+    {
+        _pathController.GetFinishPaths()[0].SetActive(true);
+        _pathController.GetFinishPaths()[1].SetActive(true);
+    }
+
+    public bool GetInNexoPath()
+    {
+        return _inNexoPath;
     }
 }
