@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader_GalaxyShader_Tutorial
+  m_Name: Shader_GalaxyShader
   m_Shader: {fileID: -6465566751694194690, guid: 99782b90307884943aa7b6a41c715438,
     type: 3}
   m_ValidKeywords: []
@@ -44,7 +44,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _FresnelNoisePower: 3
-    - _FresnelPower: 0.2
+    - _FresnelPower: -1
     - _FresnelPower_1: 0.05
     - _FresnelScale: 20
     - _QueueControl: 0
