@@ -8,6 +8,7 @@ public class InitialNexo : MonoBehaviour
     [SerializeField]private int _fragments = 0;
     [SerializeField]private Animator _animatorTitle;
     [SerializeField]private AnimationNexo _anim;
+    [SerializeField]private InitialMusic _initialMusic;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class InitialNexo : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         _animatorTitle.Play("Title_Animation");
+        _initialMusic.finishing = true;
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(1);
     }
