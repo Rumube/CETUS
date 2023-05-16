@@ -26,13 +26,16 @@ public class CollisionManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _detectionDist, _layerMask))
         {
-            if (_playerController.GetVerticalAxis() > 0)
+            if (!hit.collider.isTrigger)
             {
-                transform.Rotate(-1 * _rotationSpeed * Time.deltaTime * 1, 0, 0);
-            }
-            else
-            {
-                transform.Rotate(_rotationSpeed * Time.deltaTime * 1, 0, 0);
+                if (_playerController.GetVerticalAxis() > 0)
+                {
+                    transform.Rotate(-1 * _rotationSpeed * Time.deltaTime * 1, 0, 0);
+                }
+                else
+                {
+                    transform.Rotate(_rotationSpeed * Time.deltaTime * 1, 0, 0);
+                }
             }
         }
     }
