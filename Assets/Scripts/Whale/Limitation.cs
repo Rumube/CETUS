@@ -96,7 +96,7 @@ public class Limitation : MonoBehaviour
             if (!_zones[0].GetComponent<StudioEventEmitter>().IsPlaying())
             {
                 _zones[1].GetComponent<StudioEventEmitter>().Stop();
-                //_zones[2].GetComponent<StudioEventEmitter>().Play();
+                _zones[2].GetComponent<StudioEventEmitter>().Stop();
                 _zones[0].GetComponent<StudioEventEmitter>().Play();
             }
         }
@@ -106,7 +106,7 @@ public class Limitation : MonoBehaviour
             if (!_zones[1].GetComponent<StudioEventEmitter>().IsPlaying())
             {
                 _zones[0].GetComponent<StudioEventEmitter>().Stop();
-                //_zones[2].GetComponent<StudioEventEmitter>().Stop();
+                _zones[2].GetComponent<StudioEventEmitter>().Stop();
                 _zones[1].GetComponent<StudioEventEmitter>().Play();
             }
         }
