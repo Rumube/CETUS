@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader_GalaxyShader_Unlit
+  m_Name: Shader_GalaxyShader_Zone1
   m_Shader: {fileID: -6465566751694194690, guid: 99782b90307884943aa7b6a41c715438,
     type: 3}
   m_ValidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Galaxy:
-        m_Texture: {fileID: 8900000, guid: 8172d28e3bedbef44af29c4cf29918a5, type: 3}
+        m_Texture: {fileID: 8900000, guid: 8af4968a9112e194c992f7d2b8ea4d4f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Stars:
@@ -45,15 +45,15 @@ Material:
     m_Floats:
     - _FresnelNoisePower: 3
     - _FresnelPower: -1
-    - _FresnelPower_1: 2
+    - _FresnelPower_1: 0.05
     - _FresnelScale: 20
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _FresnelColor: {r: 4.867145, g: 0.81307185, b: 0, a: 1}
+    - _FresnelColor: {r: 0.60476243, g: 0, b: 1.1970993, a: 1}
     - _FresnelSpeed: {r: 0, g: 0.5, b: 0, a: 0}
-    - _GalaxyColor: {r: 2.6082377, g: 0.92858726, b: 0.5052607, a: 1}
-    - _StarsColor: {r: 1, g: 0.1628874, b: 0, a: 1}
+    - _GalaxyColor: {r: 0.31047243, g: 1.5420132, b: 0, a: 1}
+    - _StarsColor: {r: 0, g: 0.02916193, b: 1, a: 1}
     - _StarsOffset: {r: 0.14, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1876067299678588729
