@@ -7,7 +7,7 @@ public class Compass : MonoBehaviour
     [Header("Emision")]
     [SerializeField] private float _emissionIntensity = 1.2f;
     [SerializeField] private float _emissiveIntensity = 1;
-
+    [SerializeField] private float _maxEmissionIntensity = 0;
     private Color _emissionColor = new Color(0.202095553f, 0.689502418f, 2.27060294f, 1);
     private Color _currentEmissionColor = new Color(0.202095553f, 0.689502418f, 2.27060294f, 1);
 
@@ -43,6 +43,10 @@ public class Compass : MonoBehaviour
 
     private void UpdateEmission()
     {
+        if( _emissiveIntensity > _maxEmissionIntensity)
+        {
+            _emissiveIntensity = _maxEmissionIntensity;
+        }
         _currentEmissionColor = _emissionColor * _emissiveIntensity;
         _currentEmissionColor = Color.Lerp(_currentEmissionColor, _emissionColor, 2f * Time.deltaTime);
         _armorMaterial.materials[0].SetColor("_EmissionColor", _currentEmissionColor);
@@ -117,5 +121,6 @@ public class Compass : MonoBehaviour
         _memoriesList.Clear();
         _memoriesListAux.Clear();
         _traspassingToNexoLocked = false;
+        transform.GetComponentInParent<WhalePahtController>().ActivateExitPath();
     }
 }

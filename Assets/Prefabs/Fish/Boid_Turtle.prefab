@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6349151928875962174}
   - component: {fileID: 2931604500597588581}
-  - component: {fileID: 1829541913879535279}
   m_Layer: 8
   m_Name: Boid_Turtle
   m_TagString: Untagged
@@ -54,38 +53,6 @@ MonoBehaviour:
   centreOfFlockmates: {x: 0, y: 0, z: 0}
   numPerceivedFlockmates: 0
   _fishMaterial: {fileID: 0}
-  _runSound: {fileID: 1829541913879535279}
-  _bubbleSoundProbability: 10
---- !u!114 &1829541913879535279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4115476135907606149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1503942544
-      Data2: 1327279918
-      Data3: 609251491
-      Data4: 231200934
-    Path: event:/Fishes/BankRun
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1001 &5931703883144901950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,7 +144,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 88d0c8c00f155d44fabf7f01545ecb82, type: 2}
+      objectReference: {fileID: 2100000, guid: 70235468da5b66a49a85eef4e001cdef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bca35904f8e9944dabd6b142577fcc9, type: 3}
 --- !u!1 &3909943348290536834 stripped
@@ -198,12 +165,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55e3d01a2bbfe246a356ba295666ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _posibleMaterial:
+  - {fileID: 2100000, guid: 70235468da5b66a49a85eef4e001cdef, type: 2}
+  - {fileID: 2100000, guid: 88d0c8c00f155d44fabf7f01545ecb82, type: 2}
   _posibleTextures:
   - {fileID: 2800000, guid: 9cf95107fa848414289a7169fcef5329, type: 3}
   - {fileID: 2800000, guid: cccee5e938c7a5242988da2a4ce39e48, type: 3}
   _posibleColors:
-  - {r: 0.2086369, g: 0.31854683, b: 0.5520116, a: 0}
-  - {r: 0.2874409, g: 0.19120172, b: 0.30498737, a: 0}
+  - {r: 0.41568628, g: 0.63529414, b: 1.1058824, a: 0}
+  - {r: 0.57254905, g: 0.38431373, b: 0.6117647, a: 0}
   _isTurtle: 1
 --- !u!4 &6186569558977237717 stripped
 Transform:
