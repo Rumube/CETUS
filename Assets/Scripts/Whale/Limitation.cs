@@ -40,8 +40,10 @@ public class Limitation : MonoBehaviour
 
         for (int i = 0; i < maxDistance.Length; i++)
         {
-
-            Gizmos.DrawSphere(centerOfTheLevel[i].position, maxDistance[i]);
+            if (centerOfTheLevel[i] != null)
+            {
+                Gizmos.DrawSphere(centerOfTheLevel[i].position, maxDistance[i]);
+            }
         }
 
     }
