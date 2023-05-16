@@ -11,6 +11,7 @@ public class Limitation : MonoBehaviour
     public float[] maxDistance;
     public Transform[] centerOfTheLevel;
     public int _level;
+    private int _currentMaxLvl = 0;
 
     public CinemachineVirtualCamera _cinemachine;
     PlayerController _playerController;
@@ -63,8 +64,11 @@ public class Limitation : MonoBehaviour
             {
                 if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) >= maxDistance[_level - 1])
                 {
-                    nextLevel = true;
-                    TeleportToWormHole();
+                    if(_level+1 >= _currentMaxLvl)
+                    {
+                        nextLevel = true;
+                        TeleportToWormHole();
+                    }
                 }
                 else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 50)
                 {
@@ -88,6 +92,7 @@ public class Limitation : MonoBehaviour
                 }
                 StartCoroutine(DesactivateCamera(179, 40));
                 //DowngradeFOV(179,40);
+                RenderSettings.skybox = skyBoxes[_level - 1];
                 _playerController.SetWhaleState(PlayerController.WHALE_STATE.move);
                 _outside = true;
                 _travelCooldown = Time.realtimeSinceStartup + _travelCooldownTime;
@@ -179,6 +184,11 @@ public class Limitation : MonoBehaviour
             nextLevel = isNextLevel;
             TeleportToWormHole();
         }
+    }
+
+    public void incressMaxLvl()
+    {
+        _currentMaxLvl++;
     }
 
 }
