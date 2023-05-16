@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+using FMODUnity;
 public class Limitation : MonoBehaviour
 {
+    [Header("Elementos por nivel")]
+    [SerializeField] private GameObject[] _zones;
+
     public float[] maxDistance;
     public Transform[] centerOfTheLevel;
     public int _level;
@@ -16,15 +19,20 @@ public class Limitation : MonoBehaviour
     public Transform endWormhole;
 
     bool nextLevel;
-    bool _outside=true;
+    bool _outside = true;
     float timer = 0;
     // Start is called before the first frame update
-  
+
     void Start()
     {
         _playerController = GetComponent<PlayerController>();
+        StartCoroutine(WaitBoids());
     }
-    
+    private IEnumerator WaitBoids()
+    {
+        yield return new WaitForSeconds(0.5f);
+        UpdateLvl();
+    }
 
     void OnDrawGizmos()
     {
@@ -32,7 +40,7 @@ public class Limitation : MonoBehaviour
 
         for (int i = 0; i < maxDistance.Length; i++)
         {
-            
+
             Gizmos.DrawSphere(centerOfTheLevel[i].position, maxDistance[i]);
         }
 
@@ -42,7 +50,7 @@ public class Limitation : MonoBehaviour
     {
         if (_outside == true)
         {
-            if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) >= maxDistance[_level - 1] )
+            if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) >= maxDistance[_level - 1])
             {
                 nextLevel = true;
                 TeleportToWormHole();
@@ -53,19 +61,21 @@ public class Limitation : MonoBehaviour
                 TeleportToWormHole();
             }
         }
-       
-        else if (Vector3.Distance(endWormhole.position, transform.position) <= 25 &&_outside == false)
+
+        else if (Vector3.Distance(endWormhole.position, transform.position) <= 25 && _outside == false)
         {
-            if (nextLevel==true && _level != centerOfTheLevel.Length)
+            if (nextLevel == true && _level != centerOfTheLevel.Length)
             {
-                transform.position = new Vector3(centerOfTheLevel[_level].position.x+20, centerOfTheLevel[_level].position.y + 20, centerOfTheLevel[_level].position.z + 20);
-                
+                transform.position = new Vector3(centerOfTheLevel[_level].position.x + 20, centerOfTheLevel[_level].position.y + 20, centerOfTheLevel[_level].position.z + 20);
+
                 _level++;
+                UpdateLvl();
             }
             else if (nextLevel == false || _level == centerOfTheLevel.Length)
             {
                 _level--;
-                transform.position = new Vector3(centerOfTheLevel[_level-1].position.x+20, centerOfTheLevel[_level-1].position.y + 20, centerOfTheLevel[_level-1].position.z + 20);
+                UpdateLvl();
+                transform.position = new Vector3(centerOfTheLevel[_level - 1].position.x + 20, centerOfTheLevel[_level - 1].position.y + 20, centerOfTheLevel[_level - 1].position.z + 20);
             }
             StartCoroutine(DesactivateCamera(179, 40));
             //DowngradeFOV(179,40);
@@ -74,7 +84,51 @@ public class Limitation : MonoBehaviour
 
         }
     }
-        IEnumerator DesactivateCamera(int initial, int finished)
+
+    private void UpdateLvl()
+    {
+        UpdateZones();
+        if (_level == 1)
+        {
+            print("Level 1");
+            if (!_zones[0].GetComponent<StudioEventEmitter>().IsPlaying())
+            {
+                _zones[1].GetComponent<StudioEventEmitter>().Stop();
+                //_zones[2].GetComponent<StudioEventEmitter>().Play();
+                _zones[0].GetComponent<StudioEventEmitter>().Play();
+            }
+        }
+        else if (_level == 2)
+        {
+            print("Level 2");
+            if (!_zones[1].GetComponent<StudioEventEmitter>().IsPlaying())
+            {
+                _zones[0].GetComponent<StudioEventEmitter>().Stop();
+                //_zones[2].GetComponent<StudioEventEmitter>().Stop();
+                _zones[1].GetComponent<StudioEventEmitter>().Play();
+            }
+        }
+        else if (_level == 3)
+        {
+            if (!_zones[2].GetComponent<StudioEventEmitter>().IsPlaying())
+            {
+                _zones[0].GetComponent<StudioEventEmitter>().Stop();
+                _zones[1].GetComponent<StudioEventEmitter>().Stop();
+                _zones[2].GetComponent<StudioEventEmitter>().Play();
+            }
+        }
+    }
+
+    private void UpdateZones()
+    {
+        foreach (GameObject zone in _zones)
+        {
+            zone.SetActive(false);
+        }
+        _zones[_level - 1].SetActive(true);
+    }
+
+    IEnumerator DesactivateCamera(int initial, int finished)
     {
         while (_cinemachine.m_Lens.FieldOfView > initial)
         {
@@ -94,11 +148,11 @@ public class Limitation : MonoBehaviour
     }
     void TeleportToWormHole()
     {
-        
+
         _outside = false;
         _cinemachine.gameObject.SetActive(true);
-        StartCoroutine(UpgradeFOV(40,179));
+        StartCoroutine(UpgradeFOV(40, 179));
         _playerController.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
     }
-    
+
 }

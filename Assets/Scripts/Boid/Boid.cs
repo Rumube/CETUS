@@ -4,6 +4,7 @@ using UnityEngine;
 using FMODUnity;
 public class Boid : MonoBehaviour
 {
+    private Transform _spawnerParent;
 
     BoidSettings settings;
     private GameObject _player;
@@ -33,8 +34,6 @@ public class Boid : MonoBehaviour
     Transform target;
     private Vector3 _lastDirect;
     [SerializeField] private FishMaterial _fishMaterial;
-    [SerializeField] private StudioEventEmitter _runSound;
-    [SerializeField] [Range(0, 100)] private float _bubbleSoundProbability;
 
     enum behaviour { Scared, Follower };
     behaviour action;
@@ -129,8 +128,6 @@ public class Boid : MonoBehaviour
 
                 Vector3 cohesionWeight = SteerTowards(direction) * settings.cohesionWeight;
                 acceleration += cohesionWeight*10;
-
-               
             }
              else if (_isScared)
             {
@@ -248,10 +245,12 @@ public class Boid : MonoBehaviour
         return Vector3.ClampMagnitude(v, settings.maxSteerForce);
     }
 
-    public void InitValues(GameObject spawner, float radius)
+    public void InitValues(GameObject spawner, float radius, Transform parent)
     {
         _spawner = spawner;
         _maxRadius = radius;
+        _spawnerParent = parent;
+        transform.SetParent(_spawnerParent);
     }
     private bool PlayerDetection()
     {
@@ -262,10 +261,7 @@ public class Boid : MonoBehaviour
             {
                 _fishMaterial.SetFuerza(1f);
             }
-            if (!_runSound.IsPlaying() && Random.Range(0,100) < _bubbleSoundProbability)
-            {
-                _runSound.Play();
-            }
+
             return true;
         }
         else
