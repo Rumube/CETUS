@@ -21,6 +21,9 @@ public class Limitation : MonoBehaviour
     bool nextLevel;
     bool _outside = true;
     float timer = 0;
+
+    float _travelCooldown = 0;
+    [SerializeField]private float _travelCooldownTime = 0f;
     // Start is called before the first frame update
 
     void Start()
@@ -57,7 +60,7 @@ public class Limitation : MonoBehaviour
                 nextLevel = true;
                 TeleportToWormHole();
             }
-            else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 10)
+            else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 50)
             {
                 nextLevel = false;
                 TeleportToWormHole();
@@ -150,11 +153,16 @@ public class Limitation : MonoBehaviour
     }
     void TeleportToWormHole()
     {
-
         _outside = false;
         _cinemachine.gameObject.SetActive(true);
         StartCoroutine(UpgradeFOV(40, 179));
         _playerController.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
+    }
+
+    public void StartTeleport(bool isNextLevel)
+    {
+        nextLevel = isNextLevel;
+        TeleportToWormHole();
     }
 
 }
