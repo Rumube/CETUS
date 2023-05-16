@@ -58,7 +58,7 @@ public class Limitation : MonoBehaviour
                 nextLevel = true;
                 TeleportToWormHole();
             }
-            else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 10)
+            else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 10 && _level > 0)
             {
                 nextLevel = false;
                 TeleportToWormHole();
