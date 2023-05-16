@@ -11,6 +11,7 @@ public class Limitation : MonoBehaviour
     public float[] maxDistance;
     public Transform[] centerOfTheLevel;
     public int _level;
+    private int _currentMaxLvl = 0;
 
     public CinemachineVirtualCamera _cinemachine;
     PlayerController _playerController;
@@ -22,6 +23,12 @@ public class Limitation : MonoBehaviour
     bool nextLevel;
     bool _outside = true;
     float timer = 0;
+
+
+    private bool _inCooldown = false;
+    private float _travelCooldown = 0;
+    [SerializeField] private float _travelCooldownTime = 0f;
+
     // Start is called before the first frame update
 
     void Start()
@@ -51,43 +58,53 @@ public class Limitation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_outside == true)//entra
+        if (!_inCooldown)
         {
-            if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) >= maxDistance[_level - 1])
+            if (_outside == true)
             {
-                nextLevel = true;
-                TeleportToWormHole();
+                if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) >= maxDistance[_level - 1])
+                {
+                    if(_level+1 >= _currentMaxLvl)
+                    {
+                        nextLevel = true;
+                        TeleportToWormHole();
+                    }
+                }
+                else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 50)
+                {
+                    nextLevel = false;
+                    TeleportToWormHole();
+                }
             }
-            else if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) <= 10)
+            else if (Vector3.Distance(endWormhole.position, transform.position) <= 25 && _outside == false)
             {
-                nextLevel = false;
-                TeleportToWormHole();
+                if (nextLevel == true && _level != centerOfTheLevel.Length)
+                {
+                    transform.position = new Vector3(centerOfTheLevel[_level].position.x + 20, centerOfTheLevel[_level].position.y + 20, centerOfTheLevel[_level].position.z + 20);
+                    _level++;
+                    UpdateLvl();
+                }
+                else if (nextLevel == false || _level == centerOfTheLevel.Length)
+                {
+                    _level--;
+                    UpdateLvl();
+                    transform.position = new Vector3(centerOfTheLevel[_level - 1].position.x + 20, centerOfTheLevel[_level - 1].position.y + 20, centerOfTheLevel[_level - 1].position.z + 20);
+                }
+                StartCoroutine(DesactivateCamera(179, 40));
+                //DowngradeFOV(179,40);
+                RenderSettings.skybox = skyBoxes[_level - 1];
+                _playerController.SetWhaleState(PlayerController.WHALE_STATE.move);
+                _outside = true;
+                _travelCooldown = Time.realtimeSinceStartup + _travelCooldownTime;
+                _inCooldown = true;
             }
         }
-
-        else if (Vector3.Distance(endWormhole.position, transform.position) <= 25 && _outside == false)
+        else if (Time.realtimeSinceStartup >= _travelCooldown)
         {
-            if (nextLevel == true && _level != centerOfTheLevel.Length)
-            {
-                transform.position = new Vector3(centerOfTheLevel[_level].position.x + 20, centerOfTheLevel[_level].position.y + 20, centerOfTheLevel[_level].position.z + 20);
-
-                _level++;
-                UpdateLvl();
-            }
-            else if (nextLevel == false || _level == centerOfTheLevel.Length)
-            {
-                _level--;
-                UpdateLvl();
-                transform.position = new Vector3(centerOfTheLevel[_level - 1].position.x + 20, centerOfTheLevel[_level - 1].position.y + 20, centerOfTheLevel[_level - 1].position.z + 20);
-            }
-            RenderSettings.skybox = skyBoxes[_level-1];
-            StartCoroutine(DesactivateCamera(179, 40));
-            //DowngradeFOV(179,40);
-            _playerController.SetWhaleState(PlayerController.WHALE_STATE.move);
-            _outside = true;
-
+            _inCooldown = false;
         }
     }
+
 
     private void UpdateLvl()
     {
@@ -158,6 +175,20 @@ public class Limitation : MonoBehaviour
         _cinemachine.gameObject.SetActive(true);
         StartCoroutine(UpgradeFOV(40, 179));
         _playerController.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
+    }
+
+    public void StartTeleport(bool isNextLevel)
+    {
+        if (!_inCooldown)
+        {
+            nextLevel = isNextLevel;
+            TeleportToWormHole();
+        }
+    }
+
+    public void incressMaxLvl()
+    {
+        _currentMaxLvl++;
     }
 
 }
