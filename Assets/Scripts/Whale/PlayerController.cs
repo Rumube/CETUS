@@ -315,7 +315,6 @@ public class PlayerController : MonoBehaviour
 
     private void TurnOfOnPathSparks(bool value)
     {
-        print("Value: " + GetComponent<WhalePahtController>().GetInNexoPath());
         if (!GetComponent<WhalePahtController>().GetInNexoPath())
         {
             foreach (GameObject item in _pathSparks)
