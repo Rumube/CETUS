@@ -17,7 +17,8 @@ public class Limitation : MonoBehaviour
 
     public GameObject wormhole;
     public Transform endWormhole;
-
+    [SerializeField]
+    List<Material> skyBoxes=new List<Material>();
     bool nextLevel;
     bool _outside = true;
     float timer = 0;
@@ -50,7 +51,7 @@ public class Limitation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_outside == true)
+        if (_outside == true)//entra
         {
             if (Vector3.Distance(centerOfTheLevel[_level - 1].position, transform.position) >= maxDistance[_level - 1])
             {
@@ -79,6 +80,7 @@ public class Limitation : MonoBehaviour
                 UpdateLvl();
                 transform.position = new Vector3(centerOfTheLevel[_level - 1].position.x + 20, centerOfTheLevel[_level - 1].position.y + 20, centerOfTheLevel[_level - 1].position.z + 20);
             }
+            RenderSettings.skybox = skyBoxes[_level-1];
             StartCoroutine(DesactivateCamera(179, 40));
             //DowngradeFOV(179,40);
             _playerController.SetWhaleState(PlayerController.WHALE_STATE.move);
@@ -152,6 +154,7 @@ public class Limitation : MonoBehaviour
     {
 
         _outside = false;
+
         _cinemachine.gameObject.SetActive(true);
         StartCoroutine(UpgradeFOV(40, 179));
         _playerController.SetWhaleState(PlayerController.WHALE_STATE.wormhole);
