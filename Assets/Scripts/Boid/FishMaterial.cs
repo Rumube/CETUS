@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FishMaterial : MonoBehaviour
 {
+    [SerializeField] Material[] _posibleMaterial;
     [SerializeField] Texture2D[] _posibleTextures;
     [SerializeField, ColorUsageAttribute(true, true)] Color[] _posibleColors;
     private Material _material;
@@ -11,7 +12,7 @@ public class FishMaterial : MonoBehaviour
 
     private void Awake()
     {
-        if(!_isTurtle)
+        if (!_isTurtle)
         {
             _material = GetComponent<Renderer>().material;
             SetFuerza(0.4f);
@@ -21,10 +22,11 @@ public class FishMaterial : MonoBehaviour
         }
         else
         {
+            int random = Random.Range(0, _posibleMaterial.Length);
+            print("random: " + random);
             SkinnedMeshRenderer skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
-            skinnedMeshRenderer.materials[0].mainTexture = _posibleTextures[Random.Range(0,_posibleTextures.Length)];
+            skinnedMeshRenderer.materials[0] = _posibleMaterial[random];
         }
-
     }
 
     public void SetFuerza(float fuerza)

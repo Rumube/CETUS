@@ -144,7 +144,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 88d0c8c00f155d44fabf7f01545ecb82, type: 2}
+      objectReference: {fileID: 2100000, guid: 70235468da5b66a49a85eef4e001cdef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bca35904f8e9944dabd6b142577fcc9, type: 3}
 --- !u!1 &3909943348290536834 stripped
@@ -165,12 +165,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55e3d01a2bbfe246a356ba295666ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _posibleMaterial:
+  - {fileID: 2100000, guid: 70235468da5b66a49a85eef4e001cdef, type: 2}
+  - {fileID: 2100000, guid: 88d0c8c00f155d44fabf7f01545ecb82, type: 2}
   _posibleTextures:
   - {fileID: 2800000, guid: 9cf95107fa848414289a7169fcef5329, type: 3}
   - {fileID: 2800000, guid: cccee5e938c7a5242988da2a4ce39e48, type: 3}
   _posibleColors:
-  - {r: 0.2086369, g: 0.31854683, b: 0.5520116, a: 0}
-  - {r: 0.2874409, g: 0.19120172, b: 0.30498737, a: 0}
+  - {r: 0.41568628, g: 0.63529414, b: 1.1058824, a: 0}
+  - {r: 0.57254905, g: 0.38431373, b: 0.6117647, a: 0}
   _isTurtle: 1
 --- !u!4 &6186569558977237717 stripped
 Transform:
