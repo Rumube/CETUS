@@ -62,10 +62,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6200576380009529270, guid: 23d5e9111de63c5429a63a3200430c25,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8387791416917752745, guid: 23d5e9111de63c5429a63a3200430c25,
         type: 3}
       propertyPath: m_Name
       value: vfx_Waterfall_v1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6200576380009529270, guid: 23d5e9111de63c5429a63a3200430c25, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 23d5e9111de63c5429a63a3200430c25, type: 3}
