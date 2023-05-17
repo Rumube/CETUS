@@ -629,6 +629,7 @@ GameObject:
   - component: {fileID: 9106441155892778846}
   - component: {fileID: 326562316830887302}
   - component: {fileID: 8964683422998474878}
+  - component: {fileID: 3694305309944753818}
   m_Layer: 3
   m_Name: Compass
   m_TagString: Untagged
@@ -691,6 +692,36 @@ MonoBehaviour:
   - {fileID: 7969124837247139119, guid: cde57fb9a3139364db67a0bb7f3a31a0, type: 3}
   - {fileID: 5277710173623222851, guid: f18322c224fa0a447a0d5b7067cb75bc, type: 3}
   - {fileID: 8613029390718879351, guid: b48405af19bb8a04894a738489ac139a, type: 3}
+--- !u!114 &3694305309944753818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067910317258659922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1538208062
+      Data2: 1247862418
+      Data3: -1632786024
+      Data4: 1320514408
+    Path: event:/FindCristal
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3408610660709166971
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,6 +964,8 @@ MonoBehaviour:
   _initPath: 0
   _speed: 30
   MINSPEED: 10
+  _nexoSpeed: 0
+  NEXO_MINSPEED: 0
   _exitTime: 1
   _timeToNextTravel: 1
 --- !u!114 &1062980296059658620
@@ -1144,6 +1177,8 @@ MonoBehaviour:
   _cinemachine: {fileID: 0}
   wormhole: {fileID: 0}
   endWormhole: {fileID: 0}
+  skyBoxes: []
+  _travelCooldownTime: 0
 --- !u!1 &3788097036223952427
 GameObject:
   m_ObjectHideFlags: 0
