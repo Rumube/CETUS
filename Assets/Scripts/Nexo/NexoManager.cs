@@ -107,7 +107,6 @@ public class NexoManager : MonoBehaviour
         }
         else if (_fragmentsNumZone6 == _fragmentsToFinishZone6)
         {
-            _blackHoles[2].SetActive(true);
             _player.GetComponent<Limitation>().incressMaxLvl();
             StartCoroutine(_animationNexo.StartMemory6());
         }

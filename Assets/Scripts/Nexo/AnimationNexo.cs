@@ -63,7 +63,7 @@ public class AnimationNexo : MonoBehaviour
         yield return new WaitForSeconds(2);
         _memorysAnims[2].Play("Constelation_Animation_Story5");
         yield return new WaitForSeconds(0.2f);
-        _memorysAnims[2].Play("RoomAssets_Animation_Story5");
+        _memorysAnims[3].Play("RoomAssets_Animation_Story5");
         yield return new WaitForSeconds(2);
         StartCoroutine(StartAnimClose());
     }
@@ -72,7 +72,7 @@ public class AnimationNexo : MonoBehaviour
     {
         StartAnimOpen();
         yield return new WaitForSeconds(2);
-        _memorysAnims[3].Play("Gradas_Animation_Story3");
+        _memorysAnims[4].Play("Gradas_Animation_Story3");
         yield return new WaitForSeconds(2);
         StartCoroutine(StartAnimClose());
     }
@@ -81,7 +81,7 @@ public class AnimationNexo : MonoBehaviour
     {
         StartAnimOpen();
         yield return new WaitForSeconds(2);
-        _memorysAnims[4].Play("VolcanCh_Animation_Story10");
+        _memorysAnims[5].Play("VolcanCh_Animation_Story10");
         yield return new WaitForSeconds(2);
         StartCoroutine(StartAnimClose());
     }
@@ -90,7 +90,7 @@ public class AnimationNexo : MonoBehaviour
     {
         StartAnimOpen();
         yield return new WaitForSeconds(2);
-        _memorysAnims[5].Play("Volcan_Animation_Story10");
+        _memorysAnims[6].Play("Volcan_Animation_Story10");
         yield return new WaitForSeconds(2);
         StartCoroutine(StartAnimClose());
     }
