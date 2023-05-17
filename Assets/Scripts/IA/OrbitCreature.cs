@@ -17,7 +17,7 @@ public class OrbitCreature : MonoBehaviour
     {
         //Vector3.MoveTowards(transform.position, orbit.transform.position, speed*Time.deltaTime);
         transform.LookAt(orbit);
-        transform.Translate(Vector3.forward * speed);
+        transform.Translate(Vector3.forward * speed*Time.deltaTime);
         // transform.rotation = Quaternion.Slerp(transform.rotation,orbit.transform.rotation, speed * Time.deltaTime);
         // Check if the position of the cube and sphere are approximately equal.
         //if (Vector3.Distance(transform.position, orbit.position) < 0.001f)
