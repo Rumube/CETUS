@@ -23,8 +23,7 @@ public class FishMaterial : MonoBehaviour
         else
         {
             int random = Random.Range(0, _posibleMaterial.Length);
-            print("random: " + random);
-            SkinnedMeshRenderer skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
+            Renderer skinnedMeshRenderer = GetComponent<Renderer>();
             skinnedMeshRenderer.materials[0] = _posibleMaterial[random];
         }
     }
