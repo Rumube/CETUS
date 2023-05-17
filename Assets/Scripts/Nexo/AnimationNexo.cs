@@ -93,5 +93,13 @@ public class AnimationNexo : MonoBehaviour
         _memorysAnims[6].Play("Volcan_Animation_Story10");
         yield return new WaitForSeconds(2);
         StartCoroutine(StartAnimClose());
+        yield return new WaitForSeconds(3);
+        _memorysAnims[7].gameObject.SetActive(true);
+        _memorysAnims[7].Play("Title_Animation");
+        yield return new WaitForSeconds(3);
+        _memorysAnims[7].Play("TitleDissapear_Animation");
+        yield return new WaitForSeconds(3);
+        _memorysAnims[7].gameObject.SetActive(false);
+
     }
 }
