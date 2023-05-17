@@ -43,7 +43,7 @@ public class AnimationNexo : MonoBehaviour
     {
         StartAnimOpen();
         yield return new WaitForSeconds(2);
-        _memorysAnims[0].Play("Mountain_Animation_Story1");//FAMILIA FELIZ
+        _memorysAnims[0].Play("CharactersHappy_Animation_Story1");//FAMILIA FELIZ
         yield return new WaitForSeconds(2);
         StartCoroutine(StartAnimClose());
     }

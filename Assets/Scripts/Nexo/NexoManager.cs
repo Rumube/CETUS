@@ -73,18 +73,15 @@ public class NexoManager : MonoBehaviour
 
     private void CheckZone1()
     {
-        if (_fragmentsNumZone1 == _fragmentsToFinishZone1)
+        if (_fragmentsNumZone1 == _fragmentsToHalfZone1)
         {
-            if(_fragmentsNumZone1 == _fragmentsToHalfZone1)
-            {
-                StartCoroutine(_animationNexo.StartMemory1());
-            }
-            else if(_fragmentsNumZone1 == _fragmentsToFinishZone1)
-            {
-                StartCoroutine(_animationNexo.StartMemory2());
-                _blackHoles[0].SetActive(true);
-                _player.GetComponent<Limitation>().incressMaxLvl();
-            }
+            StartCoroutine(_animationNexo.StartMemory1());
+        }
+        else if (_fragmentsNumZone1 == _fragmentsToFinishZone1)
+        {
+            StartCoroutine(_animationNexo.StartMemory2());
+            _blackHoles[0].SetActive(true);
+            _player.GetComponent<Limitation>().incressMaxLvl();
         }
     }
 
@@ -93,7 +90,8 @@ public class NexoManager : MonoBehaviour
         if (_fragmentsNumZone3 == _fragmentsToHalfZone3)
         {
             StartCoroutine(_animationNexo.StartMemory3());
-        }else if(_fragmentsNumZone3 == _fragmentsToFinishZone3)
+        }
+        else if (_fragmentsNumZone3 == _fragmentsToFinishZone3)
         {
             _blackHoles[1].SetActive(true);
             _player.GetComponent<Limitation>().incressMaxLvl();
