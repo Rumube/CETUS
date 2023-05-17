@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Compass : MonoBehaviour
 {
@@ -113,6 +114,8 @@ public class Compass : MonoBehaviour
         List<GameObject> _memoriesListAux = new List<GameObject>(_memoriesList);
         foreach (GameObject memory in _memoriesList)
         {
+            GetComponent<StudioEventEmitter>().Play();
+            
             memory.transform.SetParent(_nexo.transform);
             MemoriesDown();
             yield return new WaitForSeconds(0.5f);
