@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8952852278814592094}
   - component: {fileID: 2720814182270898936}
   - component: {fileID: -6056440717859864250}
+  - component: {fileID: 4772677285044410064}
   m_Layer: 0
   m_Name: Waterfall
   m_TagString: Untagged
@@ -4895,7 +4896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: 
+  CollisionTag: Player
   EventReference:
     Guid:
       Data1: 183004746
@@ -4904,12 +4905,25 @@ MonoBehaviour:
       Data4: -711991501
     Path: event:/Waterfall
   Event: 
-  PlayEvent: 1
-  StopEvent: 0
+  PlayEvent: 3
+  StopEvent: 4
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params: []
-  OverrideAttenuation: 0
+  OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 10000
+  OverrideMaxDistance: 100
+--- !u!65 &4772677285044410064
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666212619865957220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 35.126507, y: 35.126507, z: 30.405956}
+  m_Center: {x: 0, y: 0, z: 2.3602757}
