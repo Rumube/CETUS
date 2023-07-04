@@ -18,12 +18,17 @@ public class AnimationNexo : MonoBehaviour
     {
         _animator.SetBool("Beat", false);
     }
+    /// <summary>
+    /// Activate animation Nexo_Animation01_Zone0 When opening the nexo
+    /// </summary>
     public void StartAnimOpen()
     {
         _showingMemory = true;
         _animator.Play("Nexo_Animation01_Zone0");
     }
-
+    /// <summary>
+    /// Activate animation CloseNexo_Animation_Zone0 When closing the nexo
+    /// </summary>
     public IEnumerator StartAnimClose()
     {
         _animator.Play("CloseNexo_Animation_Zone0");
@@ -31,6 +36,9 @@ public class AnimationNexo : MonoBehaviour
         _showingMemory = false;
 
     }
+    /// <summary>
+    /// Activate animation Beat When a fragment is given to the nexo
+    /// </summary>
     public void StartAnimBeat()
     {
         if (!_showingMemory)
@@ -43,7 +51,7 @@ public class AnimationNexo : MonoBehaviour
     {
         StartAnimOpen();
         yield return new WaitForSeconds(2);
-        _memorysAnims[0].Play("CharactersHappy_Animation_Story1");//FAMILIA FELIZ
+        _memorysAnims[0].Play("CharactersHappy_Animation_Story1");
         yield return new WaitForSeconds(2);
         StartCoroutine(StartAnimClose());
     }

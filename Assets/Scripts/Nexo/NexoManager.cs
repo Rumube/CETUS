@@ -70,7 +70,9 @@ public class NexoManager : MonoBehaviour
                 break;
         }
     }
-
+    /// <summary>
+    /// Checks if it is necessary to activate animations and to allow level changes Zone1
+    /// </summary>
     private void CheckZone1()
     {
         if (_fragmentsNumZone1 == _fragmentsToHalfZone1)
